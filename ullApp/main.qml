@@ -14,14 +14,16 @@ ApplicationWindow {
 
 
     menuBar: MenuBar {
+
         Menu {
+            visible: !sys.isIos
             title: qsTr("File")
             MenuItem {
-                text: qsTr("Exit")
+                text: qsTr("Log In")
                 onTriggered: Qt.quit();
             }
             MenuItem {
-                text: qsTr("Log In")
+                text: qsTr("Exit")
                 onTriggered: Qt.quit();
             }
         }
@@ -41,8 +43,15 @@ ApplicationWindow {
             State {
                 name: "archiveMenu"
             }
-
         ]
+        focus: true // important - otherwise we'll get no key events
+
+       Keys.onReleased: {
+           if (event.key === Qt.Key_Back) {
+               event.accepted = true
+               mainArea.state = "mainMenu"
+           }
+       }
 
         ListView {
             id: mainMenu
@@ -98,7 +107,7 @@ ApplicationWindow {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.left: parent.left
-            visible: mainArea.state === "mainMenu"
+            visible: mainArea.state === "archiveMenu"
 
             MenuButton {
                 id: armButton
@@ -114,6 +123,7 @@ ApplicationWindow {
             }
         }
     }
+
 
 
 }
