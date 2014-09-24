@@ -21,25 +21,33 @@ ApplicationWindow {
     }
 
 
-    HannaButtonS {
-        id: hannaButton2
-        height: applicationWindow1.height/8
-        x: 0
-        y: 135
-        text: qsTr("ARCHIVE")
-        anchors.top: parent.top
-        anchors.topMargin: 135
-        anchors.rightMargin: 0
-        anchors.leftMargin: 0
+    ListView {
+        id: mainMenu
+        anchors.fill: parent
+
+
+        HannaButtonS {
+            id: hannaButton1
+            x: -150
+            y: 117
+            text: qsTr("GAME")
+            anchors.top: hannaButton2.bottom
+            anchors.topMargin: 0
+            anchors.rightMargin: 0
+            anchors.leftMargin: 0
+        }
+
+        HannaButtonS {
+            id: hannaButton2
+            x: -150
+            y: 57
+            text: qsTr("ARCHIVE")
+            anchors.top: parent.top
+            anchors.topMargin: 135
+            anchors.rightMargin: 0
+            anchors.leftMargin: 0
+        }
     }
 
-    HannaButtonS {
-        id: hannaButton1
-        height: applicationWindow1.height/8
-        text: qsTr("GAME")
-        anchors.top: hannaButton2.bottom
-        anchors.topMargin: 0
-        anchors.rightMargin: 0
-        anchors.leftMargin: 0
-    }
 }
+

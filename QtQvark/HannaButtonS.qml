@@ -4,16 +4,13 @@ import QtQuick.Controls.Styles 1.2
 
 Button {
     id: dustepus
-    height: 57
     text: qsTr("Default")
+    height: applicationWindow1.height/8
     anchors.rightMargin: 0
     anchors.leftMargin: 0
     anchors.left: parent.left
     anchors.right: parent.right 
     style: ButtonStyle {
-        label: {
-
-        }
         background: Rectangle{
             gradient: Gradient {
                  GradientStop { position: 0.0; color: dustepus.pressed ? "#800000" : "#ff4040"}
