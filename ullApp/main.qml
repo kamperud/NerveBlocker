@@ -10,24 +10,8 @@ ApplicationWindow {
     title: qsTr("UllApp")
     color: "#ffffff"
 
-
-
-
-    menuBar: MenuBar {
-
-        Menu {
-            visible: !sys.isIos
-            title: qsTr("File")
-            MenuItem {
-                text: qsTr("Log In")
-                onTriggered: Qt.quit();
-            }
-            MenuItem {
-                text: qsTr("Exit")
-                onTriggered: Qt.quit();
-            }
-        }
-    }
+    //only creates a menuBar if system is not iOS. Returns null in that case
+    menuBar: Qt.createComponent(sys.isIos ? "" : "AndroidMenu.qml").createObject(applicationWindow1,{})
 
     Item {
         id: mainArea
