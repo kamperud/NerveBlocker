@@ -1,0 +1,6 @@
+
+<RCC>
+    <qresource prefix="/">
+    	<file>ios/images/back-50-3399FF.png</file>
+    </qresource>
+</RCC>
