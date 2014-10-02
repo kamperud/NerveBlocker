@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>MenuButton.qml</file>
         <file>AndroidMenu.qml</file>
+        <file>iOSMenu.qml</file>
     </qresource>
 </RCC>

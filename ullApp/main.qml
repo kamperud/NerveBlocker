@@ -1,6 +1,8 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.2
+import QtQuick.Layouts 1.1
+
 
 ApplicationWindow {
     id: applicationWindow1
@@ -12,6 +14,9 @@ ApplicationWindow {
 
     //only creates a menuBar if system is not iOS. Returns null in that case
     menuBar: Qt.createComponent(sys.isIos ? "" : "AndroidMenu.qml").createObject(applicationWindow1,{})
+
+    //navbar for iOS
+    toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "").createObject(applicationWindow1, {})
 
     Item {
         id: mainArea
@@ -107,8 +112,5 @@ ApplicationWindow {
             }
         }
     }
-
-
-
 }
 

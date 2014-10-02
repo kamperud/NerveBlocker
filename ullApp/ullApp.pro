@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick widgets
+QT += qml quick widgets svg
 
 SOURCES += main.cpp \
     platformdetailes.cpp
@@ -16,7 +16,8 @@ include(deployment.pri)
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 OTHER_FILES += \
-    android/AndroidManifest.xml
+    android/AndroidManifest.xml \
+    ios/images/back-50-3399FF.png
 
 HEADERS += \
     platformdetailes.h
