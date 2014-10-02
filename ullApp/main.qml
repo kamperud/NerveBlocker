@@ -18,62 +18,44 @@ ApplicationWindow {
     //navbar for iOS
     toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "").createObject(applicationWindow1, {})
 
-    Item {
+    StackView {
         id: mainArea
-        anchors.fill: parent
-        state: "mainMenu"
-        states: [
-            State {
-                name: "mainMenu"
-            },
-            State {
-                name: "gameMenu"
-            },
-            State {
-                name: "archiveMenu"
-            }
-        ]
+        x: 0
+        y: applicationWindow1.height/4
+        anchors.right: parent.right
+        anchors.left: parent.left
+        initialItem: mainMenu
         focus: true // important - otherwise we'll get no key events
 
        Keys.onReleased: {
            if (event.key === Qt.Key_Back) {
                event.accepted = true
-               mainArea.state = "mainMenu"
+               mainArea.pop()
            }
        }
 
         ListView {
             id: mainMenu
-            x: 0
-            y: 240
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: parent.right
-            anchors.left: parent.left
-            visible: mainArea.state === "mainMenu"
+            visible: false
 
             MenuButton {
                 id: gameButton
                 text: qsTr("GAME")
                 anchors.bottom: parent.top
-                onClicked: mainArea.state = "gameMenu"
+                onClicked: mainArea.push(gameMenu)
             }
 
             MenuButton {
                 id: archiveButton
                 text: qsTr("ARCHIVE")
                 anchors.top: gameButton.bottom
-                onClicked: mainArea.state = "archiveMenu"
+                onClicked: mainArea.push(archiveMenu)
             }
         }
 
         ListView {
             id: gameMenu
-            x: 0
-            y: 240
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: parent.right
-            anchors.left: parent.left
-            visible: mainArea.state === "gameMenu"
+            visible: false
 
             MenuButton {
                 id: playButton
@@ -91,12 +73,8 @@ ApplicationWindow {
 
         ListView {
             id: archiveMenu
-            x: 0
-            y: 240
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: parent.right
-            anchors.left: parent.left
-            visible: mainArea.state === "archiveMenu"
+            visible: false
+
 
             MenuButton {
                 id: armButton
@@ -110,7 +88,9 @@ ApplicationWindow {
                 text: qsTr("LEG")
                 anchors.top: armButton.bottom
             }
+
         }
+
     }
 }
 
