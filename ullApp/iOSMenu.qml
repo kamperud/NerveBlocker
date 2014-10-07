@@ -38,39 +38,30 @@ ToolBar {
             anchors.left: parent.left
             //text: qsTr("")
             //iconSource: "ios/images/back-25-3399FF.png"
-            /*
-            Text{
-                text: qsTr("Back")
-                color: navBack.pressed ? "#C2E0FF" : "#3399FF"
-                anchors.right: parent.right
-                anchors.verticalCenter: parent.verticalCenter
-            }
-            */
 
-            Image{
-                source: navBack.pressed ? "ios/images/back-50-C2E0FF.png" : "ios/images/back-50-3399FF.png"
-                anchors.left: parent.left
-                anchors.verticalCenter: parent.verticalCenter
-                //sourceSize.height: rowLayout.height
-                //sourceSize.width: rowLayout.height
-                anchors.fill: parent
-                anchors.margins: 4
-            }
+//            Text{
+//                text: qsTr("Back")
+//                color: navBack.pressed ? "#C2E0FF" : "#3399FF"
+//                anchors.left: backImg.right
+//                anchors.right: parent.right
+//                anchors.verticalCenter: parent.verticalCenter
+//            }
 
             onClicked: mainArea.pop()
 
+            style: ButtonStyle{
+                background:Image{
+                    id: backImg
+                    visible: true
+                    source: navBack.pressed ? "ios/images/back-50-C2E0FF.png" : "ios/images/back-50-3399FF.png"
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.fill: parent
+                    anchors.margins: 4
+                }
 
 
-
-//            style: ButtonStyle{
-//                background:Rectangle{
-//                    Rectangle{
-//                        color: "white"
-
-//                    }
-
-//                }
-//            }
+            }
 
 
         }
