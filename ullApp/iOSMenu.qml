@@ -47,7 +47,10 @@ ToolBar {
 //                anchors.verticalCenter: parent.verticalCenter
 //            }
 
-            onClicked: mainArea.pop()
+            onClicked: {
+                mainArea.y = applicationWindow1.height/4
+                mainArea.pop()
+            }
 
             style: ButtonStyle{
                 background:Image{

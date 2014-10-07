@@ -7,36 +7,46 @@ import QtQuick.Layouts 1.1
 ApplicationWindow {
     id: applicationWindow1
     visible: true
-    width: 640
-    height: 480
+    width: 450
+    height: 800
     title: qsTr("UllApp")
     color: "#ffffff"
 
-    //only creates a menuBar if system is not iOS. Returns null in that case
+    //menuBar for !iOS
+    //toolbar for iOS
     menuBar: Qt.createComponent(sys.isIos ? "" : "AndroidMenu.qml").createObject(applicationWindow1,{})
-
-    //navbar for iOS
     toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "").createObject(applicationWindow1, {})
+
+    //Hannas test bar
+//    toolBar:Qt.createComponent("iOSMenu.qml").createObject(applicationWindow1, {})
 
     StackView {
         id: mainArea
-        x: 0
-        y: applicationWindow1.height/4
         anchors.right: parent.right
         anchors.left: parent.left
+        x: 0
+        y: applicationWindow1.height/4
         initialItem: mainMenu
         focus: true // important - otherwise we'll get no key events
 
-       Keys.onReleased: {
+        Keys.onReleased: {
            if (event.key === Qt.Key_Back) {
                event.accepted = true
                mainArea.pop()
+               mainArea.y = applicationWindow1.height/4
            }
-       }
+        }
+
+        delegate: StackViewDelegate {
+            pushTransition: StackViewTransition {
+                // when this is empty, transitions don't appear
+            }
+        }
 
         ListView {
             id: mainMenu
             visible: false
+            anchors.top: parent.top
 
             MenuButton {
                 id: gameButton
@@ -56,12 +66,20 @@ ApplicationWindow {
         ListView {
             id: gameMenu
             visible: false
+            anchors.top: parent.top
 
             MenuButton {
                 id: playButton
                 text: qsTr("PLAY")
                 visible: true
                 anchors.bottom: parent.top
+                onClicked: {
+                    mainArea.push({
+                        item: Qt.createComponent("Game.qml").createObject(applicationWindow1, {}),
+                        destroyOnPop: true
+                    })
+                    mainArea.y = 0
+                }
             }
 
             MenuButton {
@@ -74,7 +92,7 @@ ApplicationWindow {
         ListView {
             id: archiveMenu
             visible: false
-
+            anchors.top: parent.top
 
             MenuButton {
                 id: armButton
@@ -88,9 +106,7 @@ ApplicationWindow {
                 text: qsTr("LEG")
                 anchors.top: armButton.bottom
             }
-
         }
-
     }
 }
 
