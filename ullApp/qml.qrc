@@ -4,5 +4,7 @@
         <file>MenuButton.qml</file>
         <file>AndroidMenu.qml</file>
         <file>iOSMenu.qml</file>
+        <file>VideoStreamer.qml</file>
+        <file>Game.qml</file>
     </qresource>
 </RCC>
