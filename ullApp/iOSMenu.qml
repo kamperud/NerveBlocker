@@ -32,29 +32,46 @@ ToolBar {
     RowLayout {
         id: rowLayout
         width: parent.width
-        //clip: false
         ToolButton {
             id: navBack
-            clip: false
-            visible: true
-            activeFocusOnPress: false
+            width: 73
             anchors.left: parent.left
-            iconSource: "ios/images/back-50-3399FF.png"
+            //text: qsTr("")
+            //iconSource: "ios/images/back-25-3399FF.png"
             /*
-            style: ButtonStyle{
-
-                label:Text{
-                    text: qsTr("Back")
-                    color: "#3399FF"
-                }
-
-                background:Rectangle{
-                    Rectangle{
-                        color: "white"
-                    }
-                }
+            Text{
+                text: qsTr("Back")
+                color: navBack.pressed ? "#C2E0FF" : "#3399FF"
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
             }
             */
+
+            Image{
+                source: navBack.pressed ? "ios/images/back-50-C2E0FF.png" : "ios/images/back-50-3399FF.png"
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                //sourceSize.height: rowLayout.height
+                //sourceSize.width: rowLayout.height
+                anchors.fill: parent
+                anchors.margins: 4
+            }
+
+            onClicked: mainArea.pop()
+
+
+
+
+//            style: ButtonStyle{
+//                background:Rectangle{
+//                    Rectangle{
+//                        color: "white"
+
+//                    }
+
+//                }
+//            }
+
 
         }
         Text {
