@@ -3,5 +3,7 @@
         <file>ios/images/back-50-3399FF.png</file>
         <file>ios/images/back-25-3399FF.png</file>
         <file>ios/images/back-50-C2E0FF.png</file>
+        <file>gameImages/1a</file>
+        <file>gameImages/1</file>
     </qresource>
 </RCC>
