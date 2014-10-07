@@ -54,10 +54,8 @@ ToolBar {
                     id: backImg
                     visible: true
                     source: navBack.pressed ? "ios/images/back-50-C2E0FF.png" : "ios/images/back-50-3399FF.png"
-                    anchors.left: parent.left
-                    anchors.verticalCenter: parent.verticalCenter
                     anchors.fill: parent
-                    anchors.margins: 4
+                    anchors.margins: 6
                 }
 
 
