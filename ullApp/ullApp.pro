@@ -3,7 +3,8 @@ TEMPLATE = app
 QT += qml quick widgets svg
 
 SOURCES += main.cpp \
-    platformdetailes.cpp
+    platformdetailes.cpp \
+    gamehandler.cpp
 
 RESOURCES += qml.qrc \
     images.qrc
@@ -21,4 +22,5 @@ OTHER_FILES += \
     ios/images/back-50-3399FF.png
 
 HEADERS += \
-    platformdetailes.h
+    platformdetailes.h \
+    gamehandler.h
