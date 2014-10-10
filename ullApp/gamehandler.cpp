@@ -18,5 +18,7 @@ bool GameHandler::isNerve(int x, int y, int width, int height){
     int newY = img->height()*y/height;
 
     return img->pixel(newX,newY) == qRgb(255,255,0);
+
+
 }
 

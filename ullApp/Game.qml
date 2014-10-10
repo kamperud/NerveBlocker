@@ -17,14 +17,14 @@ Rectangle {
         anchors.fill: gameImage
         onClicked: {
             if(gamehandler.isNerve(mouse.x, mouse.y, imageArea.width, imageArea.height)){
-                gameImage.source = "gameImages/1a.png"
+                gameImage.source = "gameImages/1.png"
                 answerText.text = "Correct!"
             }
             else {
                 answerText.text = "False, try again"
 
             }
-            answerText.visible = true
+//            answerText.visible = true
 
         }
     }
@@ -45,7 +45,7 @@ Rectangle {
     Image {
         id: gameImage
         anchors.verticalCenter: parent.verticalCenter
-        source: "gameImages/1.png"
+        source: "gameImages/1a.png"
         anchors.right: parent.right
         anchors.left: parent.left
         fillMode: Image.PreserveAspectFit
