@@ -1,22 +1,25 @@
 #include "gamehandler.h"
 #include <QDebug>
 #include <QImage>
+#include <QFileInfo>
 
 
 GameHandler::GameHandler(QObject *parent) :
     QObject(parent){}
 
-bool GameHandler::isNerve(int x, int y){
+bool GameHandler::isNerve(int x, int y, int width, int height){
     qDebug()<<"x: "<<x<<" y: "<<y<<"\n";
-    // We should use http://lodev.org/lodepng/ for the image checking
-    // the x and y are the actual picture coordinates. no need to translate screen size and whatnot
 
-    QImage *img = new QImage();
-    QString fileName = "gameImages/1_map.png";
-    bool isLoaded = img->load(fileName);
+//    QImage *img = new QImage();
+//    const QString fileName = "/home/hannapus/1_map.png";
+////    QFileInfo *f = new QFileInfo(fileName);
 
-    if (img->pixel(x,y) == qRgb(0,255,255))
-        return true;
+//    bool b = img->load(fileName, "PNG");
+////    qDebug()<<"Exists er: "<<f->exists()<<"\n";
+////    qDebug()<<"Load er: "<<b<<" isNull er: "<<img->isNull()<<"\n";
+//    qDebug()<<img->pixel(x,y)<<"\n";
+//    if (img->pixel(x,y) == qRgb(0,255,255))
+//        return true;
 
-    return false;
+    return true;
 }
