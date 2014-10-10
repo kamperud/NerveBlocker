@@ -45,9 +45,11 @@ Rectangle {
     Image {
         id: gameImage
         anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+        height: (parent.width>parent.height) ? parent.height : sourceSize.height*parent.width/sourceSize.width
+        width:  (parent.width<parent.height) ? parent.width : sourceSize.width*parent.height/sourceSize.height
+
         source: "gameImages/1a.png"
-        anchors.right: parent.right
-        anchors.left: parent.left
         fillMode: Image.PreserveAspectFit
         visible: true
     }
