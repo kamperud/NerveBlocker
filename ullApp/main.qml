@@ -2,6 +2,7 @@ import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Layouts 1.1
+import QtMultimedia 5.0
 
 
 ApplicationWindow {
@@ -14,7 +15,7 @@ ApplicationWindow {
 
     //menuBar for !iOS
     //toolbar for iOS
-    menuBar: Qt.createComponent(sys.isIos ? "" : "AndroidMenu.qml").createObject(applicationWindow1,{})
+    //menuBar: Qt.createComponent(sys.isIos ? "" : "AndroidMenu.qml").createObject(applicationWindow1,{})
     toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "").createObject(applicationWindow1, {})
 
     //Hannas test bar
@@ -99,6 +100,7 @@ ApplicationWindow {
                 text: qsTr("ARM")
                 visible: true
                 anchors.bottom: parent.top
+                onClicked: mainArea.push(Qt.resolvedUrl("VideoStreamer.qml"))
             }
 
             MenuButton {

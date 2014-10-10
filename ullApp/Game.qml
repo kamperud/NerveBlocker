@@ -31,7 +31,7 @@ Rectangle {
     Text {
         id: questionText
         visible: true
-        color: "yellow"
+        color: "Pink"
         text: "Where is the femoral nerve?"
         font.pointSize: 25
         anchors.horizontalCenter: parent.horizontalCenter
@@ -58,7 +58,7 @@ Rectangle {
         font.family: "Arial"
         style: Text.Normal
         font.pointSize: 40
-        color:"Yellow"
+        color:"Pink"
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: gameImage.bottom
         anchors.topMargin: 50

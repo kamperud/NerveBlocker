@@ -78,12 +78,10 @@ ToolBar {
             style: ButtonStyle{
                 label:Text{
                     text: qsTr("Login")
-                    color: "#3399FF"
+                    color: login.pressed ? "#C2E0FF" : "#3399FF"
                 }
                 background:Rectangle{
-                    Rectangle{
-                        color: "white"
-                    }
+                    color: "white"
                 }
             }
         }
