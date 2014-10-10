@@ -10,16 +10,13 @@ GameHandler::GameHandler(QObject *parent) :
 bool GameHandler::isNerve(int x, int y, int width, int height){
     qDebug()<<"x: "<<x<<" y: "<<y<<"\n";
 
-//    QImage *img = new QImage();
-//    const QString fileName = "/home/hannapus/1_map.png";
-////    QFileInfo *f = new QFileInfo(fileName);
+    const QString fileName = "/home/hannapus/1_map.png";
+    // Solveig maa velge ny filpath
+    QImage *img = new QImage(fileName, "PNG");
 
-//    bool b = img->load(fileName, "PNG");
-////    qDebug()<<"Exists er: "<<f->exists()<<"\n";
-////    qDebug()<<"Load er: "<<b<<" isNull er: "<<img->isNull()<<"\n";
-//    qDebug()<<img->pixel(x,y)<<"\n";
-//    if (img->pixel(x,y) == qRgb(0,255,255))
-//        return true;
+    int newX = img->width()*x/width;
+    int newY = img->height()*y/height;
 
-    return true;
+    return img->pixel(newX,newY) == qRgb(255,255,0);
 }
+

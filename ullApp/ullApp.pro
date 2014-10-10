@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick widgets svg
+QT += qml quick widgets svg core gui
 
 SOURCES += main.cpp \
     platformdetailes.cpp \

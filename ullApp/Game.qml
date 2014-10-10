@@ -15,17 +15,16 @@ Rectangle {
     MouseArea{
         id: imageArea
         anchors.fill: gameImage
-//        onPressed: gameImage.source = "gameImages/1a.png"
-//        onReleased: gameImage.source = "gameImages/1.png"
         onClicked: {
             if(gamehandler.isNerve(mouse.x, mouse.y, imageArea.width, imageArea.height)){
                 gameImage.source = "gameImages/1a.png"
                 answerText.text = "Correct!"
-                answerText.visible = true
             }
             else {
-                answerText:"False, try again"
+                answerText.text = "False, try again"
+
             }
+            answerText.visible = true
 
         }
     }
