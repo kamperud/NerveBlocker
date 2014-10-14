@@ -28,4 +28,3 @@ HEADERS += \
 
 macx:CONFIG += x86
 
-QTPLUGIN += qavfmediaplayer
