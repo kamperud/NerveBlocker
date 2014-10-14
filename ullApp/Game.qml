@@ -1,4 +1,7 @@
 import QtQuick 2.0
+import QtQuick.Layouts 1.1
+import QtQuick.Controls 1.2
+
 
 Rectangle {
     id: gameWrapper
@@ -42,18 +45,30 @@ Rectangle {
         fillMode: Image.PreserveAspectFit
         visible: true
     }
-    Text {
-        id: answerText
-        visible: true
-        text: gamehandler.answer
-        font.family: "Arial"
-        style: Text.Normal
-        font.pointSize: 40
-        color:"Pink"
+
+    RowLayout{
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: gameImage.bottom
         anchors.topMargin: 50
-
-
+        Text {
+            id: answerText
+            visible: true
+            text: ""
+            font.family: "Arial"
+            style: Text.Normal
+            font.pointSize: 40
+            color:"Pink"
+        }
+        Image{
+            id: nextButton
+            visible: gamehandler.nextButtonVisible
+            source: "/free-icon-download_gradient-blue-arrow-right.png"
+            sourceSize.width: 60
+            sourceSize.height: 60
+            MouseArea{
+                anchors.fill: parent
+                onClicked: gamehandler.newTask()
+            }
+        }
     }
 }

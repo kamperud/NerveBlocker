@@ -36,22 +36,10 @@ ToolBar {
             id: navBack
             width: 73
             anchors.left: parent.left
-            //text: qsTr("")
-            //iconSource: "ios/images/back-25-3399FF.png"
-
-//            Text{
-//                text: qsTr("Back")
-//                color: navBack.pressed ? "#C2E0FF" : "#3399FF"
-//                anchors.left: backImg.right
-//                anchors.right: parent.right
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-
             onClicked: {
                 mainArea.y = applicationWindow1.height/4
                 mainArea.pop()
             }
-
             style: ButtonStyle{
                 background:Image{
                     id: backImg
@@ -60,11 +48,7 @@ ToolBar {
                     anchors.fill: parent
                     anchors.margins: 6
                 }
-
-
             }
-
-
         }
         Text {
             id: title
