@@ -9,6 +9,12 @@
         <file>gameImages/2_map.png</file>
         <file>gameImages/2a.png</file>
         <file>gameImages/2.png</file>
+        <file>gameImages/3_map.png</file>
+        <file>gameImages/3a.png</file>
+        <file>gameImages/3.png</file>
+        <file>gameImages/4_map.png</file>
+        <file>gameImages/4a.png</file>
+        <file>gameImages/4.png</file>
         <file>free-icon-download_gradient-blue-arrow-right.png</file>
     </qresource>
 </RCC>

@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-#define MAX_IMAGES 2
+#define MAX_IMAGES 4
 
 class GameHandler : public QObject
 {
