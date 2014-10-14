@@ -53,7 +53,7 @@ Rectangle {
         Text {
             id: answerText
             visible: true
-            text: ""
+            text: gamehandler.answer
             font.family: "Arial"
             style: Text.Normal
             font.pointSize: 40
