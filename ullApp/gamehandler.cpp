@@ -2,57 +2,77 @@
 #include <QDebug>
 #include <QImage>
 #include <QFileInfo>
-#include <QResource>
+#include <cstdlib>
 
 
 
 GameHandler::GameHandler(QObject *parent) :
-    QObject(parent){}
-
-bool GameHandler::isNerve(int x, int y, int width, int height){
-//    QResource::registerResource("");
-
-    // Hvis man putter kolon forran PATH så leter den i qrc-fila!!!
-    const QString fileName = ":/gameImages/1_map.png";
-    QImage *img = new QImage(fileName, "PNG");
-
-    int newX = img->width()*x/width;
-    int newY = img->height()*y/height;
-
-    return img->pixel(newX,newY) == qRgb(255,255,0);
-
-
+    QObject(parent){
+    m_task = (rand() % MAX_IMAGES)+1;
+    m_image = QString("/gameImages/%1a.png").arg(m_task);
+    m_question = "Where is the femoral nerve?";
+    m_answer = "";
+    m_taskActive = true;
 }
 
-//bool GameHandler::isFemoralArtery(int x, int y, int width, int height){
+QString GameHandler::getQuestion(){
+    return m_question;
+}
 
-//    //const QString fileName = "/home/hannapus/1_map.png";
-//    QImage *img = new QImage(fileName, "PNG");
+void GameHandler::setQuestion(QString newValue){
+    m_question = newValue;
+    emit questionChanged(newValue);
+}
 
-//    int newX = img->width()*x/width;
-//    int newY = img->height()*y/height;
+QString GameHandler::getAnswer(){
+    return m_answer;
+}
 
-//    return img->pixel(newX,newY) == qRgb(255,0,0);
-//}
+void GameHandler::setAnswer(QString newValue){
+    m_answer = newValue;
+    emit answerChanged(newValue);
+}
 
-//bool GameHandler::isFasciaIliaca(int x, int y, int width, int height){
+QString GameHandler::getImage(){
+    return m_image;
+}
 
-//    //const QString fileName = "/home/hannapus/1_map.png";
-//    QImage *img = new QImage(fileName, "PNG");
+void GameHandler::setImage(QString newValue){
+    m_image = newValue;
+    emit imageChanged(newValue);
+}
 
-//    int newX = img->width()*x/width;
-//    int newY = img->height()*y/height;
+void GameHandler::newTask(){
+    m_task = (rand() % MAX_IMAGES)+1;
+    setAnswer("");
+    setImage(QString("/gameImages/%1a.png").arg(m_task));
+    setTaskActivity(true);
+}
 
-//    return img->pixel(newX,newY) == qRgb(255,0,255);
-//}
+bool GameHandler::getNextButtonVisibility(){
+    return !m_taskActive;
+}
+void GameHandler::setTaskActivity(bool b){
+    m_taskActive = b;
+    emit taskActivityChanged();
+}
 
-//bool GameHandler::isFemur(int x, int y, int width, int height){
 
-//    //const QString fileName = "/home/hannapus/1_map.png";
-//    QImage *img = new QImage(fileName, "PNG");
+void GameHandler::imageClicked(int x, int y, int width, int height){
+    if(m_taskActive) {
+        setTaskActivity(false);
+        QImage *img = new QImage(QString(":/gameImages/%1_map.png").arg(m_task), "PNG");
 
-//    int newX = img->width()*x/width;
-//    int newY = img->height()*y/height;
+        int newX = img->width()*x/width;
+        int newY = img->height()*y/height;
 
-//    return img->pixel(newX,newY) == qRgb(0,255,0);
-//}
+        setImage(QString("/gameImages/%1.png").arg(m_task));
+        if( img->pixel(newX,newY) == qRgb(255,255,0)){
+            setAnswer("Correct");
+        }
+        else {
+            setAnswer("Wrong");
+        }
+    }
+}
+

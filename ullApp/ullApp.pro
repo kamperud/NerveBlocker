@@ -19,8 +19,6 @@ ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 
 OTHER_FILES += \
     android/AndroidManifest.xml \
-    ios/images/back-50-3399FF.png \
-    ios/images/play.png
 
 HEADERS += \
     platformdetailes.h \
@@ -28,4 +26,3 @@ HEADERS += \
 
 macx:CONFIG += x86
 
-QTPLUGIN += qavfmediaplayer

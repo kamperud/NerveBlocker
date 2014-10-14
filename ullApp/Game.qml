@@ -16,29 +16,18 @@ Rectangle {
         id: imageArea
         anchors.fill: gameImage
         onClicked: {
-            if(gamehandler.isNerve(mouse.x, mouse.y, imageArea.width, imageArea.height)){
-                gameImage.source = "gameImages/1.png"
-                answerText.text = "Correct!"
-            }
-            else {
-                answerText.text = "False, try again"
-
-            }
-//            answerText.visible = true
-
+            gamehandler.imageClicked(mouse.x, mouse.y, imageArea.width, imageArea.height)
         }
     }
     Text {
         id: questionText
         visible: true
         color: "Pink"
-        text: "Where is the femoral nerve?"
+        text: gamehandler.question
         font.pointSize: 25
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: gameImage.top
         anchors.bottomMargin: 50
-
-
 
     }
 
@@ -49,14 +38,14 @@ Rectangle {
         height: (parent.width>parent.height) ? parent.height : sourceSize.height*parent.width/sourceSize.width
         width:  (parent.width<parent.height) ? parent.width : sourceSize.width*parent.height/sourceSize.height
 
-        source: "gameImages/1a.png"
+        source: gamehandler.image
         fillMode: Image.PreserveAspectFit
         visible: true
     }
     Text {
         id: answerText
         visible: true
-        text: ""
+        text: gamehandler.answer
         font.family: "Arial"
         style: Text.Normal
         font.pointSize: 40

@@ -98,7 +98,6 @@ ApplicationWindow {
                 text: qsTr("ARM")
                 visible: true
                 anchors.bottom: parent.top
-//                onClicked: mainArea.push(Qt.resolvedUrl("VideoStreamer.qml"))
             }
 
             MenuButton {

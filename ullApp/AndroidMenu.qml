@@ -14,5 +14,11 @@ MenuBar {
             text: qsTr("Exit")
             onTriggered: Qt.quit();
         }
+
+        MenuItem {
+            text: qsTr("Game Info")
+            onTriggered: Qt.quit();
+        }
+
     }
 }
