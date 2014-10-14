@@ -5,6 +5,7 @@ import QtQuick.Controls.Styles 1.2
 
 ToolBar {
     id: toolbar
+    height: applicationWindow1.height / 10
 
     Component.onCompleted: toolbar.data[0].item.children = [newRectangle];
     property Item _newRectangle: Rectangle {
@@ -34,10 +35,9 @@ ToolBar {
         width: parent.width
         ToolButton {
             id: navBack
-            width: 73
             anchors.left: parent.left
             onClicked: {
-                mainArea.y = applicationWindow1.height/4
+                mainArea.y = applicationWindow1.height / 4
                 mainArea.pop()
             }
             style: ButtonStyle{
@@ -55,6 +55,7 @@ ToolBar {
             anchors.horizontalCenter: parent.horizontalCenter
             text: qsTr("Ultrasound")
             color: "black"
+            font.pixelSize: toolbar.height - 30
         }
         ToolButton {
             id: login
@@ -63,6 +64,7 @@ ToolBar {
                 label:Text{
                     text: qsTr("Login")
                     color: login.pressed ? "#C2E0FF" : "#3399FF"
+                    font.pixelSize: toolbar.height - 30
                 }
                 background:Rectangle{
                     color: "white"

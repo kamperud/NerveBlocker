@@ -27,7 +27,7 @@ Rectangle {
         visible: true
         color: "Pink"
         text: gamehandler.question
-        font.pointSize: 25
+        font.pointSize: parent.height / 25 //25
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: gameImage.top
         anchors.bottomMargin: 50
@@ -56,7 +56,7 @@ Rectangle {
             text: gamehandler.answer
             font.family: "Arial"
             style: Text.Normal
-            font.pointSize: 40
+            font.pointSize: gameWrapper.height / 25 //40
             color:"Pink"
         }
         Image{
