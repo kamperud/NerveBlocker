@@ -30,3 +30,7 @@ Makefile*
 # osx files
 
 *.DS_STORE
+
+#OS temp files
+
+*.*~
