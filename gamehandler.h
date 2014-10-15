@@ -4,6 +4,7 @@
 #include <QObject>
 
 #define MAX_IMAGES 4
+#define MAX_TASKS_PER_GAME 10
 
 class GameHandler : public QObject
 {

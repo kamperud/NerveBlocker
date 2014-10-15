@@ -4,8 +4,6 @@
 #include <QFileInfo>
 #include <cstdlib>
 
-
-
 GameHandler::GameHandler(QObject *parent) :
     QObject(parent){
     m_task = (rand() % MAX_IMAGES)+1;
@@ -16,6 +14,7 @@ GameHandler::GameHandler(QObject *parent) :
     m_points = 0;
     m_multiplier = 1;
     m_tasks_finished = 0;
+    m_game_finished = false;
 }
 
 void GameHandler::newTask(){
@@ -28,12 +27,12 @@ void GameHandler::newTask(){
 void GameHandler::imageClicked(int x, int y, int width, int height){
     if(m_taskActive) {
         setTaskActivity(false);
-        QImage *img = new QImage(QString(":/gameImages/%1_map.png").arg(m_task), "PNG");
+        setImage(QString("/gameImages/%1.png").arg(m_task));
+        m_tasks_finished++;
 
+        QImage *img = new QImage(QString(":/gameImages/%1_map.png").arg(m_task), "PNG");
         int newX = img->width()*x/width;
         int newY = img->height()*y/height;
-
-        setImage(QString("/gameImages/%1.png").arg(m_task));
         if( img->pixel(newX,newY) == qRgb(255,255,0)){
             setAnswer("Correct");
             setPoints(getPoints()+50*getMultiplier());
@@ -42,6 +41,10 @@ void GameHandler::imageClicked(int x, int y, int width, int height){
         else {
             setAnswer("Wrong");
             setMultiplier(1);
+        }
+
+        if(m_tasks_finished>=MAX_TASKS_PER_GAME){
+            setGameFinished(true);
         }
     }
 }
