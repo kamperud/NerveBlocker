@@ -27,7 +27,7 @@ Rectangle {
         visible: true
         color: "Pink"
         text: gamehandler.question
-        font.pointSize: parent.height / 25 //25
+        font.pixelSize: parent.width/15
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: gameImage.top
         anchors.bottomMargin: 50
@@ -46,42 +46,11 @@ Rectangle {
         visible: true
     }
 
-//    RowLayout{
-//        id: answerlayout
-//        anchors.horizontalCenter: parent.horizontalCenter
-//        anchors.top: gameImage.bottom
-//        //anchors.topMargin: 50
-//        anchors.bottom: statusBar.top
-//        Text {
-//            id: answerText
-//            visible: true
-//            text: gamehandler.answer
-//            font.family: "Arial"
-//            style: Text.Normal
-//            font.pointSize: gameWrapper.height / 25 //40
-//            color:"Pink"
-//        }
-//        Image{
-//            id: nextButton
-//            visible: gamehandler.nextButtonVisible
-//            source: "/arrow-19-512.png"
-//            sourceSize.width: 60
-//            sourceSize.height: 60
-//            MouseArea{
-//                anchors.fill: parent
-//                onClicked: gamehandler.newTask()
-//            }
-//        }
-//    }
     Rectangle {
         id:statusBar
         anchors.top: gameImage.bottom
         anchors.bottom: parent.bottom
-    //    anchors.right: parent.right
-    //    anchors.left: parent.left
         width: parent.width
-
-
         color: "white"
         border.color: "grey"
         radius: 5
