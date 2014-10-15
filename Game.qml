@@ -47,9 +47,11 @@ Rectangle {
     }
 
     RowLayout{
+        id: answerlayout
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: gameImage.bottom
-        anchors.topMargin: 50
+        //anchors.topMargin: 50
+        anchors.bottom: statusBar.top
         Text {
             id: answerText
             visible: true
@@ -62,7 +64,7 @@ Rectangle {
         Image{
             id: nextButton
             visible: gamehandler.nextButtonVisible
-            source: "/free-icon-download_gradient-blue-arrow-right.png"
+            source: "/arrow-19-512.png"
             sourceSize.width: 60
             sourceSize.height: 60
             MouseArea{
@@ -71,4 +73,16 @@ Rectangle {
             }
         }
     }
+    Rectangle{
+        id:statusBar
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.left: parent.left
+        height: parent.height /11
+        color: "white"
+        border.color: "grey"
+        radius: 5
+
+    }
+
 }
