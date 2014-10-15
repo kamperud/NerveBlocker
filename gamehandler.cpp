@@ -36,42 +36,37 @@ void GameHandler::imageClicked(int x, int y, int width, int height){
         setImage(QString("/gameImages/%1.png").arg(m_task));
         if( img->pixel(newX,newY) == qRgb(255,255,0)){
             setAnswer("Correct");
+            setPoints(getPoints()+50*getMultiplier());
+            setMultiplier(getMultiplier()+1);
         }
         else {
             setAnswer("Wrong");
+            setMultiplier(1);
         }
     }
 }
 
-
 QString GameHandler::getQuestion(){
     return m_question;
 }
-
 void GameHandler::setQuestion(QString newValue){
     m_question = newValue;
     emit questionChanged(newValue);
 }
-
 QString GameHandler::getAnswer(){
     return m_answer;
 }
-
 void GameHandler::setAnswer(QString newValue){
     m_answer = newValue;
     emit answerChanged(newValue);
 }
-
 QString GameHandler::getImage(){
     return m_image;
 }
-
 void GameHandler::setImage(QString newValue){
     m_image = newValue;
     emit imageChanged(newValue);
 }
-
-
 bool GameHandler::getNextButtonVisibility(){
     return !m_taskActive;
 }
@@ -79,20 +74,16 @@ void GameHandler::setTaskActivity(bool b){
     m_taskActive = b;
     emit taskActivityChanged();
 }
-
-int GameHandler::getMultipler(){
+int GameHandler::getMultiplier(){
     return m_multiplier;
 }
-
 void GameHandler::setMultiplier(int newValue){
     m_multiplier = newValue;
     emit multiplierChanged(newValue);
 }
-
 int GameHandler::getPoints(){
     return m_points;
 }
-
 void GameHandler::setPoints(int newValue){
     m_points = newValue;
     emit pointsChanged(newValue);

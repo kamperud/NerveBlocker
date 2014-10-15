@@ -13,7 +13,7 @@ class GameHandler : public QObject
     Q_PROPERTY(QString answer READ getAnswer NOTIFY answerChanged)
     Q_PROPERTY(QString image READ getImage NOTIFY imageChanged)
     Q_PROPERTY(bool nextButtonVisible READ getNextButtonVisibility NOTIFY taskActivityChanged)
-    Q_PROPERTY(int multiplier READ getMultipler NOTIFY multiplierChanged)
+    Q_PROPERTY(int multiplier READ getMultiplier NOTIFY multiplierChanged)
     Q_PROPERTY(int points READ getPoints NOTIFY pointsChanged)
 
     Q_INVOKABLE void newTask();
@@ -35,7 +35,7 @@ public:
     bool getNextButtonVisibility();
     void setTaskActivity(bool b);
 
-    int getMultipler();
+    int getMultiplier();
     void setMultiplier(int newValue);
 
     int getPoints();
