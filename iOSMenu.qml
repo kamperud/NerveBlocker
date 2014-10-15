@@ -69,7 +69,7 @@ ToolBar {
                 id: backImg
                 source: navBackArea.pressed ? "ios/images/back-50-C2E0FF.png" : "ios/images/back-50-3399FF.png"
                 anchors.fill: parent
-                anchors.margins: 6
+                anchors.margins: 10
                 fillMode: Image.PreserveAspectFit
             }
             MouseArea{
@@ -95,12 +95,13 @@ ToolBar {
         ToolButton {
             id: login
             anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
             style: ButtonStyle{
                 label:Text{
                     text: qsTr("Login ")
                     color: login.pressed ? "#C2E0FF" : "#3399FF"
                     font.pixelSize: title.font.pixelSize - 5
-                    anchors.horizontalCenter: parent.horizontalCenter
+
 
                 }
                 background:Rectangle{

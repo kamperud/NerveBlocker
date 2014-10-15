@@ -46,43 +46,81 @@ Rectangle {
         visible: true
     }
 
-    RowLayout{
-        id: answerlayout
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: gameImage.bottom
-        //anchors.topMargin: 50
-        anchors.bottom: statusBar.top
-        Text {
-            id: answerText
-            visible: true
-            text: gamehandler.answer
-            font.family: "Arial"
-            style: Text.Normal
-            font.pointSize: gameWrapper.height / 25 //40
-            color:"Pink"
-        }
-        Image{
-            id: nextButton
-            visible: gamehandler.nextButtonVisible
-            source: "/arrow-19-512.png"
-            sourceSize.width: 60
-            sourceSize.height: 60
-            MouseArea{
-                anchors.fill: parent
-                onClicked: gamehandler.newTask()
-            }
-        }
-    }
-    Rectangle{
+//    RowLayout{
+//        id: answerlayout
+//        anchors.horizontalCenter: parent.horizontalCenter
+//        anchors.top: gameImage.bottom
+//        //anchors.topMargin: 50
+//        anchors.bottom: statusBar.top
+//        Text {
+//            id: answerText
+//            visible: true
+//            text: gamehandler.answer
+//            font.family: "Arial"
+//            style: Text.Normal
+//            font.pointSize: gameWrapper.height / 25 //40
+//            color:"Pink"
+//        }
+//        Image{
+//            id: nextButton
+//            visible: gamehandler.nextButtonVisible
+//            source: "/arrow-19-512.png"
+//            sourceSize.width: 60
+//            sourceSize.height: 60
+//            MouseArea{
+//                anchors.fill: parent
+//                onClicked: gamehandler.newTask()
+//            }
+//        }
+//    }
+    Rectangle {
         id:statusBar
+        anchors.top: gameImage.bottom
         anchors.bottom: parent.bottom
-        anchors.right: parent.right
-        anchors.left: parent.left
-        height: parent.height /11
+    //    anchors.right: parent.right
+    //    anchors.left: parent.left
+        width: parent.width
+
+
         color: "white"
         border.color: "grey"
         radius: 5
 
-    }
+        Rectangle {
+            id: rectangle1
+            width: parent.width/4
+            color: "#ffff00"
+            anchors.top: parent.top
+            anchors.topMargin: 19
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 18
+            anchors.left: parent.left
+            anchors.leftMargin: 25
+        }
 
+        Rectangle {
+            id: rectangle2
+            x: 148
+            width: parent.width/4
+            color: "#ff00ff"
+            anchors.top: parent.top
+            anchors.topMargin: 19
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 18
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Rectangle {
+            id: rectangle3
+            x: 275
+            width: parent.width/4
+            color: "#00ffff"
+            anchors.top: parent.top
+            anchors.topMargin: 19
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 18
+            anchors.right: parent.right
+            anchors.rightMargin: 21
+        }
+    }
 }
