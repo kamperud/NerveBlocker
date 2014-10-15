@@ -22,6 +22,7 @@ Rectangle {
             gamehandler.imageClicked(mouse.x, mouse.y, imageArea.width, imageArea.height)
         }
     }
+    /*
     Text {
         id: questionText
         visible: true
@@ -31,7 +32,36 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: gameImage.top
         anchors.bottomMargin: 50
+    }
+    */
+    Rectangle{
+        id: topSection
+        width:parent.width
+        anchors.top: parent.top
+        anchors.bottom: gameImage.bottom
+        color: "black"
+        Rectangle{
+            id: questionBox
+            visible:true
+            width: gamehandler.question.length*10
+            height: gameWrapper.height / 20
+            anchors.horizontalCenter: parent.horizontalCenter
+            //anchors.bottomMargin: 50
+            //anchors.topMargin: 5000
+            color: "#4C4C4C"
+            border.color: "#5B5B5B"
+            radius: 10
+            Text {
+                id: questionText
+                visible: true
+                color: "Pink"
+                text: gamehandler.question
+                font.pixelSize: gameWrapper.width/15
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+            }
 
+        }
     }
 
     Image {
