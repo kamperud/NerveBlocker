@@ -52,47 +52,69 @@ Rectangle {
         anchors.bottom: parent.bottom
         width: parent.width
         color: "white"
-        border.color: "grey"
-        radius: 5
+        //border.color: "grey"
+        //radius: 5
 
         Rectangle {
-            id: rectangle1
+            id: multiplier
             width: parent.width/4
-            color: "#ffff00"
+            color: "#E0E0E0"
+            border.color: "#B3B3B3"
             anchors.top: parent.top
             anchors.topMargin: 19
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 18
             anchors.left: parent.left
             anchors.leftMargin: 25
+            radius: 5
+            Text {
+                text: "2X"
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+            }
         }
 
         Rectangle {
-            id: rectangle2
+            id: points
             x: 148
             width: parent.width/4
-            color: "#ff00ff"
+            color: "#E0E0E0"
+            border.color: "#B3B3B3"
             anchors.top: parent.top
             anchors.topMargin: 19
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 18
             anchors.horizontalCenter: parent.horizontalCenter
+            radius: 5
+            Text {
+                text: "Points:"
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+            }
         }
 
         Rectangle {
             id: rectangle3
             x: 275
             width: parent.width/4
-            color: "#00ffff"
+            color: "#E0E0E0"
+            border.color: "#B3B3B3"
             anchors.top: parent.top
             anchors.topMargin: 19
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 18
             anchors.right: parent.right
             anchors.rightMargin: 21
+            radius: 5
             MouseArea {
                 anchors.fill: parent
                 onClicked: gamehandler.newTask()
+            }
+            Image {
+                id: nextButton
+                width: rectangle3.width
+                height: rectangle3.height
+                source: "/arrow-19-512.png"
             }
         }
     }
