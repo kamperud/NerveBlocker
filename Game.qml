@@ -121,6 +121,10 @@ Rectangle {
             anchors.bottomMargin: 18
             anchors.right: parent.right
             anchors.rightMargin: 21
+            MouseArea {
+                anchors.fill: parent
+                onClicked: gamehandler.newTask()
+            }
         }
     }
 }
