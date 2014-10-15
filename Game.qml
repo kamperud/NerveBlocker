@@ -25,28 +25,29 @@ Rectangle {
         id: topSection
         width:parent.width
         anchors.top: parent.top
-        anchors.bottom: gameImage.bottom
+        anchors.bottom: gameImage.top
 //        color: gamehandler.answer
         gradient: Gradient {
-            GradientStop { position: 0.0; color: gamehandler.answer}
+            GradientStop { position: 0.67; color: gamehandler.answer}
 //             GradientStop { position: 0.33; color: gamehandler.answer}
-             GradientStop { position: 0.50; color: "black"}
+             GradientStop { position: 1.0; color: "black"}
         }
     Rectangle{
             id: questionBox
             visible:true
-            width: gamehandler.question.length*10
-            height: gameWrapper.height / 20
+            width: questionText.paintedWidth + 50
+            height: questionText.paintedHeight + 10
             anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
             //anchors.bottomMargin: 50
             //anchors.topMargin: 5000
-            color: "#4C4C4C"
+            color: "#80E0E0E0"
             border.color: "#5B5B5B"
             radius: 10
             Text {
                 id: questionText
                 visible: true
-                color: "Pink"
+                color: "black"
                 text: gamehandler.question
                 font.pixelSize: gameWrapper.width/15
                 anchors.horizontalCenter: parent.horizontalCenter
