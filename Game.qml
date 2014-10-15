@@ -68,9 +68,10 @@ Rectangle {
             anchors.leftMargin: 25
             radius: 5
             Text {
-                text: "X" + gamehandler.multiplier
+                text: "x" + gamehandler.multiplier
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
+                font.pixelSize: multiplier.width / 3
             }
         }
 
@@ -90,6 +91,7 @@ Rectangle {
                 text: gamehandler.points
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
+                font.pixelSize: multiplier.width / 3
             }
         }
 
@@ -114,7 +116,7 @@ Rectangle {
                 id: nextButton
                 width: rectangle3.width
                 height: rectangle3.height
-                source: "/arrow-19-512.png"
+                source: gamehandler.nextButtonVisible ? "/arrow-19-512-green.png" : "/arrow-19-512.png"
             }
         }
     }

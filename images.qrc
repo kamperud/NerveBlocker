@@ -16,5 +16,6 @@
         <file>gameImages/4a.png</file>
         <file>gameImages/4.png</file>
         <file>arrow-19-512.png</file>
+        <file>arrow-19-512-green.png</file>
     </qresource>
 </RCC>
