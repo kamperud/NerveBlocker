@@ -5,7 +5,7 @@ import QtQuick.Controls.Styles 1.2
 
 ToolBar {
     id: toolbar
-    height: applicationWindow1.height / 10
+    height: applicationWindow1.height / 12
     width: applicationWindow1.width
 
     Component.onCompleted: toolbar.data[0].item.children = [newRectangle];

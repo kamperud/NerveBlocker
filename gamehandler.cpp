@@ -9,7 +9,7 @@ GameHandler::GameHandler(QObject *parent) :
     m_task = (rand() % MAX_IMAGES)+1;
     m_image = QString("/gameImages/%1a.png").arg(m_task);
     m_question = "Where is the femoral nerve?";
-    m_answer = "";
+    m_answer = "white";
     m_taskActive = true;
     m_points = 0;
     m_multiplier = 1;
@@ -18,10 +18,13 @@ GameHandler::GameHandler(QObject *parent) :
 }
 
 void GameHandler::newTask(){
-    m_task = (rand() % MAX_IMAGES)+1;
-    setAnswer("");
-    setImage(QString("/gameImages/%1a.png").arg(m_task));
-    setTaskActivity(true);
+    if(!m_taskActive) {
+        m_task = (rand() % MAX_IMAGES)+1;
+        setQuestion("Where is the femoral nerve?");
+        setAnswer("white");
+        setImage(QString("/gameImages/%1a.png").arg(m_task));
+        setTaskActivity(true);
+    }
 }
 
 void GameHandler::imageClicked(int x, int y, int width, int height){
@@ -34,12 +37,14 @@ void GameHandler::imageClicked(int x, int y, int width, int height){
         int newX = img->width()*x/width;
         int newY = img->height()*y/height;
         if( img->pixel(newX,newY) == qRgb(255,255,0)){
-            setAnswer("Correct");
+            setAnswer("#89e894"); //light green
+            setQuestion("Correct!!");
             setPoints(getPoints()+50*getMultiplier());
             setMultiplier(getMultiplier()+1);
         }
         else {
-            setAnswer("Wrong");
+            setAnswer("red");
+            setQuestion("Sorry, that's wrong");
             setMultiplier(1);
         }
 

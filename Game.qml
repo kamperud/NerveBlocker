@@ -12,8 +12,6 @@ Rectangle {
     anchors.rightMargin: 0
     anchors.left: parent.left
     anchors.leftMargin: 0
-    color: "#000000"
-
 
     MouseArea{
         id: imageArea
@@ -22,25 +20,19 @@ Rectangle {
             gamehandler.imageClicked(mouse.x, mouse.y, imageArea.width, imageArea.height)
         }
     }
-    /*
-    Text {
-        id: questionText
-        visible: true
-        color: "Pink"
-        text: gamehandler.question
-        font.pixelSize: parent.width/15
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: gameImage.top
-        anchors.bottomMargin: 50
-    }
-    */
+
     Rectangle{
         id: topSection
         width:parent.width
         anchors.top: parent.top
         anchors.bottom: gameImage.bottom
-        color: "black"
-        Rectangle{
+//        color: gamehandler.answer
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: gamehandler.answer}
+//             GradientStop { position: 0.33; color: gamehandler.answer}
+             GradientStop { position: 0.50; color: "black"}
+        }
+    Rectangle{
             id: questionBox
             visible:true
             width: gamehandler.question.length*10
@@ -81,22 +73,25 @@ Rectangle {
         anchors.top: gameImage.bottom
         anchors.bottom: parent.bottom
         width: parent.width
-        color: "white"
-        //border.color: "grey"
-        //radius: 5
+//        color: "white"
+        gradient: Gradient {
+             GradientStop { position: 0.0; color: "black"}
+             GradientStop { position: 0.33; color: gamehandler.answer}
+        }
+
 
         Rectangle {
             id: multiplier
             width: parent.width/4
-            color: "#E0E0E0"
+            color: "#80E0E0E0"
             border.color: "#B3B3B3"
             anchors.top: parent.top
-            anchors.topMargin: 19
+            anchors.topMargin: 30
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 18
+            anchors.bottomMargin: 20
             anchors.left: parent.left
             anchors.leftMargin: 25
-            radius: 5
+            radius: 20
             Text {
                 text: "x" + gamehandler.multiplier
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -109,14 +104,14 @@ Rectangle {
             id: points
             x: 148
             width: parent.width/4
-            color: "#E0E0E0"
+            color: "#80E0E0E0"
             border.color: "#B3B3B3"
             anchors.top: parent.top
-            anchors.topMargin: 19
+            anchors.topMargin: 30
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 18
+            anchors.bottomMargin: 20
             anchors.horizontalCenter: parent.horizontalCenter
-            radius: 5
+            radius: 20
             Text {
                 text: gamehandler.points
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -129,15 +124,15 @@ Rectangle {
             id: rectangle3
             x: 275
             width: parent.width/4
-            color: "#E0E0E0"
+            color: "#80E0E0E0"
             border.color: "#B3B3B3"
             anchors.top: parent.top
-            anchors.topMargin: 19
+            anchors.topMargin: 30
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 18
+            anchors.bottomMargin: 20
             anchors.right: parent.right
             anchors.rightMargin: 21
-            radius: 5
+            radius: 20
             MouseArea {
                 anchors.fill: parent
                 onClicked: gamehandler.newTask()
@@ -146,7 +141,7 @@ Rectangle {
                 id: nextButton
                 width: rectangle3.width
                 height: rectangle3.height
-                source: gamehandler.nextButtonVisible ? "/arrow-19-512-green.png" : "/arrow-19-512.png"
+                source: "/arrow-19-512.png"
             }
         }
     }
