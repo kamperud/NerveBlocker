@@ -61,7 +61,7 @@ ToolBar {
         Item {
             id: navBack
             anchors.left: parent.left
-            anchors.top: (sys.isIos) ? null : parent.top
+            anchors.verticalCenter: parent.verticalCenter
             width: toolbar.height - 20
             height: toolbar.height - 20
 
@@ -100,6 +100,8 @@ ToolBar {
                     text: qsTr("Login ")
                     color: login.pressed ? "#C2E0FF" : "#3399FF"
                     font.pixelSize: title.font.pixelSize - 5
+                    anchors.horizontalCenter: parent.horizontalCenter
+
                 }
                 background:Rectangle{
                     color: "white"
