@@ -18,12 +18,11 @@ class GameHandler : public QObject
     Q_PROPERTY(int points READ getPoints NOTIFY pointsChanged)
     Q_PROPERTY(bool gameFinished READ getGameFinished NOTIFY gameFinishedChanged)
 
-    Q_INVOKABLE void newTask();
-    Q_INVOKABLE void imageClicked(int x, int y, int width, int height);
-
 
 public:
     GameHandler(QObject *parent = 0);
+    Q_INVOKABLE void newTask();
+    Q_INVOKABLE void imageClicked(int x, int y, int width, int height);
 
     QString getQuestion();
     void setQuestion(QString newValue);

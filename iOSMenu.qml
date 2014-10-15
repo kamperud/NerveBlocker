@@ -6,6 +6,7 @@ import QtQuick.Controls.Styles 1.2
 ToolBar {
     id: toolbar
     height: applicationWindow1.height / 10
+    width: applicationWindow1.width
 
     Component.onCompleted: toolbar.data[0].item.children = [newRectangle];
     property Item _newRectangle: Rectangle {
@@ -32,39 +33,73 @@ ToolBar {
 
     RowLayout {
         id: rowLayout
-        width: parent.width
-        ToolButton {
+        anchors.fill: parent
+
+//        ToolButton {
+//            id: navBack
+//            anchors.left: parent.left
+//            width: 1000
+//            height: 1000
+
+//            onClicked: {
+//                mainArea.y = applicationWindow1.height / 4
+//                mainArea.pop()
+//            }
+//            style: ButtonStyle{
+
+//                background: Image{
+//                    id: backImg
+//                    visible: true
+//                    source: navBack.pressed ? "ios/images/back-50-C2E0FF.png" : "ios/images/back-50-3399FF.png"
+//                    anchors.fill: navBack
+//                    anchors.margins: 6
+//                    fillMode: Image.Stretch
+//                }
+//            }
+//        }
+
+        Item {
             id: navBack
             anchors.left: parent.left
-            onClicked: {
-                mainArea.y = applicationWindow1.height / 4
-                mainArea.pop()
+            anchors.top: (sys.isIos) ? null : parent.top
+            width: toolbar.height - 20
+            height: toolbar.height - 20
+
+            Image{
+                id: backImg
+                source: navBackArea.pressed ? "ios/images/back-50-C2E0FF.png" : "ios/images/back-50-3399FF.png"
+                anchors.fill: parent
+                anchors.margins: 6
+                fillMode: Image.PreserveAspectFit
             }
-            style: ButtonStyle{
-                background:Image{
-                    id: backImg
-                    visible: true
-                    source: navBack.pressed ? "ios/images/back-50-C2E0FF.png" : "ios/images/back-50-3399FF.png"
-                    anchors.fill: parent
-                    anchors.margins: 6
+            MouseArea{
+                id: navBackArea
+                anchors.fill: parent
+                onClicked: {
+                    mainArea.y = applicationWindow1.height / 4
+                    mainArea.pop()
                 }
             }
-        }
+         }
+
         Text {
             id: title
+            anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
             text: qsTr("Ultrasound")
             color: "black"
-            font.pixelSize: toolbar.height - 30
+//            font.pixelSize: toolbar.height - 30;
+            font.pixelSize: toolbar.width*3/40
+
         }
         ToolButton {
             id: login
             anchors.right: parent.right
             style: ButtonStyle{
                 label:Text{
-                    text: qsTr("Login")
+                    text: qsTr("Login ")
                     color: login.pressed ? "#C2E0FF" : "#3399FF"
-                    font.pixelSize: toolbar.height - 30
+                    font.pixelSize: title.font.pixelSize - 5
                 }
                 background:Rectangle{
                     color: "white"
