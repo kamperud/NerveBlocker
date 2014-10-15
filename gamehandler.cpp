@@ -88,5 +88,11 @@ void GameHandler::setPoints(int newValue){
     m_points = newValue;
     emit pointsChanged(newValue);
 }
-
+int GameHandler::getGameFinished(){
+    return m_game_finished;
+}
+void GameHandler::setGameFinished(bool b){
+    m_game_finished = b;
+    emit gameFinishedChanged();
+}
 

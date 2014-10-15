@@ -15,6 +15,7 @@ class GameHandler : public QObject
     Q_PROPERTY(bool nextButtonVisible READ getNextButtonVisibility NOTIFY taskActivityChanged)
     Q_PROPERTY(int multiplier READ getMultiplier NOTIFY multiplierChanged)
     Q_PROPERTY(int points READ getPoints NOTIFY pointsChanged)
+    Q_PROPERTY(bool gameFinished READ getGameFinished NOTIFY gameFinishedChanged)
 
     Q_INVOKABLE void newTask();
     Q_INVOKABLE void imageClicked(int x, int y, int width, int height);
@@ -41,6 +42,8 @@ public:
     int getPoints();
     void setPoints(int newValue);
 
+    int getGameFinished();
+    void setGameFinished(bool b);
 
 signals:
     void questionChanged(QString newValue);
@@ -49,6 +52,7 @@ signals:
     void taskActivityChanged();
     void multiplierChanged(int newValue);
     void pointsChanged(int newValue);
+    void gameFinishedChanged();
 
 public slots:
 
@@ -62,6 +66,7 @@ private:
     int m_multiplier;
     int m_tasks_finished;
     int m_points;
+    bool m_game_finished;
 
 };
 
