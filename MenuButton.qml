@@ -4,8 +4,8 @@ import QtQuick.Controls.Styles 1.2
 
 Button {
     id: button
+    height: applicationWindow1.height/6
     text: qsTr("Default")
-    height: applicationWindow1.height/8
     anchors.rightMargin: 0
     anchors.leftMargin: 0
     anchors.left: parent.left
@@ -18,6 +18,4 @@ Button {
             }
         }
     }
-
-
 }
