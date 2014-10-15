@@ -68,7 +68,7 @@ Rectangle {
             anchors.leftMargin: 25
             radius: 5
             Text {
-                text: "2X"
+                text: "X" + gamehandler.multiplier
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
             }
@@ -87,7 +87,7 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             radius: 5
             Text {
-                text: "Points:"
+                text: gamehandler.points
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
             }
