@@ -11,37 +11,49 @@ ApplicationWindow {
 
     toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "").createObject(applicationWindow1, {})
 
-    StackView {
+    Item {
         id: mainArea
-//        anchors.right: parent.right
-//        anchors.left: parent.left
         anchors.fill: parent
         x: 0
         y: 0
-        initialItem: game
-        focus: true // important - otherwise we'll get no key events
+        state: "gameMenu"
 
-        Keys.onReleased: {
-           if (event.key === Qt.Key_Back) {
-               event.accepted = true
-               mainArea.pop()
-               mainArea.y = applicationWindow1.height/4
-           }
-        }
+        states: [
+            State {
+                name: "gameMenu"
+            },
+            State {
+                name: "inGame"
+            },
+            State {
+                name: "doneGame"
+            },
+            State {
+                name: "infoGame"
+            }
+        ]
+
         Game {
             id: game
-            visible: true
+            anchors.fill: parent
+            visible: parent.state === "inGame"
         }
-//        GameInfo {
-//            visible: false
-//        }
+        GameInfo {
+            id: gameinfo
+            anchors.fill: parent
+            visible: parent.state === "infoGame"
+        }
+        GameFinished {
+            id: gamefinished
+            anchors.fill: parent
+            visible: parent.state === "doneGame"
+        }
+        GameStart {
+            id: gamestart
+            anchors.fill: parent
+            visible: parent.state === "gameMenu"
+        }
 
-//        GameStart {
-//            visible: false
-//        }
 
-//        GameFinished {
-//            visible: true
-//        }
     }
 }
