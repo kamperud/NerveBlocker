@@ -6,5 +6,8 @@
         <file>iOSMenu.qml</file>
         <file>Game.qml</file>
         <file>GameInfo.qml</file>
+        <file>GameMain.qml</file>
+        <file>GameStart.qml</file>
+        <file>GameFinished.qml</file>
     </qresource>
 </RCC>

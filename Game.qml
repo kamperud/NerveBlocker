@@ -29,8 +29,7 @@ Rectangle {
 //        color: gamehandler.answer
         gradient: Gradient {
             GradientStop { position: 0.67; color: gamehandler.answer}
-//             GradientStop { position: 0.33; color: gamehandler.answer}
-             GradientStop { position: 1.0; color: "black"}
+            GradientStop { position: 1.0; color: "black"}
         }
     Rectangle{
             id: questionBox
@@ -74,8 +73,8 @@ Rectangle {
         anchors.top: gameImage.bottom
         anchors.bottom: parent.bottom
         width: parent.width
-//        color: "white"
-        gradient: Gradient {
+//        color: gamehandler.answer
+                gradient: Gradient {
              GradientStop { position: 0.0; color: "black"}
              GradientStop { position: 0.33; color: gamehandler.answer}
         }
@@ -125,6 +124,7 @@ Rectangle {
             id: rectangle3
             x: 275
             width: parent.width/4
+            height: width
             color: "#80E0E0E0"
             border.color: "#B3B3B3"
             anchors.top: parent.top
