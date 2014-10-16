@@ -4,20 +4,27 @@ Rectangle {
     id: gamestart
     width: 450
     height: 300
-    color: "black"
+    color: "#333333"
 
     FontLoader { id: birdFont; source: "/LittleBird.ttf" }
+
+//    Image {
+//        fillMode: Image.PreserveAspectCrop
+//        source: "Fireworks.png"
+//        anchors.fill: parent
+
+//    }
 
     Rectangle {
         id: playbutton
         x: 48
-        width: parent.width/4
+        width: parent.width/2
         height: width/2+10
-        color: playArea.pressed ? "#80e0e0e0": "#80808080"
+        color: playArea.pressed ? "#ee202020": "#ee606060"
         border.color: "#B3B3B3"
-        radius: 20
-        anchors.horizontalCenterOffset: -75
+        radius: 40
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenterOffset: -30
         anchors.verticalCenter: parent.verticalCenter
 
         MouseArea {
@@ -31,7 +38,7 @@ Rectangle {
         Text {
             text: "PLAY"
             font.family: birdFont.name
-            font.pixelSize: 40
+            font.pixelSize: parent.width/3
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             color: "yellow"
@@ -41,12 +48,13 @@ Rectangle {
     Rectangle {
         id: infobutton
         x: 165
-        width: parent.width/4
+        width: parent.width/6
         height: width/2+10
-        color: infoArea.pressed ? "#80e0e0e0": "#80808080"
+        color: infoArea.pressed ? "#ee202020": "#ee606060"
         radius: 20
-        anchors.horizontalCenterOffset: 75
+        anchors.horizontalCenterOffset: 0
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenterOffset: parent.height/5
         anchors.verticalCenter: parent.verticalCenter
         border.color: "#b3b3b3"
 
@@ -60,12 +68,13 @@ Rectangle {
         Text {
             text: "INFO"
             font.family: birdFont.name
-            font.pixelSize: 40
+            font.pixelSize: parent.width/3
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             color: "yellow"
 
         }
+
 
     }
 }

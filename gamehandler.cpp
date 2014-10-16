@@ -62,7 +62,6 @@ void GameHandler::imageClicked(int x, int y, int width, int height){
 }
 int GameHandler::getTimeSpent() {
     int temp = difftime(m_end_time, m_start_time);
-    qDebug()<<"HELLO!\n";
     return temp;
 }
 
