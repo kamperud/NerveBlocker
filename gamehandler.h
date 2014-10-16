@@ -4,7 +4,7 @@
 #include <QObject>
 
 #define MAX_IMAGES 13
-#define MAX_TASKS_PER_GAME 10
+#define MAX_TASKS_PER_GAME 5
 
 class GameHandler : public QObject
 {
@@ -17,12 +17,15 @@ class GameHandler : public QObject
     Q_PROPERTY(int multiplier READ getMultiplier NOTIFY multiplierChanged)
     Q_PROPERTY(int points READ getPoints NOTIFY pointsChanged)
     Q_PROPERTY(bool gameFinished READ getGameFinished NOTIFY gameFinishedChanged)
-
+    Q_PROPERTY(int timeSpent READ getTimeSpent NOTIFY timeSpentChanged)
 
 public:
     GameHandler(QObject *parent = 0);
+
     Q_INVOKABLE void newTask();
+    Q_INVOKABLE void newGame();
     Q_INVOKABLE void imageClicked(int x, int y, int width, int height);
+
 
     QString getQuestion();
     void setQuestion(QString newValue);
@@ -45,6 +48,8 @@ public:
     int getGameFinished();
     void setGameFinished(bool b);
 
+    int getTimeSpent();
+
 signals:
     void questionChanged(QString newValue);
     void answerChanged(QString newValue);
@@ -53,6 +58,7 @@ signals:
     void multiplierChanged(int newValue);
     void pointsChanged(int newValue);
     void gameFinishedChanged();
+    void timeSpentChanged();
 
 public slots:
 
@@ -67,7 +73,8 @@ private:
     int m_tasks_finished;
     int m_points;
     bool m_game_finished;
-
+    time_t m_start_time;
+    time_t m_end_time;
 };
 
 #endif // GAMEHANDLER_H

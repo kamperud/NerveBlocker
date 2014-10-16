@@ -14,13 +14,11 @@ ApplicationWindow {
     Item {
         id: mainArea
         anchors.fill: parent
-        x: 0
-        y: 0
-        state: "gameMenu"
+        state: "startGame"
 
         states: [
             State {
-                name: "gameMenu"
+                name: "startGame"
             },
             State {
                 name: "inGame"
@@ -51,7 +49,7 @@ ApplicationWindow {
         GameStart {
             id: gamestart
             anchors.fill: parent
-            visible: parent.state === "gameMenu"
+            visible: parent.state === "startGame"
         }
 
 

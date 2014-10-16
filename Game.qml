@@ -86,7 +86,7 @@ Rectangle {
             color: "#80E0E0E0"
             border.color: "#B3B3B3"
             anchors.top: parent.top
-            anchors.topMargin: 30
+            anchors.topMargin: 50
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 20
             anchors.left: parent.left
@@ -107,7 +107,7 @@ Rectangle {
             color: "#80E0E0E0"
             border.color: "#B3B3B3"
             anchors.top: parent.top
-            anchors.topMargin: 30
+            anchors.topMargin: 50
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 20
             anchors.horizontalCenter: parent.horizontalCenter
@@ -128,7 +128,7 @@ Rectangle {
             color: "#80E0E0E0"
             border.color: "#B3B3B3"
             anchors.top: parent.top
-            anchors.topMargin: 30
+            anchors.topMargin:50
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 20
             anchors.right: parent.right
@@ -136,7 +136,13 @@ Rectangle {
             radius: 20
             MouseArea {
                 anchors.fill: parent
-                onClicked: gamehandler.newTask()
+                onClicked: {
+                    if(!gamehandler.gameFinished) {
+                        gamehandler.newTask()
+                    } else {
+                        mainArea.state = "doneGame"
+                    }
+                }
             }
             Image {
                 id: nextButton
