@@ -75,10 +75,16 @@ ToolBar {
             MouseArea{
                 id: navBackArea
                 anchors.fill: parent
+
+               //straight to game version
                 onClicked: {
-                    mainArea.y = applicationWindow1.height / 4
-                    mainArea.pop()
+                    mainArea.state = "startGame"
                 }
+                // red menu version
+//                onClicked: {
+//                    mainArea.y = applicationWindow1.height / 4
+//                    mainArea.pop()
+//                }
             }
          }
 

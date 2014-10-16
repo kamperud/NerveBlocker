@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>LittleBird.ttf</file>
+    </qresource>
+</RCC>
