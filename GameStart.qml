@@ -8,24 +8,31 @@ Rectangle {
 
     FontLoader { id: birdFont; source: "/LittleBird.ttf" }
 
-//    Image {
-//        fillMode: Image.PreserveAspectCrop
-//        source: "Fireworks.png"
-//        anchors.fill: parent
+    Text {
+        text: "THE NERVES OF \nSOME PEOPLE"
+        anchors.horizontalCenterOffset: 0
+        font.family: birdFont.name
+        font.pixelSize: parent.width/11
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenterOffset: -parent.height/3
+        anchors.verticalCenter: parent.verticalCenter
 
-//    }
+
+        color: "yellow"
+    }
 
     Rectangle {
         id: playbutton
-        x: 48
         width: parent.width/2
         height: width/2+10
-        color: playArea.pressed ? "#ee202020": "#ee606060"
+        color: playArea.pressed ? "#ee606060" :"#ee202020"
         border.color: "#B3B3B3"
         radius: 40
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: -30
         anchors.verticalCenter: parent.verticalCenter
+
+
 
         MouseArea {
             id: playArea
@@ -50,7 +57,7 @@ Rectangle {
         x: 165
         width: parent.width/6
         height: width/2+10
-        color: infoArea.pressed ? "#ee202020": "#ee606060"
+        color: infoArea.pressed ? "#ee606060" :"#ee202020"
         radius: 20
         anchors.horizontalCenterOffset: 0
         anchors.horizontalCenter: parent.horizontalCenter

@@ -10,11 +10,12 @@ ApplicationWindow {
     color: "#ffffff"
 
     toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "iOSMenu.qml").createObject(applicationWindow1, {})
+//    toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "").createObject(applicationWindow1, {})
 
     Item {
         id: mainArea
         anchors.fill: parent
-        state: "startGame"
+        state: "infoGame"
 
         focus: true // important - otherwise we'll get no key events
 

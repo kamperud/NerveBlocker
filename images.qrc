@@ -45,5 +45,6 @@
         <file>gameImages/5a.png</file>
         <file>gameImages/5.png</file>
         <file>Fireworks.png</file>
+        <file>bar.png</file>
     </qresource>
 </RCC>
