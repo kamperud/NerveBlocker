@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>LittleBird.ttf</file>
         <file>orange.ttf</file>
+        <file>whysoserious.ttf</file>
     </qresource>
 </RCC>

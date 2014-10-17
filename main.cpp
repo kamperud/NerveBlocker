@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     GameHandler gamehandler;
     engine.rootContext()->setContextProperty("sys", &sys);
     engine.rootContext()->setContextProperty("gamehandler", &gamehandler);
-    engine.load(QUrl(QStringLiteral("qrc:/GameMain.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     return app.exec();
 }

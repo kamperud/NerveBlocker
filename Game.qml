@@ -26,12 +26,12 @@ Rectangle {
         width:parent.width
         anchors.top: parent.top
         anchors.bottom: gameImage.top
-//        color: gamehandler.answer
+        //color: gamehandler.answer
         gradient: Gradient {
             GradientStop { position: 0.67; color: gamehandler.answer}
             GradientStop { position: 1.0; color: "black"}
         }
-    Rectangle{
+        Rectangle{
             id: questionBox
             visible:true
             width: questionText.paintedWidth + 50
