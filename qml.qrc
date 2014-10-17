@@ -9,5 +9,6 @@
         <file>GameMain.qml</file>
         <file>GameStart.qml</file>
         <file>GameFinished.qml</file>
+        <file>ExplanationText.qml</file>
     </qresource>
 </RCC>
