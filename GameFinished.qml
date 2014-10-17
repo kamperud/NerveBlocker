@@ -6,9 +6,7 @@ Rectangle {
     height: parent.height
     color: "#202020"
 
-    FontLoader { id: birdFont; source: "/LittleBird.ttf" }
-    FontLoader { id: scoreFont; source: "/whysoserious.ttf" }
-    FontLoader { id: orangeFont; source: "/orange.ttf" }
+
 
 
     Item{
@@ -16,13 +14,14 @@ Rectangle {
         width: parent.width
         height: parent.height * 4 / 5
         anchors.top: parent.top
+
         Rectangle{
             id: gameFinishedBox
-            width: parent.width / 1.5
+            width: parent.width / 1.3
             anchors.horizontalCenter: parent.horizontalCenter
             border.color: "#B3B3B3"
             color: "#333333"
-            radius: 5
+            radius: 30
             anchors.top: parent.top
             anchors.topMargin: parent.height/8
             anchors.bottom: parent.bottom
@@ -32,7 +31,7 @@ Rectangle {
                 id: finalscore
                 text: "FINAL SCORE"
                 font.family: birdFont.name
-                font.pixelSize: parent.width/12
+                font.pixelSize: parent.width/10
                 color: "yellow"
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: parent.top
@@ -42,23 +41,24 @@ Rectangle {
                 id:finalpoints
                 text: "2250" //gamehandler.points
                 font.family: scoreFont.name
-                color: "yellow"
-                font.pixelSize: parent.width/4
+                color: "#ffcf0b"
+                font.pixelSize: parent.width/3
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: finalscore.bottom
                 anchors.topMargin: 0 //gameFinishedScreen.height / 60
             }
             Text{
                 id: timespent
-                text: "You spent 14 seconds" //"You spent "+gamehandler.timeSpent+" seconds"
+                text: "You spent \n14 seconds" //"You spent "+gamehandler.timeSpent+" seconds"
                 color: "yellow"
-                font.pixelSize: parent.width/12
+                font.pixelSize: parent.width/10
                 font.family: orangeFont.name
-                wrapMode: Text.WordWrap
+
+                horizontalAlignment: Text.AlignHCenter
 
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: finalpoints.bottom
-                anchors.topMargin: parent.height/5
+                anchors.topMargin: parent.height/25
 
             }
             Row {
@@ -72,76 +72,86 @@ Rectangle {
                     text: "High Score:"
                     font.family: birdFont.name
                     color: "yellow"
-                    font.pixelSize: gameFinishedBox.width/15
-
-//                        anchors.bottomMargin: parent.width/10
-//                        anchors.bottom: parent.bottom
-//                        anchors.horizontalCenterOffset: -50
-//                        anchors.horizontalCenter: parent.horizontalCenter
+                    font.pixelSize: gameFinishedBox.width/12
                 }
+
                 Text{
                     id:highestpoints
                     text: "10 000"
-                    color: "yellow"
-                    font.pixelSize: gameFinishedBox.width/10
+                    color: "#ffcf0b"
+                    font.pixelSize: gameFinishedBox.width/9
                     font.family: scoreFont.name
                     anchors.baseline: highestscore.baseline
 
-                    /*anchors.horizontalCenterOffset: 50
-                    anchors.bottomMargin: 30
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.bottom: parent.bottom */
                 }
             }
         }
     }
 
-    Item{
+    Row {
         id: finishButtons
-        width: parent.width
-        height:parent.height / 5
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
+        anchors.bottomMargin: parent.height/8
+        spacing: parent.width/6
 
         Rectangle {
             id: mainMenuButton
-            width: finishButtons.width / 4
-            height: 40
-            //anchors.verticalCenter: finishButtons.verticalCenter
-            anchors.top: parent.top
-            anchors.horizontalCenter: finishButtons.horizontalCenter
-            anchors.horizontalCenterOffset: -70
-            color: "#80E0E0E0"
+            width: gameFinishedScreen.width / 4
+            height: width
+
             border.color: "#B3B3B3"
-            radius: 5
+            color: menuButton.pressed ?  "#ee606060" :"#333333"
+            radius: 30
             Text{
-                text: "Main \n Menu"
+                text: "Main \nMenu"
+                color: "yellow"
+                font.pixelSize: parent.width/4
+                font.family: birdFont.name
+
                 anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Text.AlignHCenter
                 anchors.verticalCenter: parent.verticalCenter
+            }
+            MouseArea{
+                id: menuButton
+                anchors.fill: parent
+                onClicked: {
+                    mainArea.state = "startGame"
+                }
             }
         }
 
         Rectangle {
             id: againButton
-            width: finishButtons.width / 4
-            height: 40
-            //anchors.verticalCenter: finishButtons.verticalCenter
-            anchors.top: parent.top
-            anchors.horizontalCenter: finishButtons.horizontalCenter
-            anchors.horizontalCenterOffset: 70
-            color: "#80E0E0E0"
+            width: gameFinishedScreen.width / 4
+            height: width
+
             border.color: "#B3B3B3"
-            radius: 5
+            color: playButton.pressed ?  "#ee606060" :"#333333"
+            radius: 30
             Text{
-                text: "Play \n Again"
+                text: "Play \nAgain"
+                color: "yellow"
+                font.family: birdFont.name
+                font.pixelSize: parent.width/4
+
+
                 anchors.horizontalCenter: parent.horizontalCenter
+                horizontalAlignment: Text.AlignHCenter
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            /*
+
             MouseArea{
+                id: playButton
                 anchors.fill: parent
+                onClicked: {
+                    gamehandler.newGame()
+                    mainArea.state = "inGame"
+                }
             }
-            */
+
         }
     }
 }

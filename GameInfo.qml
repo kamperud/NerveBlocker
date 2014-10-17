@@ -12,9 +12,6 @@ Rectangle {
         contentWidth: parent.width
         contentHeight: explanation4.y + explanation4.contentHeight + parent.height/20
 
-        FontLoader { id: birdFont; source: "/LittleBird.ttf" }
-        FontLoader { id: orangeFont; source: "/orange.ttf" }
-
         ExplanationText {
             id: welcomeText
             text: "Welcome to the tutorial for"

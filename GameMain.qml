@@ -4,10 +4,14 @@ import QtQuick.Controls 1.2
 ApplicationWindow {
     id: applicationWindow1
     visible: true
-    width: 450
+    width: 550
     height: 800
     title: qsTr("UllApp")
     color: "#ffffff"
+
+    FontLoader { id: birdFont; source: "/LittleBird.ttf" }
+    FontLoader { id: scoreFont; source: "/whysoserious.ttf" }
+    FontLoader { id: orangeFont; source: "/orange.ttf" }
 
 //    toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "iOSMenu.qml").createObject(applicationWindow1, {})
     toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "").createObject(applicationWindow1, {})
@@ -15,7 +19,7 @@ ApplicationWindow {
     Item {
         id: mainArea
         anchors.fill: parent
-        state: "startGame"
+        state: "doneGame"
 
         focus: true // important - otherwise we'll get no key events
 

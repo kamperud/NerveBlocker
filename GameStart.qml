@@ -6,8 +6,6 @@ Rectangle {
     height: 300
     color: "#333333"
 
-    FontLoader { id: birdFont; source: "/LittleBird.ttf" }
-
     Text {
         text: "THE NERVES OF \nSOME PEOPLE"
         anchors.horizontalCenterOffset: 0
