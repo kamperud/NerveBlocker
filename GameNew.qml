@@ -7,7 +7,7 @@ Rectangle {
     id: gameWrapper
     x: 0
     y: 0
-    //anchors.fill: parent
+    anchors.fill: parent
     color: "#222222"
 
     Rectangle {
@@ -118,10 +118,31 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
         }
     }
+    Rectangle {
+        width: gameImage.width/2
+        height: gameImage.height/20
+        color: "#f7e967"
+        visible: gameWrapper.visible && gamehandler.timed
+
+        z: 1
+        x: gameImage.x
+        anchors.bottom: gameImage.top
+    }
+
+    Rectangle {
+        width: gameImage.width
+        height: gameImage.height/20
+        color: "#666666"
+        visible: gameWrapper.visible && gamehandler.timed
+
+        x: gameImage.x
+        anchors.bottom: gameImage.top
+    }
 
     Image {
         id: gameImage
         width: parent.width*11/12
+        height: sourceSize.height*width/sourceSize.width
         anchors.bottom: botMenu.top
         anchors.bottomMargin: parent.width/20
         anchors.horizontalCenter: parent.horizontalCenter

@@ -5,6 +5,7 @@
 
 #define MAX_IMAGES 13
 #define MAX_TASKS_PER_GAME 10
+#define MAX_QUESTIONS 3
 
 class GameHandler : public QObject
 {
@@ -19,6 +20,9 @@ class GameHandler : public QObject
     Q_PROPERTY(bool gameFinished READ getGameFinished NOTIFY gameFinishedChanged)
     Q_PROPERTY(int timeSpent READ getTimeSpent NOTIFY timeSpentChanged)
     Q_PROPERTY(int highscore MEMBER m_high_score NOTIFY highScoreSpentChanged)
+    Q_PROPERTY(bool timed MEMBER m_timed NOTIFY levelChanged)
+    Q_PROPERTY(int timed_highscore MEMBER m_timed_high_score NOTIFY highScoreSpentChanged)
+
 
 
 public:
@@ -31,6 +35,7 @@ public:
 
     QString getQuestion();
     void setQuestion(QString newValue);
+    void setQuestion();
 
     QString getAnswer();
     void setAnswer(QString newValue);
@@ -52,6 +57,11 @@ public:
 
     int getTimeSpent();
 
+    bool isCorrectColor(int x, int y, int width, int height);
+
+    void setLevel(bool b);
+
+
 signals:
     void questionChanged(QString newValue);
     void answerChanged(QString newValue);
@@ -62,23 +72,29 @@ signals:
     void gameFinishedChanged();
     void timeSpentChanged();
     void highScoreSpentChanged(int newValue);
+    void levelChanged();
 
 public slots:
 
 
 private:
-    int m_task;
     QString m_question;
     QString m_answer;
     QString m_image;
+    bool m_game_finished;
     bool m_taskActive;
+    bool m_timed;
+    int m_task;
+    int m_points;
+    int m_organ;
     int m_multiplier;
     int m_tasks_finished;
-    int m_points;
-    bool m_game_finished;
+    int m_high_score;
+    int m_timed_high_score;
     time_t m_start_time;
     time_t m_end_time;
-    int m_high_score;
+
+
 };
 
 #endif // GAMEHANDLER_H

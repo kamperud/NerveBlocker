@@ -11,5 +11,6 @@
         <file>GameFinished.qml</file>
         <file>ExplanationText.qml</file>
         <file>GameNew.qml</file>
+        <file>Levels.qml</file>
     </qresource>
 </RCC>

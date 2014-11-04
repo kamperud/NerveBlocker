@@ -4,8 +4,8 @@ import QtQuick.Controls 1.2
 ApplicationWindow {
     id: applicationWindow1
     visible: true
-    width: 500
-    height: 800
+    width: 300
+    height: 500
     title: qsTr("UllApp")
     color: "#ffffff"
 
@@ -13,9 +13,6 @@ ApplicationWindow {
     FontLoader { id: scoreFont; source: "/whysoserious.ttf" }
     FontLoader { id: orangeFont; source: "/orange.ttf" }
     FontLoader { id: ubuntu; source: "/Ubuntu-R.ttf" }
-
-//    toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "iOSMenu.qml").createObject(applicationWindow1, {})
-    toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "").createObject(applicationWindow1, {})
 
     Item {
         id: mainArea
@@ -61,7 +58,7 @@ ApplicationWindow {
             anchors.fill: parent
             visible: parent.state === "doneGame"
         }
-        GameStart {
+        Levels {
             id: gamestart
             anchors.fill: parent
             visible: parent.state === "startGame"

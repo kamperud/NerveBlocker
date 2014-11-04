@@ -39,7 +39,7 @@ Rectangle {
             }
             Text{
                 id:finalpoints
-                text: (gamehandler.points - gamehandler.timeSpent*10) < 0 ? 0: gamehandler.points - gamehandler.timeSpent*10
+                text: gamehandler.timed ? gamehandler.points - gamehandler.timeSpent*10: gamehandler.points
                 font.family: scoreFont.name
                 color: "#ffcf0b"
                 font.pixelSize: parent.width/3
@@ -51,6 +51,7 @@ Rectangle {
                 id: timespent
                 text: "You spent\n"+ gamehandler.timeSpent +" seconds"
                 color: "yellow"
+                visible: gamehandler.timed
                 font.pixelSize: parent.width/10
                 font.family: orangeFont.name
 
@@ -77,7 +78,7 @@ Rectangle {
 
                 Text{
                     id:highestpoints
-                    text: gamehandler.highscore
+                    text: gamehandler.timed ? gamehandler.timed_highscore :gamehandler.highscore
                     color: "#ffcf0b"
                     font.pixelSize: gameFinishedBox.width/9
                     font.family: scoreFont.name
