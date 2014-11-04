@@ -9,6 +9,7 @@
 GameHandler::GameHandler(QObject *parent) :
     QObject(parent){
     srand (time(NULL));
+    m_high_score = 0;
 }
 
 void GameHandler::newGame() {
@@ -56,6 +57,10 @@ void GameHandler::imageClicked(int x, int y, int width, int height){
             setGameFinished(true);
             time(&m_end_time);    //set current time
             emit timeSpentChanged();
+            if(m_high_score < m_points - getTimeSpent()*10) {
+                m_high_score = m_points - getTimeSpent()*10;
+                emit highScoreSpentChanged(m_high_score);
+            }
 
         }
     }

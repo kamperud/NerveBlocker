@@ -39,7 +39,7 @@ Rectangle {
             }
             Text{
                 id:finalpoints
-                text: "2250" //gamehandler.points
+                text: (gamehandler.points - gamehandler.timeSpent*10) < 0 ? 0: gamehandler.points - gamehandler.timeSpent*10
                 font.family: scoreFont.name
                 color: "#ffcf0b"
                 font.pixelSize: parent.width/3
@@ -49,7 +49,7 @@ Rectangle {
             }
             Text{
                 id: timespent
-                text: "You spent \n14 seconds" //"You spent "+gamehandler.timeSpent+" seconds"
+                text: "You spent\n"+ gamehandler.timeSpent +" seconds"
                 color: "yellow"
                 font.pixelSize: parent.width/10
                 font.family: orangeFont.name
@@ -77,7 +77,7 @@ Rectangle {
 
                 Text{
                     id:highestpoints
-                    text: "10 000"
+                    text: gamehandler.highscore
                     color: "#ffcf0b"
                     font.pixelSize: gameFinishedBox.width/9
                     font.family: scoreFont.name

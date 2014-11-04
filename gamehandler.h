@@ -18,6 +18,8 @@ class GameHandler : public QObject
     Q_PROPERTY(int points READ getPoints NOTIFY pointsChanged)
     Q_PROPERTY(bool gameFinished READ getGameFinished NOTIFY gameFinishedChanged)
     Q_PROPERTY(int timeSpent READ getTimeSpent NOTIFY timeSpentChanged)
+    Q_PROPERTY(int highscore MEMBER m_high_score NOTIFY highScoreSpentChanged)
+
 
 public:
     GameHandler(QObject *parent = 0);
@@ -59,6 +61,7 @@ signals:
     void pointsChanged(int newValue);
     void gameFinishedChanged();
     void timeSpentChanged();
+    void highScoreSpentChanged(int newValue);
 
 public slots:
 
@@ -75,6 +78,7 @@ private:
     bool m_game_finished;
     time_t m_start_time;
     time_t m_end_time;
+    int m_high_score;
 };
 
 #endif // GAMEHANDLER_H

@@ -4,7 +4,7 @@ import QtQuick.Controls 1.2
 ApplicationWindow {
     id: applicationWindow1
     visible: true
-    width: 550
+    width: 500
     height: 800
     title: qsTr("UllApp")
     color: "#ffffff"
@@ -19,7 +19,7 @@ ApplicationWindow {
     Item {
         id: mainArea
         anchors.fill: parent
-        state: "doneGame"
+        state: "startGame"
 
         focus: true // important - otherwise we'll get no key events
 

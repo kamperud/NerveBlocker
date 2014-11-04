@@ -10,5 +10,6 @@
         <file>GameStart.qml</file>
         <file>GameFinished.qml</file>
         <file>ExplanationText.qml</file>
+        <file>GameNew.qml</file>
     </qresource>
 </RCC>

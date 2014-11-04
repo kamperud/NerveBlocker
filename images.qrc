@@ -46,5 +46,7 @@
         <file>gameImages/5.png</file>
         <file>Fireworks.png</file>
         <file>bar.png</file>
+        <file>cancel-50.png</file>
+        <file>arrow-19-grey.png</file>
     </qresource>
 </RCC>
