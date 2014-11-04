@@ -12,6 +12,7 @@ ApplicationWindow {
     FontLoader { id: birdFont; source: "/LittleBird.ttf" }
     FontLoader { id: scoreFont; source: "/whysoserious.ttf" }
     FontLoader { id: orangeFont; source: "/orange.ttf" }
+    FontLoader { id: ubuntu; source: "/Ubuntu-R.ttf" }
 
 //    toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "iOSMenu.qml").createObject(applicationWindow1, {})
     toolBar: Qt.createComponent(sys.isIos ? "iOSMenu.qml" : "").createObject(applicationWindow1, {})
@@ -45,7 +46,7 @@ ApplicationWindow {
             }
         ]
 
-        Game {
+        GameNew {
             id: game
             anchors.fill: parent
             visible: parent.state === "inGame"

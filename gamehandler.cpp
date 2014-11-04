@@ -25,7 +25,7 @@ void GameHandler::newGame() {
 void GameHandler::newTask(){
     if(!m_taskActive) {
         m_task = (rand() % MAX_IMAGES)+1;
-        setQuestion("Where is the femoral nerve?");
+        setQuestion("FEMORAL NERVE");
         setAnswer("white");
         setImage(QString("/gameImages/%1a.png").arg(m_task));
         setTaskActivity(true);
@@ -43,13 +43,13 @@ void GameHandler::imageClicked(int x, int y, int width, int height){
         int newY = img->height()*y/height;
         if( img->pixel(newX,newY) == qRgb(255,255,0)){
             setAnswer("#89e894"); //light green
-            setQuestion("Correct!!");
+            setQuestion("CORRECT");
             setPoints(getPoints()+50*getMultiplier());
             setMultiplier(getMultiplier()+1);
         }
         else {
             setAnswer("red");
-            setQuestion("Sorry, that's wrong");
+            setQuestion("WRONG");
             setMultiplier(1);
         }
 

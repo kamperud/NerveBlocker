@@ -15,38 +15,32 @@ Rectangle {
         color: "#f7e967"
         radius: 15
         width: parent.width*4.5/12
-        height: parent.width/5.5
+        height: parent.height/10
         anchors.left: parent.left
         anchors.leftMargin: parent.width/12
         anchors.top: parent.top
         anchors.topMargin: parent.width/20
 
         Text {
-            id: text1
-            height: 19
             text: qsTr("POINTS")
+            font.family: ubuntu.name
+            font.pixelSize: parent.height/3
+
             anchors.top: parent.top
-            anchors.topMargin: 0
             anchors.right: parent.right
-            anchors.rightMargin: 0
             anchors.left: parent.left
-            anchors.leftMargin: 0
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 18
         }
 
         Text {
-            id: text2
-            y: 17
-            text: qsTr("2431")
+            text: gamehandler.points
+            font.pixelSize: parent.height/1.5
+            font.family: scoreFont.name
+
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 0
             horizontalAlignment: Text.AlignHCenter
             anchors.right: parent.right
-            anchors.rightMargin: 0
             anchors.left: parent.left
-            anchors.leftMargin: 0
-            font.pixelSize: 30
         }
     }
 
@@ -55,50 +49,115 @@ Rectangle {
         color: "#f7e967"
         radius: 15
         width: parent.width*4.5/12
-        height: parent.width/5.5
+        height: parent.height/10
         anchors.top: parent.top
         anchors.topMargin: parent.width/20
         anchors.right: parent.right
         anchors.rightMargin: parent.width/12
 
         Text {
-            id: text4
-            x: -162
-            y: 440
-            text: qsTr("x4")
-            anchors.leftMargin: 0
+            text: "x" + gamehandler.multiplier
+            font.pixelSize: parent.height/1.5
+            font.family: scoreFont.name
+
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             horizontalAlignment: Text.AlignHCenter
-            anchors.bottomMargin: 0
-            font.pixelSize: 30
-            anchors.rightMargin: 0
         }
 
         Text {
-            id: text3
-            x: 22
-            y: 19
-            height: 19
             text: qsTr("MULTIPLIER")
-            anchors.leftMargin: 0
+            font.family: ubuntu.name
+            font.pixelSize: parent.height/3
+
             anchors.top: parent.top
-            anchors.topMargin: 0
             anchors.left: parent.left
             anchors.right: parent.right
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 18
-            anchors.rightMargin: 0
         }
 
+    }
+
+
+    Item {
+        anchors.top: topPoints.bottom
+        anchors.bottom: gameImage.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+
+        Text {
+            color: "#ffffff"
+            text: qsTr("Touch the")
+            font.family: ubuntu.name
+            font.pixelSize:parent.height/5
+
+            visible: !gamehandler.nextButtonVisible
+
+            verticalAlignment: Text.AlignBottom
+            horizontalAlignment: Text.AlignHCenter
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset: -question2Feedback.font.pixelSize
+            anchors.right: parent.right
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: question2Feedback
+            font.bold: true
+            font.pixelSize: parent.height/4
+            font.family: ubuntu.name
+
+            text: gamehandler.question
+            color: gamehandler.answer
+
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+        }
+    }
+
+    Image {
+        id: gameImage
+        width: parent.width*11/12
+        anchors.bottom: botMenu.top
+        anchors.bottomMargin: parent.width/20
+        anchors.horizontalCenter: parent.horizontalCenter
+
+
+        fillMode: Image.PreserveAspectFit
+        source: gamehandler.image
+
+
+        MouseArea {
+            id: imageArea
+            anchors.fill: parent
+            onClicked: {
+                if(!gamehandler.nextButtonVisible) {
+                    crox.x = mouse.x + gameImage.x - 25
+                    crox.y = mouse.y + gameImage.y - 25
+
+                }
+               gamehandler.imageClicked(mouse.x, mouse.y, imageArea.width, imageArea.height)
+            }
+        }
+    }
+    Image {
+        id: crox
+        z: 1
+        x: 0
+        y: 0
+        visible: gamehandler.nextButtonVisible
+        source: "/cancel-50.png"
     }
 
     Rectangle {
         id: botMenu
         width: parent.width*4.5/12
-        height: parent.width/5.5
-        color: "#04bfbf"
+        height: parent.height/10
+        color: menuButton.pressed ?  "#cafcd8" :"#04bfbf"
         radius: 15
         anchors.left: parent.left
         anchors.leftMargin: parent.width/12
@@ -106,26 +165,28 @@ Rectangle {
         anchors.bottomMargin: parent.width/20
 
         Text {
-            id: text6
             color: "#ffffff"
             text: qsTr("MENU")
+            font.family: ubuntu.name
+            font.pixelSize: parent.height/2.5
+
             verticalAlignment: Text.AlignVCenter
             anchors.fill: parent
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 25
         }
 
         MouseArea {
-            id: mouseArea1
+            id: menuButton
             anchors.fill: parent
+            onClicked: mainArea.state = "startGame"
         }
     }
 
     Rectangle {
         id: botNext
         width: parent.width*4.5/12
-        height: parent.width/5.5
-        color: "#04bfbf"
+        height: parent.height/10
+        color: nextButton.pressed && gamehandler.nextButtonVisible ?  "#cafcd8" :"#04bfbf"
         radius: 15
         anchors.right: parent.right
         anchors.rightMargin: parent.width/12
@@ -140,59 +201,43 @@ Rectangle {
         }
 
         MouseArea {
-            id: mouseArea2
+            id: nextButton
             anchors.fill: parent
+            onClicked: {
+                if(!gamehandler.gameFinished) {
+                    gamehandler.newTask()
+                } else {
+                    mainArea.state = "doneGame"
+                }
+            }
         }
     }
 
-
-
-
-    Image {
-        id: gameImage
-        x: 0
-        y: 172
-        width: parent.width*11/12
-        anchors.bottom: botMenu.top
-        anchors.bottomMargin: parent.width/20
-        anchors.horizontalCenter: parent.horizontalCenter
-
-
-        fillMode: Image.PreserveAspectFit
-        source: "gameImages/13a.png"
-    }
-    Text {
-        id: text5
-        y: 115
-        height: 43
-        color: "#ffffff"
-        text: qsTr("FEMORAL NERVE")
-        anchors.bottom: gameImage.top
-        anchors.bottomMargin: 9
-        font.bold: true
-        font.family: "Verdana"
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        font.pixelSize: 26
-    }
-    Text {
-        id: text7
-        y: 83
-        height: 17
-        color: "#ffffff"
-        text: qsTr("Touch the")
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-        anchors.bottom: text5.top
-        anchors.bottomMargin: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        font.pixelSize: 20
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
