@@ -1,8 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>ios/images/back-50-3399FF.png</file>
-        <file>ios/images/back-25-3399FF.png</file>
-        <file>ios/images/back-50-C2E0FF.png</file>
         <file>gameImages/1a.png</file>
         <file>gameImages/1.png</file>
         <file>gameImages/1_map.png</file>
@@ -18,10 +15,11 @@
         <file>gameImages/5_map.png</file>
         <file>gameImages/5a.png</file>
         <file>gameImages/5.png</file>
-        <file>Fireworks.png</file>
-        <file>bar.png</file>
-        <file>cancel-50.png</file>
-        <file>arrow-19-grey.png</file>
-        <file>arrow-19-512.png</file>
+        <file>icons/cancel-50.png</file>
+        <file>icons/arrow-19-grey.png</file>
+        <file>icons/arrow-19-512.png</file>
+        <file>icons/back-50-3399FF.png</file>
+        <file>icons/back-25-3399FF.png</file>
+        <file>icons/back-50-C2E0FF.png</file>
     </qresource>
 </RCC>

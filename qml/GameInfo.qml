@@ -128,27 +128,12 @@ Rectangle {
             anchors.topMargin: gameInfo.height/50
         }
 
-        Image {
-            id: statusBarImage
-            anchors.top: explanation2.bottom
-            anchors.topMargin: parent.width/10
-            height: sourceSize.height*parent.width/sourceSize.width
-            anchors.right: parent.right
-            anchors.rightMargin: 20
-            anchors.left: parent.left
-            anchors.leftMargin: 20
-
-            source: "/bar.png"
-            fillMode: Image.PreserveAspectFit
-            visible: true
-        }
-
         ExplanationText {
             id: explanation3
             text: "When you've finished a task you get a new one by clicking the arrow at the bottom of the screen, pictured above. \
 The middle number represents the points you've accumulated so far in the game the number furthest to the left is the point multiplier. The multiplier increases when you get a task right, and resets when you get one wrong"
 
-            anchors.top: statusBarImage.bottom
+            anchors.top: explanation2.bottom
             anchors.topMargin: gameInfo.height/30
         }
         ExplanationText {

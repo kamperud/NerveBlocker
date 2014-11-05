@@ -171,7 +171,7 @@ Rectangle {
         x: 0
         y: 0
         visible: gamehandler.nextButtonVisible
-        source: "/cancel-50.png"
+        source: "icons/cancel-50.png"
     }
 
     Rectangle {
@@ -218,7 +218,7 @@ Rectangle {
             id: image1
             fillMode: Image.PreserveAspectFit
             anchors.fill: parent
-            source: "arrow-19-512.png"
+            source: "icons/arrow-19-512.png"
         }
 
         MouseArea {
