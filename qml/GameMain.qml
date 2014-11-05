@@ -43,7 +43,7 @@ ApplicationWindow {
             }
         ]
 
-        GameNew {
+        Game {
             id: game
             anchors.fill: parent
             visible: parent.state === "inGame"
