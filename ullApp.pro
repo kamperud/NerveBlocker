@@ -3,7 +3,6 @@ TEMPLATE = app
 QT += qml quick widgets svg core gui
 
 SOURCES += main.cpp \
-    platformdetailes.cpp \
     gamehandler.cpp
 
 RESOURCES += \
@@ -23,7 +22,6 @@ OTHER_FILES += \
     android/AndroidManifest.xml \
 
 HEADERS += \
-    platformdetailes.h \
     gamehandler.h
 
 macx:CONFIG += x86
