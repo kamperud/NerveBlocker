@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-#define MAX_IMAGES 13
+#define MAX_IMAGES 5
 #define MAX_TASKS_PER_GAME 10
 #define MAX_QUESTIONS 3
 

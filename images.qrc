@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
+        <file>arrow-19-512.png</file>
         <file>ios/images/back-50-3399FF.png</file>
         <file>ios/images/back-25-3399FF.png</file>
         <file>ios/images/back-50-C2E0FF.png</file>
@@ -15,32 +16,6 @@
         <file>gameImages/4_map.png</file>
         <file>gameImages/4a.png</file>
         <file>gameImages/4.png</file>
-        <file>arrow-19-512.png</file>
-        <file>arrow-19-512-green.png</file>
-        <file>gameImages/13_map.png</file>
-        <file>gameImages/13a.png</file>
-        <file>gameImages/13.png</file>
-        <file>gameImages/12_map.png</file>
-        <file>gameImages/12a.png</file>
-        <file>gameImages/12.png</file>
-        <file>gameImages/11_map.png</file>
-        <file>gameImages/11a.png</file>
-        <file>gameImages/11.png</file>
-        <file>gameImages/10_map.png</file>
-        <file>gameImages/10a.png</file>
-        <file>gameImages/10.png</file>
-        <file>gameImages/9_map.png</file>
-        <file>gameImages/9a.png</file>
-        <file>gameImages/9.png</file>
-        <file>gameImages/8_map.png</file>
-        <file>gameImages/8a.png</file>
-        <file>gameImages/8.png</file>
-        <file>gameImages/7_map.png</file>
-        <file>gameImages/7a.png</file>
-        <file>gameImages/7.png</file>
-        <file>gameImages/6_map.png</file>
-        <file>gameImages/6a.png</file>
-        <file>gameImages/6.png</file>
         <file>gameImages/5_map.png</file>
         <file>gameImages/5a.png</file>
         <file>gameImages/5.png</file>
