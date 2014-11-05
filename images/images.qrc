@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>arrow-19-512.png</file>
         <file>ios/images/back-50-3399FF.png</file>
         <file>ios/images/back-25-3399FF.png</file>
         <file>ios/images/back-50-C2E0FF.png</file>
@@ -23,5 +22,6 @@
         <file>bar.png</file>
         <file>cancel-50.png</file>
         <file>arrow-19-grey.png</file>
+        <file>arrow-19-512.png</file>
     </qresource>
 </RCC>

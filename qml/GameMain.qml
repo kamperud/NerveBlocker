@@ -9,10 +9,10 @@ ApplicationWindow {
     title: qsTr("UllApp")
     color: "#ffffff"
 
-    FontLoader { id: birdFont; source: "/LittleBird.ttf" }
-    FontLoader { id: scoreFont; source: "/whysoserious.ttf" }
-    FontLoader { id: orangeFont; source: "/orange.ttf" }
-    FontLoader { id: ubuntu; source: "/Ubuntu-R.ttf" }
+    FontLoader { id: birdFont; source: "fonts/LittleBird.ttf" }
+    FontLoader { id: scoreFont; source: "fonts/whysoserious.ttf" }
+    FontLoader { id: orangeFont; source: "fonts/orange.ttf" }
+    FontLoader { id: ubuntu; source: "fonts/Ubuntu-R.ttf" }
 
     Item {
         id: mainArea

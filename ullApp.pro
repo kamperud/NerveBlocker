@@ -6,9 +6,10 @@ SOURCES += main.cpp \
     platformdetailes.cpp \
     gamehandler.cpp
 
-RESOURCES += qml.qrc \
-    images.qrc \
-    fonts.qrc
+RESOURCES += \
+    qml/qml.qrc \
+    images/images.qrc \
+    fonts/fonts.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =

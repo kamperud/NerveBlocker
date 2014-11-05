@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/">
+    <qresource prefix="/fonts">
         <file>LittleBird.ttf</file>
         <file>orange.ttf</file>
         <file>whysoserious.ttf</file>
