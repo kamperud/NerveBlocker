@@ -151,28 +151,30 @@ Rectangle {
         fillMode: Image.PreserveAspectFit
         source: gamehandler.image
 
-
+        Image {
+            id: crox
+            z: 1
+            x: 0
+            y: 0
+            width: parent.width/10
+            height: width
+            visible: gamehandler.nextButtonVisible
+            source: "icons/cancel-50.png"
+        }
         MouseArea {
             id: imageArea
             anchors.fill: parent
             onClicked: {
                 if(!gamehandler.nextButtonVisible) {
-                    crox.x = mouse.x + gameImage.x - 25
-                    crox.y = mouse.y + gameImage.y - 25
+                    crox.x = mouse.x - crox.width/2
+                    crox.y = mouse.y - crox.width/2
 
                 }
                gamehandler.imageClicked(mouse.x, mouse.y, imageArea.width, imageArea.height)
             }
         }
     }
-    Image {
-        id: crox
-        z: 1
-        x: 0
-        y: 0
-        visible: gamehandler.nextButtonVisible
-        source: "icons/cancel-50.png"
-    }
+
 
     Rectangle {
         id: botMenu
