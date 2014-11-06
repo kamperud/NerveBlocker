@@ -8,5 +8,6 @@
         <file>Game.qml</file>
         <file>Levels.qml</file>
         <file>ExplanationText.qml</file>
+        <file>EndScreen.qml</file>
     </qresource>
 </RCC>
