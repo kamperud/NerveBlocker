@@ -3,11 +3,9 @@
         <file>MenuButton.qml</file>
         <file>GameInfo.qml</file>
         <file>GameMain.qml</file>
-        <file>GameStart.qml</file>
-        <file>GameFinished.qml</file>
         <file>Game.qml</file>
-        <file>Levels.qml</file>
+        <file>GameStart.qml</file>
         <file>ExplanationText.qml</file>
-        <file>EndScreen.qml</file>
+        <file>GameFinished.qml</file>
     </qresource>
 </RCC>

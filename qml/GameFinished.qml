@@ -2,93 +2,82 @@ import QtQuick 2.0
 
 Rectangle {
     id: gameFinishedScreen
-    width: parent.width
-    height: parent.height
-    color: "#202020"
+    width: 300
+    height: 500
+    color: "#333333"
 
-
-
-
-    Item{
-        id:finishedInfo
-        width: parent.width
-        height: parent.height * 4 / 5
+    Rectangle {
+        id: rectangle1
+        width: parent.width / 1.3
+        height: parent.height * 8/15
+        color: "#f7e967"
+        radius: 15
         anchors.top: parent.top
+        anchors.topMargin: parent.height/10
+        anchors.horizontalCenter: parent.horizontalCenter
 
-        Rectangle{
-            id: gameFinishedBox
-            width: parent.width / 1.3
+
+        Text{
+            id: scoreText
+            text: qsTr("FINAL SCORE")
+            font.family: ubuntu.name
+            font.pixelSize: parent.width/10
+
             anchors.horizontalCenter: parent.horizontalCenter
-            border.color: "#B3B3B3"
-            color: "#333333"
-            radius: 30
             anchors.top: parent.top
+            anchors.topMargin: gameFinishedScreen.height / 30
+        }
+
+        Text{
+            id:scoreNumber
+            text: gamehandler.timed ? gamehandler.points - gamehandler.timeSpent*10: gamehandler.points
+
+            font.family: scoreFont.name
+            font.pixelSize: parent.width/4
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: scoreText.bottom
+            anchors.topMargin: parent.height/20
+        }
+
+        Text{
+            id:nofCorrectText
+            text: qsTr("You got " + "8" + "/" + "10")
+            font.pixelSize: parent.width/10
+            font.family: ubuntu.name
+
+
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: scoreNumber.bottom
             anchors.topMargin: parent.height/8
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: parent.height/5
+            horizontalAlignment: Text.AlignHCenter
 
-            Text{
-                id: finalscore
-                text: "FINAL SCORE"
-                font.family: birdFont.name
-                font.pixelSize: parent.width/10
-                color: "yellow"
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: parent.top
-                anchors.topMargin: gameFinishedScreen.height / 30
-            }
-            Text{
-                id:finalpoints
-                text: gamehandler.timed ? gamehandler.points - gamehandler.timeSpent*10: gamehandler.points
-                font.family: scoreFont.name
-                color: "#ffcf0b"
-                font.pixelSize: parent.width/3
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: finalscore.bottom
-                anchors.topMargin: 0 //gameFinishedScreen.height / 60
-            }
-            Text{
-                id: timespent
-                text: "You spent\n"+ gamehandler.timeSpent +" seconds"
-                color: "yellow"
-                visible: gamehandler.timed
-                font.pixelSize: parent.width/10
-                font.family: orangeFont.name
+        }
 
-                horizontalAlignment: Text.AlignHCenter
+        Row{
+           id: highestscoreRow
+           spacing: parent.width/20
+           anchors.horizontalCenter: parent.horizontalCenter
+           anchors.bottom: parent.bottom
+           anchors.bottomMargin: parent.height/15
 
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.top: finalpoints.bottom
-                anchors.topMargin: parent.height/25
+           Text{
+               id:highestscoreText
+               text: "High Score:"
+               font.family: ubuntu.name
+               font.pixelSize: parent.parent.width/12
 
-            }
-            Row {
-                id: row
-                spacing: parent.width/20
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: parent.height/15
-                Text{
-                    id:highestscore
-                    text: "High Score:"
-                    font.family: birdFont.name
-                    color: "yellow"
-                    font.pixelSize: gameFinishedBox.width/12
-                }
+           }
 
-                Text{
-                    id:highestpoints
-                    text: gamehandler.timed ? gamehandler.timed_highscore :gamehandler.highscore
-                    color: "#ffcf0b"
-                    font.pixelSize: gameFinishedBox.width/9
-                    font.family: scoreFont.name
-                    anchors.baseline: highestscore.baseline
+           Text{
+               id:highestscoreNumber
+               text: gamehandler.timed ? gamehandler.timed_highscore :gamehandler.highscore
+               font.family: scoreFont.name
+               font.pixelSize: parent.parent.width/9
+               anchors.baseline: highestscoreText.baseline
 
-                }
-            }
+           }
         }
     }
-
     Row {
         id: finishButtons
         anchors.horizontalCenter: parent.horizontalCenter
@@ -97,18 +86,17 @@ Rectangle {
         spacing: parent.width/6
 
         Rectangle {
-            id: mainMenuButton
-            width: gameFinishedScreen.width / 4
+            id: buttMainMenu
+            width: parent.parent.width / 4
             height: width
+            color: "#04bfbf"
+            radius: 15
 
-            border.color: "#B3B3B3"
-            color: menuButton.pressed ?  "#ee606060" :"#333333"
-            radius: 30
             Text{
+                color: "#ffffff"
                 text: "Main \nMenu"
-                color: "yellow"
                 font.pixelSize: parent.width/4
-                font.family: birdFont.name
+                font.family: ubuntu.name
 
                 anchors.horizontalCenter: parent.horizontalCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -121,20 +109,21 @@ Rectangle {
                     mainArea.state = "startGame"
                 }
             }
+
         }
 
         Rectangle {
-            id: againButton
-            width: gameFinishedScreen.width / 4
+            id: buttPlayAgain
+            width: parent.parent.width / 4
             height: width
 
-            border.color: "#B3B3B3"
-            color: playButton.pressed ?  "#ee606060" :"#333333"
-            radius: 30
+            color: "#04bfbf"
+            radius: 15
+
             Text{
                 text: "Play \nAgain"
-                color: "yellow"
-                font.family: birdFont.name
+                color: "#ffffff"
+                font.family: ubuntu.name
                 font.pixelSize: parent.width/4
 
 
@@ -142,8 +131,6 @@ Rectangle {
                 horizontalAlignment: Text.AlignHCenter
                 anchors.verticalCenter: parent.verticalCenter
             }
-
-
             MouseArea{
                 id: playButton
                 anchors.fill: parent
@@ -152,7 +139,13 @@ Rectangle {
                     mainArea.state = "inGame"
                 }
             }
-
         }
     }
+
+
+
+
+
+
+
 }

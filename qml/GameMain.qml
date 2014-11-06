@@ -58,7 +58,7 @@ ApplicationWindow {
             anchors.fill: parent
             visible: parent.state === "doneGame"
         }
-        Levels {
+        GameStart {
             id: gamestart
             anchors.fill: parent
             visible: parent.state === "startGame"
