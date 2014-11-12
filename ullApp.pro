@@ -3,7 +3,11 @@ TEMPLATE = app
 QT += qml quick widgets svg core gui
 
 SOURCES += main.cpp \
-    gamehandler.cpp
+    gamehandler.cpp \
+    task.cpp \
+    game.cpp \
+    question.cpp \
+    ultrasoundimage.cpp
 
 RESOURCES += \
     qml/qml.qrc \
@@ -22,7 +26,11 @@ OTHER_FILES += \
     android/AndroidManifest.xml \
 
 HEADERS += \
-    gamehandler.h
+    gamehandler.h \
+    task.h \
+    game.h \
+    question.h \
+    ultrasoundimage.h
 
 macx:CONFIG += x86
 

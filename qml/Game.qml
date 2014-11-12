@@ -166,11 +166,12 @@ Rectangle {
             anchors.fill: parent
             onClicked: {
                 if(!gamehandler.nextButtonVisible) {
-                    crox.x = mouse.x - crox.width/2
-                    crox.y = mouse.y - crox.width/2
-
+                    crox.x = mouse.x - crox.width/2;
+                    crox.y = mouse.y - crox.width/2;
                 }
-               gamehandler.imageClicked(mouse.x, mouse.y, imageArea.width, imageArea.height)
+                var unscaledX = gameImage.sourceSize.width*mouse.x/width;
+                var unscaledY = gameImage.sourceSize.height*mouse.y/height;
+                gamehandler.game.currentTask.answerTask(unscaledX, unscaledY);
             }
         }
     }
