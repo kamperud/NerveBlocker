@@ -10,75 +10,28 @@ Rectangle {
     anchors.fill: parent
     color: "#222222"
 
-    Rectangle {
+    PointsBox {
         id: topPoints
-        color: "#f7e967"
-        radius: 15
+        contentText: gameWrapper.points
         width: parent.width*4.5/12
         height: parent.height/10
         anchors.left: parent.left
         anchors.leftMargin: parent.width/12
         anchors.top: parent.top
         anchors.topMargin: parent.width/20
-
-        Text {
-            text: qsTr("POINTS")
-            font.family: ubuntu.name
-            font.pixelSize: parent.height/3
-
-            anchors.top: parent.top
-            anchors.right: parent.right
-            anchors.left: parent.left
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        Text {
-            text: gamehandler.points
-            font.pixelSize: parent.height/1.5
-            font.family: scoreFont.name
-
-            anchors.bottom: parent.bottom
-            horizontalAlignment: Text.AlignHCenter
-            anchors.right: parent.right
-            anchors.left: parent.left
-        }
     }
 
-    Rectangle {
+    PointsBox {
         id: topMulti
-        color: "#f7e967"
-        radius: 15
+        contentText: "x" + gamehandler.multiplier
+        labelText: qsTr("MULTIPLIER")
         width: parent.width*4.5/12
         height: parent.height/10
         anchors.top: parent.top
         anchors.topMargin: parent.width/20
         anchors.right: parent.right
         anchors.rightMargin: parent.width/12
-
-        Text {
-            text: "x" + gamehandler.multiplier
-            font.pixelSize: parent.height/1.5
-            font.family: scoreFont.name
-
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        Text {
-            text: qsTr("MULTIPLIER")
-            font.family: ubuntu.name
-            font.pixelSize: parent.height/3
-
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            horizontalAlignment: Text.AlignHCenter
-        }
-
     }
-
 
     Item {
         anchors.top: topPoints.bottom
@@ -118,6 +71,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
         }
     }
+
     Rectangle {
         width: gameImage.width/2
         height: gameImage.height/20

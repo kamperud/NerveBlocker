@@ -3,9 +3,6 @@
 
 #include <QObject>
 
-const int MAX_IMAGES = 15;
-const int MAX_TASKS_PER_GAME = 10;
-const int MAX_QUESTIONS = 3;
 
 class GameHandler : public QObject
 {
@@ -15,21 +12,15 @@ class GameHandler : public QObject
     Q_PROPERTY(QString answer READ getAnswer NOTIFY answerChanged)
     Q_PROPERTY(QString image READ getImage NOTIFY imageChanged)
     Q_PROPERTY(bool nextButtonVisible READ getNextButtonVisibility NOTIFY taskActivityChanged)
-    Q_PROPERTY(int multiplier READ getMultiplier NOTIFY multiplierChanged)
-    Q_PROPERTY(int points READ getPoints NOTIFY pointsChanged)
     Q_PROPERTY(bool gameFinished READ getGameFinished NOTIFY gameFinishedChanged)
     Q_PROPERTY(int timeSpent READ getTimeSpent NOTIFY timeSpentChanged)
     Q_PROPERTY(int highscore MEMBER m_high_score NOTIFY highScoreSpentChanged)
     Q_PROPERTY(bool timed MEMBER m_timed NOTIFY levelChanged)
     Q_PROPERTY(int timed_highscore MEMBER m_timed_high_score NOTIFY highScoreSpentChanged)
 
-
-
 public:
-    GameHandler(QObject *parent = 0);
+    GameHandler(QObject *parent = nullptr);
 
-    Q_INVOKABLE void newTask();
-    Q_INVOKABLE void newGame();
     Q_INVOKABLE void imageClicked(int x, int y, int width, int height);
 
 
@@ -46,12 +37,6 @@ public:
     bool getNextButtonVisibility();
     void setTaskActivity(bool b);
 
-    int getMultiplier();
-    void setMultiplier(int newValue);
-
-    int getPoints();
-    void setPoints(int newValue);
-
     int getGameFinished();
     void setGameFinished(bool b);
 
@@ -67,8 +52,6 @@ signals:
     void answerChanged(QString newValue);
     void imageChanged(QString newValue);
     void taskActivityChanged();
-    void multiplierChanged(int newValue);
-    void pointsChanged(int newValue);
     void gameFinishedChanged();
     void timeSpentChanged();
     void highScoreSpentChanged(int newValue);

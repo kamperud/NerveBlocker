@@ -2,12 +2,15 @@ TEMPLATE = app
 
 QT += qml quick widgets svg core gui
 
+CONFIG += c++11
+
 SOURCES += main.cpp \
     gamehandler.cpp \
     task.cpp \
     game.cpp \
     question.cpp \
-    ultrasoundimage.cpp
+    ultrasoundimage.cpp \
+    organ.cpp
 
 RESOURCES += \
     qml/qml.qrc \
@@ -30,7 +33,9 @@ HEADERS += \
     task.h \
     game.h \
     question.h \
-    ultrasoundimage.h
+    ultrasoundimage.h \
+    organ.h \
+    constants.h
 
 macx:CONFIG += x86
 

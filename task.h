@@ -4,28 +4,20 @@
 #include <QObject>
 
 #include "ultrasoundimage.h"
+#include "organ.h"
 
 class Task: public QObject
 {
 public:
-    explicit Task(TaskType taskType, int imageId, QObject *parent = nullptr);
-    enum TaskType {
-        FEMUR,
-        NERVE,
-        ARTERY,
-        LATA,
-        ILIACA,
-        NUM_TYPES // number of enum elements
-    };
-    Q_ENUMS(TaskType)
-    static Task createRandomTask();
+    explicit Task(Organ::Type organ = Organ::ILIACA, int imageId = 1, QObject *parent = nullptr);
+    static Task* createRandomTask(QObject* parent = nullptr);
 
 public slots:
     bool answerTask(int x, int y);
 
 private:
-    TaskType m_taskType;
-    UltraSoundImage m_ultraSoundImage;
+    Organ::Type m_taskType;
+    UltraSoundImage* m_ultraSoundImage;
     bool m_answered;
     bool m_correct;
 };

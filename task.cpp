@@ -1,11 +1,12 @@
 #include "task.h"
+#include "constants.h"
 
 #include <array>
 
-Task::Task(TaskType taskType, int imageId, QObject* parent) :
+Task::Task(Organ::Type organ, int imageId, QObject* parent) :
     QObject(parent),
-    m_taskType(taskType),
-    m_ultraSoundImage(imageId),
+    m_taskType(organ),
+    m_ultraSoundImage(new UltraSoundImage(imageId, this)),
     m_answered(false),
     m_correct(false)
 {}
@@ -13,11 +14,11 @@ Task::Task(TaskType taskType, int imageId, QObject* parent) :
 bool Task::answerTask(int x, int y)
 {
     m_answered = true;
-    m_correct = m_ultraSoundImage.hasOrganTypeAtPosition(x, y, m_taskType);
+    m_correct = m_ultraSoundImage->hasOrganTypeAtPosition(x, y, m_taskType);
     return m_correct;
 }
 
-Task Task::createRandomTask(QObject *parent = nullptr)
+Task *Task::createRandomTask(QObject *parent)
 {
     const std::array<int, 15+1> supportsFemur = { //TODO: cleanup
         false, //doesn't exist
@@ -40,10 +41,10 @@ Task Task::createRandomTask(QObject *parent = nullptr)
 
     int taskId = (rand() % MAX_IMAGES)+1;
 
-    Task::TaskType taskType(Task::ARTERY);
+    Organ::Type organ(Organ::ARTERY);
     do {
-        taskType = rand() % Task::NUM_TYPES;
-    } while(taskType == FEMUR && supportsFemur[taskId] == false);
+        organ = Organ::Type(rand() % Organ::NUM_TYPES);
+    } while(organ == Organ::FEMUR && supportsFemur[taskId] == false);
 
-    return Task(taskType, taskId, parent);
+    return new Task(organ, taskId, parent);
 }

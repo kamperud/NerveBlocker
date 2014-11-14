@@ -1,12 +1,12 @@
 #include "ultrasoundimage.h"
-
 #include "task.h"
+
+#include <QImage>
 
 UltraSoundImage::UltraSoundImage(int imageId, QObject *parent) :
     QObject(parent),
     m_imageId(imageId)
-{
-}
+{}
 
 QString UltraSoundImage::getImagePath() const
 {
@@ -23,20 +23,20 @@ QString UltraSoundImage::getMappedImagePath() const
     return QString("/gameImages/%1.png").arg(m_imageId);
 }
 
-bool UltraSoundImage::hasOrganTypeAtPosition(int x, int y, Task::TaskType organType)
+bool UltraSoundImage::hasOrganTypeAtPosition(int x, int y, Organ::Type organ) const
 {
-    QImage *img = new QImage(m_ultraSoundImage.getMappedImagePath(), "PNG");
+    QImage *img = new QImage(getMappedImagePath(), "PNG");
 
-    switch (organType) {
-        case Task::NERVE:
+    switch (organ) {
+        case Organ::NERVE:
             return img->pixel(x,y) == qRgb(255,255,0); //yellow
-        case Task::ARTERY:
+        case Organ::ARTERY:
             return img->pixel(x,y) == qRgb(255,0,0);   //red
-        case Task::ILIACA:
+        case Organ::ILIACA:
             return img->pixel(x,y) == qRgb(255,0,255); //pink-purple
-        case Task::LATA:
+        case Organ::LATA:
             return img->pixel(x,y) == qRgb(0,255,255); //cyan
-        case Task::FEMUR:
+        case Organ::FEMUR:
             return img->pixel(x,y) == qRgb(0,255,0);   //green
         default:
             return false;

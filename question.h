@@ -17,7 +17,6 @@ private:
     QString question_text_upper;
     QString question_text_main;
     QString helper_text;
-    QString helper_color;
 };
 
 #endif // QUESTION_H

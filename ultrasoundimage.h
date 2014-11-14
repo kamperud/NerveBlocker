@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "organ.h"
+
 class UltraSoundImage : public QObject
 {
     Q_OBJECT
@@ -18,10 +20,10 @@ public slots:
     QString getImagePath() const;
     QString getAnnotatedImagePath() const;
     QString getMappedImagePath() const;
-    bool hasOrganTypeAtPosition(int x, int y, Task::TaskType organType);
+    bool hasOrganTypeAtPosition(int x, int y, Organ::Type organ) const;
 
 private:
-    const int m_imageId;
+    int m_imageId;
 
 };
 

@@ -7,5 +7,6 @@
         <file>GameStart.qml</file>
         <file>ExplanationText.qml</file>
         <file>GameFinished.qml</file>
+        <file>PointsBox.qml</file>
     </qresource>
 </RCC>
