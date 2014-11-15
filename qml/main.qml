@@ -2,7 +2,6 @@ import QtQuick 2.0
 import QtQuick.Controls 1.2
 
 ApplicationWindow {
-    id: applicationWindow1
     visible: true
     width: 300
     height: 500
@@ -17,55 +16,55 @@ ApplicationWindow {
     Item {
         id: mainArea
         anchors.fill: parent
-        state: "startGame"
+        state: "mainMenu"
 
         focus: true // important - otherwise we'll get no key events
 
         Keys.onReleased: {
            if (event.key === Qt.Key_Back) {
                event.accepted = true
-               state = "startGame"
+               state = "mainMenu"
            }
         }
 
         states: [
             State {
-                name: "startGame"
+                name: "mainMenu"
             },
             State {
                 name: "inGame"
             },
             State {
                 name: "doneGame"
-            },
-            State {
-                name: "infoGame"
             }
         ]
 
-        Repeater {
-            model: gamehandler.game ? 1 : 0
-            Game {
-                id: game
-                anchors.fill: parent
-                visible: parent.state === "inGame"
+        Component {
+            id: component_game
+            Item {
+                Game {
+                    anchors.fill: parent
+                    game: gamehandler.game
+                    visible: mainArea.state === "inGame"
+                }
             }
         }
-
-        GameInfo {
-            id: gameinfo
+        Loader {
+            id: loader_game
+            sourceComponent: gamehandler.game ? component_game : undefined
             anchors.fill: parent
-            visible: parent.state === "infoGame"
         }
+
         GameFinished {
             id: gamefinished
             anchors.fill: parent
             visible: parent.state === "doneGame"
         }
-        GameStart {
+
+        MainMenu {
             id: gamestart
             anchors.fill: parent
-            visible: parent.state === "startGame"
+            visible: parent.state === "mainMenu"
         }
 
 

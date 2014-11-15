@@ -4,7 +4,6 @@ import QtQuick.Controls 1.2
 import UllApp 1.0;
 
 Rectangle {
-    property var task1: gamehandler.game.currentTask
     property var game: gamehandler.game
 
     //todo move to a service
@@ -24,9 +23,6 @@ Rectangle {
             return "Unknown";
         }
     }
-
-    id: gameWrapper
-    anchors.fill: parent
     color: "#222222"
 
     PointsBox {
@@ -58,27 +54,6 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: botMenu.top
-    }
-
-    Rectangle {
-        width: taskImage.width/2
-        height: taskImage.height/20
-        color: "#f7e967"
-        visible: gameWrapper.visible && gamehandler.timed
-
-        z: 1
-        x: taskImage.x
-        anchors.bottom: taskImage.top
-    }
-
-    Rectangle {
-        width: taskImage.width
-        height: taskImage.height/20
-        color: "#666666"
-        visible: gameWrapper.visible && gamehandler.timed
-
-        x: taskImage.x
-        anchors.bottom: taskImage.top
     }
 
     Rectangle {

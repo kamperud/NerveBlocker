@@ -1,6 +1,7 @@
 import QtQuick 2.0
 
 Rectangle {
+    property var game: gamehandler.game
     id: gameFinishedScreen
     width: 300
     height: 500
@@ -30,7 +31,7 @@ Rectangle {
 
         Text{
             id:scoreNumber
-            text: gamehandler.timed ? gamehandler.points - gamehandler.timeSpent*10: gamehandler.points
+            text: game.points
 
             font.family: scoreFont.name
             font.pixelSize: parent.width/4

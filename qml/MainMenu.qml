@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 Rectangle {
-    id: gameStart
+    id: mainMenu
     width: 300
     height: 500
     color: "#222222"
@@ -99,7 +99,7 @@ Rectangle {
         MouseArea {
             id: infoArea
             anchors.fill: parent
-            onClicked: mainArea.state = "infoGame"
+//            onClicked: mainArea.state = "infoGame"
         }
 
         Text {

@@ -76,8 +76,6 @@ Item {
 
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
-            anchors.top: parent.top
-            anchors.bottom: helperText.top
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
@@ -100,6 +98,27 @@ Item {
             anchors.right: parent.right
             anchors.left: parent.left
         }
+    }
+
+    Rectangle {
+        width: taskImage.width/2
+        height: taskImage.height/20
+        color: "#f7e967"
+        visible: gamehandler.timed
+
+        z: 1
+        x: taskImage.x
+        anchors.bottom: taskImage.top
+    }
+
+    Rectangle {
+        width: taskImage.width
+        height: taskImage.height/20
+        color: "#666666"
+        visible: gamehandler.timed
+
+        x: taskImage.x
+        anchors.bottom: taskImage.top
     }
 
     Image {

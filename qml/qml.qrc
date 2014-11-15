@@ -1,10 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>MenuButton.qml</file>
-        <file>GameInfo.qml</file>
-        <file>GameMain.qml</file>
+        <file>main.qml</file>
         <file>Game.qml</file>
-        <file>GameStart.qml</file>
+        <file>MainMenu.qml</file>
         <file>ExplanationText.qml</file>
         <file>GameFinished.qml</file>
         <file>PointsBox.qml</file>
