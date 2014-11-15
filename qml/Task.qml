@@ -72,7 +72,7 @@ Item {
 
             visible: task.answered
             text: task.correct ? "Correct!!!" : "Wrong, idiot!"
-            color: task.correct ? "#44ff44" : "red"
+            color: task.correct ? "#a9e7ba" : "red"
 
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
