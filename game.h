@@ -1,14 +1,14 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <QObject>
+#include "task.h"
 
-class Task;
+#include <QObject>
 
 class Game : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(Task *currentTask READ getCurrentTask NOTIFY currentTaskChanged)
+    Q_PROPERTY(QObject *currentTask READ getCurrentTask NOTIFY currentTaskChanged)
     Q_PROPERTY(int points READ getPoints NOTIFY pointsChanged)
     Q_PROPERTY(int multiplier READ getMultiplier NOTIFY multiplierChanged)
 public:

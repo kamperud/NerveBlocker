@@ -5,8 +5,8 @@
 
 Task::Task(Organ::Type organ, int imageId, QObject* parent) :
     QObject(parent),
-    m_taskType(organ),
-    m_ultraSoundImage(new UltraSoundImage(imageId, this)),
+    m_organ(organ),
+    m_image(new UltraSoundImage(imageId, this)),
     m_answered(false),
     m_correct(false)
 {}
@@ -14,7 +14,9 @@ Task::Task(Organ::Type organ, int imageId, QObject* parent) :
 bool Task::answerTask(int x, int y)
 {
     m_answered = true;
-    m_correct = m_ultraSoundImage->hasOrganTypeAtPosition(x, y, m_taskType);
+    m_correct = m_image->hasOrganTypeAtPosition(x, y, m_organ);
+    if(m_correct)emit correctChanged(m_correct);
+    emit answeredChanged(m_answered);
     return m_correct;
 }
 
@@ -47,4 +49,14 @@ Task *Task::createRandomTask(QObject *parent)
     } while(organ == Organ::FEMUR && supportsFemur[taskId] == false);
 
     return new Task(organ, taskId, parent);
+}
+
+Organ::Type Task::getOrgan() const
+{
+    return m_organ;
+}
+
+UltraSoundImage *Task::getImage()
+{
+    return m_image;
 }

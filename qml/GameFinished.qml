@@ -65,7 +65,6 @@ Rectangle {
                text: "High Score:"
                font.family: ubuntu.name
                font.pixelSize: parent.parent.width/12
-
            }
 
            Text{
@@ -74,7 +73,6 @@ Rectangle {
                font.family: scoreFont.name
                font.pixelSize: parent.parent.width/9
                anchors.baseline: highestscoreText.baseline
-
            }
         }
     }

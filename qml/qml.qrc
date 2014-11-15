@@ -8,5 +8,6 @@
         <file>ExplanationText.qml</file>
         <file>GameFinished.qml</file>
         <file>PointsBox.qml</file>
+        <file>Task.qml</file>
     </qresource>
 </RCC>

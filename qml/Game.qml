@@ -1,18 +1,37 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.2
-
+import UllApp 1.0;
 
 Rectangle {
+    property var task1: gamehandler.game.currentTask
+    property var game: gamehandler.game
+
+    //todo move to a service
+    function getOrganName(organ){
+        switch(organ){
+        case Organ.FEMUR:
+            return "Femur";
+        case Organ.ARTERY:
+            return "Femoral Artery";
+        case Organ.ILIACA:
+            return "Fascia Iliaca";
+        case Organ.LATA:
+            return "Fascia lata";
+        case Organ.NERVE:
+            return "Femoral Nerve";
+        default:
+            return "Unknown";
+        }
+    }
+
     id: gameWrapper
-    x: 0
-    y: 0
     anchors.fill: parent
     color: "#222222"
 
     PointsBox {
         id: topPoints
-        contentText: gameWrapper.points
+        contentText: gamehandler.game.points
         width: parent.width*4.5/12
         height: parent.height/10
         anchors.left: parent.left
@@ -23,7 +42,7 @@ Rectangle {
 
     PointsBox {
         id: topMulti
-        contentText: "x" + gamehandler.multiplier
+        contentText: "x" + gamehandler.game.multiplier
         labelText: qsTr("MULTIPLIER")
         width: parent.width*4.5/12
         height: parent.height/10
@@ -33,103 +52,34 @@ Rectangle {
         anchors.rightMargin: parent.width/12
     }
 
-    Item {
+    Task {
+        task: game.currentTask
         anchors.top: topPoints.bottom
-        anchors.bottom: gameImage.top
         anchors.left: parent.left
         anchors.right: parent.right
-
-        Text {
-            color: "#ffffff"
-            text: qsTr("Touch the")
-            font.family: ubuntu.name
-            font.pixelSize:parent.height/5
-
-            visible: !gamehandler.nextButtonVisible
-
-            verticalAlignment: Text.AlignBottom
-            horizontalAlignment: Text.AlignHCenter
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: -question2Feedback.font.pixelSize
-            anchors.right: parent.right
-            anchors.left: parent.left
-        }
-
-        Text {
-            id: question2Feedback
-            font.bold: true
-            font.pixelSize: parent.height/4
-            font.family: ubuntu.name
-
-            text: gamehandler.question
-            color: gamehandler.answer
-
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-        }
+        anchors.bottom: botMenu.top
     }
 
     Rectangle {
-        width: gameImage.width/2
-        height: gameImage.height/20
+        width: taskImage.width/2
+        height: taskImage.height/20
         color: "#f7e967"
         visible: gameWrapper.visible && gamehandler.timed
 
         z: 1
-        x: gameImage.x
-        anchors.bottom: gameImage.top
+        x: taskImage.x
+        anchors.bottom: taskImage.top
     }
 
     Rectangle {
-        width: gameImage.width
-        height: gameImage.height/20
+        width: taskImage.width
+        height: taskImage.height/20
         color: "#666666"
         visible: gameWrapper.visible && gamehandler.timed
 
-        x: gameImage.x
-        anchors.bottom: gameImage.top
+        x: taskImage.x
+        anchors.bottom: taskImage.top
     }
-
-    Image {
-        id: gameImage
-        width: parent.width*11/12
-        height: sourceSize.height*width/sourceSize.width
-        anchors.bottom: botMenu.top
-        anchors.bottomMargin: parent.width/20
-        anchors.horizontalCenter: parent.horizontalCenter
-
-
-        fillMode: Image.PreserveAspectFit
-        source: gamehandler.image
-
-        Image {
-            id: crox
-            z: 1
-            x: 0
-            y: 0
-            width: parent.width/10
-            height: width
-            visible: gamehandler.nextButtonVisible
-            source: "icons/cancel-50.png"
-        }
-        MouseArea {
-            id: imageArea
-            anchors.fill: parent
-            onClicked: {
-                if(!gamehandler.nextButtonVisible) {
-                    crox.x = mouse.x - crox.width/2;
-                    crox.y = mouse.y - crox.width/2;
-                }
-                var unscaledX = gameImage.sourceSize.width*mouse.x/width;
-                var unscaledY = gameImage.sourceSize.height*mouse.y/height;
-                gamehandler.game.currentTask.answerTask(unscaledX, unscaledY);
-            }
-        }
-    }
-
 
     Rectangle {
         id: botMenu

@@ -43,11 +43,15 @@ ApplicationWindow {
             }
         ]
 
-        Game {
-            id: game
-            anchors.fill: parent
-            visible: parent.state === "inGame"
+        Repeater {
+            model: gamehandler.game ? 1 : 0
+            Game {
+                id: game
+                anchors.fill: parent
+                visible: parent.state === "inGame"
+            }
         }
+
         GameInfo {
             id: gameinfo
             anchors.fill: parent
