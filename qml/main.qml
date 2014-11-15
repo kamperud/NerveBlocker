@@ -13,60 +13,59 @@ ApplicationWindow {
     FontLoader { id: orangeFont; source: "fonts/orange.ttf" }
     FontLoader { id: ubuntu; source: "fonts/Ubuntu-R.ttf" }
 
-    Item {
-        id: mainArea
-        anchors.fill: parent
-        state: "mainMenu"
-
-        focus: true // important - otherwise we'll get no key events
-
-        Keys.onReleased: {
-           if (event.key === Qt.Key_Back) {
-               event.accepted = true
-               state = "mainMenu"
-           }
-        }
-
-        states: [
-            State {
-                name: "mainMenu"
-            },
-            State {
-                name: "inGame"
-            },
-            State {
-                name: "doneGame"
-            }
-        ]
-
-        Component {
-            id: component_game
-            Item {
-                Game {
-                    anchors.fill: parent
-                    game: gamehandler.game
-                    visible: mainArea.state === "inGame"
+    Component {
+        id: component_game
+        Item {
+            Game {
+                anchors.fill: parent
+                game: gamehandler.game
+                onMenuClicked: {
+                    mainArea.pop();
                 }
             }
+            GameFinished {
+                anchors.fill: parent
+                visible: false //gamehandler.game.finished
+            }
         }
-        Loader {
-            id: loader_game
-            sourceComponent: gamehandler.game ? component_game : undefined
-            anchors.fill: parent
-        }
+    }
 
-        GameFinished {
-            id: gamefinished
-            anchors.fill: parent
-            visible: parent.state === "doneGame"
-        }
-
+    Component {
+        id: component_mainMenu
         MainMenu {
-            id: gamestart
-            anchors.fill: parent
-            visible: parent.state === "mainMenu"
+            id: mainMenu
+            onBeginnerClicked: {
+                gamehandler.timed = false;
+                gamehandler.newGame();
+                mainArea.push(component_game);
+            }
+            onTimedClicked: {
+                gamehandler.timed = true;
+                gamehandler.newGame();
+                mainArea.push(component_game);
+            }
+        }
+    }
+
+    StackView {
+        id: mainArea
+        anchors.fill: parent
+        focus: true // important - otherwise we'll get no key events
+
+        delegate: StackViewDelegate {
+            pushTransition: StackViewTransition{}
         }
 
+        Component.onCompleted: {
+            push(component_mainMenu);
+        }
+
+//        Keys.onReleased: {
+//           if (event.key === Qt.Key_Back) {
+//               event.accepted = true
+//               //TODO eventually goto mainmenu
+//           }
+//        }
 
     }
 }

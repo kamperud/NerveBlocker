@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>MenuButton.qml</file>
         <file>main.qml</file>
         <file>Game.qml</file>
         <file>MainMenu.qml</file>
@@ -8,5 +7,6 @@
         <file>GameFinished.qml</file>
         <file>PointsBox.qml</file>
         <file>Task.qml</file>
+        <file>GameModeButton.qml</file>
     </qresource>
 </RCC>

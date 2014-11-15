@@ -5,6 +5,7 @@ import UllApp 1.0;
 
 Rectangle {
     property var game: gamehandler.game
+    signal menuClicked()
 
     //todo move to a service
     function getOrganName(organ){
@@ -81,7 +82,9 @@ Rectangle {
         MouseArea {
             id: menuButton
             anchors.fill: parent
-            onClicked: mainArea.state = "startGame"
+            onClicked: {
+                menuClicked();
+            }
         }
     }
 
