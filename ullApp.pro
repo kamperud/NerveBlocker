@@ -10,7 +10,8 @@ SOURCES += main.cpp \
     game.cpp \
     question.cpp \
     ultrasoundimage.cpp \
-    organ.cpp
+    organ.cpp \
+    mode.cpp
 
 RESOURCES += \
     qml/qml.qrc \
@@ -35,7 +36,8 @@ HEADERS += \
     question.h \
     ultrasoundimage.h \
     organ.h \
-    constants.h
+    constants.h \
+    mode.h
 
 macx:CONFIG += x86
 

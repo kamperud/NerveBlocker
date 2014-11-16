@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.2
+import UllApp 1.0
 
 ApplicationWindow {
     visible: true
@@ -21,7 +22,7 @@ ApplicationWindow {
                 mainArea.pop();
             }
             onPlayAgainClicked: {
-                gamehandler.newGame();
+                gamehandler.newGame(gamehandler.game.mode);
                 mainArea.pop();
             }
         }
@@ -46,12 +47,19 @@ ApplicationWindow {
             id: mainMenu
             onBeginnerClicked: {
                 gamehandler.timed = false;
-                gamehandler.newGame();
+                gamehandler.newGame(Mode.NORMAL);
+
                 mainArea.push(component_game);
             }
             onTimedClicked: {
                 gamehandler.timed = true;
-                gamehandler.newGame();
+                gamehandler.newGame(Mode.TIMED);
+                mainArea.push(component_game);
+            }
+            onTutorialClicked: {
+                gamehandler.timed = false;
+                gamehandler.newGame(Mode.TUTORIAL);
+
                 mainArea.push(component_game);
             }
         }

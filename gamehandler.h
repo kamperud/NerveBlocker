@@ -2,6 +2,7 @@
 #define GAMEHANDLER_H
 
 #include "game.h"
+#include "mode.h"
 
 #include <QObject>
 
@@ -15,15 +16,16 @@ class GameHandler : public QObject
 //    Q_PROPERTY(bool nextButtonVisible READ getNextButtonVisibility NOTIFY taskActivityChanged)
 //    Q_PROPERTY(bool gameFinished READ getGameFinished NOTIFY gameFinishedChanged)
 //    Q_PROPERTY(int timeSpent READ getTimeSpent NOTIFY timeSpentChanged)
-//    Q_PROPERTY(int highscore MEMBER m_high_score NOTIFY highScoreSpentChanged)
+    Q_PROPERTY(int highscore READ getHighScore NOTIFY highScoreSpentChanged)
 //    Q_PROPERTY(bool timed MEMBER m_timed NOTIFY levelChanged)
 //    Q_PROPERTY(int timed_highscore MEMBER m_timed_high_score NOTIFY highScoreSpentChanged)
     Q_PROPERTY(QObject *game READ getGame NOTIFY gameChanged)
 
 public:
     GameHandler(QObject *parent = nullptr);
-    Q_INVOKABLE void newGame();
+    Q_INVOKABLE void newGame(int);
     Game* getGame();
+    int getHighScore();
 
 //    QString getQuestion();
 //    void setQuestion(QString newValue);
@@ -56,7 +58,7 @@ signals:
 //    void taskActivityChanged();
 //    void gameFinishedChanged();
 //    void timeSpentChanged();
-//    void highScoreSpentChanged(int newValue);
+    void highScoreSpentChanged(int newValue);
 //    void levelChanged();
 
 public slots:
@@ -64,22 +66,9 @@ public slots:
 
 private:
     Game* m_game;
+    int m_high_score;
+    int m_timed_high_score;
 
-//    QString m_question;
-//    QString m_answer;
-//    QString m_image;
-//    bool m_game_finished;
-//    bool m_taskActive;
-//    bool m_timed;
-//    int m_task;
-//    int m_points;
-//    int m_organ;
-//    int m_multiplier;
-//    int m_tasks_finished;
-//    int m_high_score;
-//    int m_timed_high_score;
-//    time_t m_start_time;
-//    time_t m_end_time;
 
 };
 

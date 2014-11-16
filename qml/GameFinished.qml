@@ -72,7 +72,7 @@ Rectangle {
 
            Text{
                id:highestscoreNumber
-               text: "TODO" //gamehandler.timed ? gamehandler.timed_highscore :gamehandler.highscore
+               text: gamehandler.highscore
                font.family: scoreFont.name
                font.pixelSize: parent.parent.width/9
                anchors.baseline: highestscoreText.baseline

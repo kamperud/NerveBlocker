@@ -1,12 +1,14 @@
 #include "game.h"
 #include "task.h"
+#include "constants.h"
 
-Game::Game(QObject *parent):
+Game::Game(Mode::Type mode, QObject *parent):
     QObject(parent),
     m_currentTask(nullptr),
     m_points(0),
     m_multiplier(1),
-    m_tasksAnswered(0)
+    m_tasksAnswered(0),
+    m_mode(mode)
 {
     newTask();
 }
@@ -18,22 +20,19 @@ Task *Game::getCurrentTask()
 
 bool Game::isFinished() const
 {
-    return m_tasksAnswered >= 3;
+    return m_tasksAnswered >= MAX_TASKS_PER_GAME;
 }
 
-//void GameHandler::newGame() {
-//    m_game_finished = false;
-//    m_tasks_finished = 0;
-//    time(&m_start_time);    //set current time
-//}
+Mode::Type Game::getMode()
+{
+    return m_mode;
+}
 
 void Game::newTask()
 {
-    if(m_currentTask!=nullptr){
-        delete m_currentTask;
-        m_currentTask = nullptr;
-    }
 
+    if(m_currentTask!=nullptr)
+        m_currentTask->deleteLater();
     m_currentTask = Task::createRandomTask(this);
     m_currentTask->connect(m_currentTask, &Task::answeredChanged,
                            this, &Game::onTaskAnswered);

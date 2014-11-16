@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "task.h"
+#include "mode.h"
 
 #include <QObject>
 
@@ -13,13 +14,16 @@ class Game : public QObject
     Q_PROPERTY(int multiplier READ getMultiplier NOTIFY multiplierChanged)
     Q_PROPERTY(bool finished READ isFinished NOTIFY finishedChanged)
     Q_PROPERTY(int tasksAnswered MEMBER m_tasksAnswered NOTIFY tasksAnsweredChanged)
+    Q_PROPERTY(Mode::Type mode MEMBER m_mode CONSTANT)
+
 public:
-    explicit Game(QObject *parent = nullptr);
+    explicit Game(Mode::Type mode, QObject *parent = nullptr);
     int getPoints() const;
     int getMultiplier() const;
     Task* getCurrentTask();
     bool isFinished() const;
     void addPoints(int pointsToBeAdded);
+    Mode::Type getMode();
 
 public slots:
     void newTask();
@@ -40,6 +44,7 @@ private:
     int m_points;
     int m_multiplier;
     int m_tasksAnswered;
+    const Mode::Type m_mode;
 
 };
 

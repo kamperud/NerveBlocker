@@ -28,6 +28,7 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
+        anchors.bottom: taskImage.top
         height: parent.height - taskImage.height;
 
         Text {
@@ -67,18 +68,19 @@ Item {
         Text {
             id: feedback
             font.bold: true
-            font.pixelSize: parent.height/4
+            font.pixelSize: parent.height/3
             font.family: ubuntu.name
             font.capitalization: Font.AllUppercase
 
             visible: task.answered
-            text: task.correct ? "Correct!!!" : "Wrong, idiot!"
+            text: task.correct ? "Correct" : "Wrong"
             color: task.correct ? "#a9e7ba" : "red"
 
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             anchors.left: parent.left
             anchors.right: parent.right
+            anchors.verticalCenterOffset: -parent.height/10
             anchors.verticalCenter: parent.verticalCenter
         }
 
@@ -89,13 +91,12 @@ Item {
             font.family: ubuntu.name
             font.pixelSize:parent.height/5
 
-            visible: task.answered
-
+            visible: (gamehandler.game.mode === Mode.TUTORIAL
+                      || task.answered && !task.correct && gamehandler.game.mode != Mode.TIMED)
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
 
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: question2.font.pixelSize
+            anchors.bottom: parent.bottom
             anchors.right: parent.right
             anchors.left: parent.left
         }
@@ -105,7 +106,7 @@ Item {
         width: taskImage.width/2
         height: taskImage.height/20
         color: "#f7e967"
-        visible: gamehandler.timed
+        visible: gamehandler.game.mode === Mode.TIMED
 
         z: 1
         x: taskImage.x
@@ -116,7 +117,7 @@ Item {
         width: taskImage.width
         height: taskImage.height/20
         color: "#666666"
-        visible: gamehandler.timed
+        visible: gamehandler.game.mode === Mode.TIMED
 
         x: taskImage.x
         anchors.bottom: taskImage.top
@@ -131,7 +132,9 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
 
         fillMode: Image.PreserveAspectFit
-        source: task.answered ? task.image.annotatedImagePath : task.image.imagePath
+        source: (gamehandler.game.mode === Mode.TUTORIAL || task.answered ?
+                task.image.annotatedImagePath
+                : task.image.imagePath)
 
         Image {
             id: crox
