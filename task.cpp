@@ -60,3 +60,8 @@ UltraSoundImage *Task::getImage()
 {
     return m_image;
 }
+
+bool Task::isCorrect() const
+{
+    return m_correct;
+}

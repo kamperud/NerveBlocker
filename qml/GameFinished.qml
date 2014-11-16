@@ -1,6 +1,8 @@
 import QtQuick 2.0
 
 Rectangle {
+    signal mainMenuClicked()
+    signal playAgainClicked()
     property var game: gamehandler.game
     id: gameFinishedScreen
     width: 300
@@ -105,7 +107,7 @@ Rectangle {
                 id: menuButton
                 anchors.fill: parent
                 onClicked: {
-                    mainArea.state = "startGame"
+                    mainMenuClicked();
                 }
             }
 
@@ -134,17 +136,9 @@ Rectangle {
                 id: playButton
                 anchors.fill: parent
                 onClicked: {
-                    gamehandler.newGame()
-                    mainArea.state = "inGame"
+                    playAgainClicked();
                 }
             }
         }
     }
-
-
-
-
-
-
-
 }

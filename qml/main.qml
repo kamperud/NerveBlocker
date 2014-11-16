@@ -14,18 +14,28 @@ ApplicationWindow {
     FontLoader { id: ubuntu; source: "fonts/Ubuntu-R.ttf" }
 
     Component {
-        id: component_game
-        Item {
-            Game {
-                anchors.fill: parent
-                game: gamehandler.game
-                onMenuClicked: {
-                    mainArea.pop();
-                }
+        id: component_GameFinished
+        GameFinished {
+            onMainMenuClicked: {
+                mainArea.pop();
+                mainArea.pop();
             }
-            GameFinished {
-                anchors.fill: parent
-                visible: false //gamehandler.game.finished
+            onPlayAgainClicked: {
+                gamehandler.newGame();
+                mainArea.pop();
+            }
+        }
+    }
+
+    Component {
+        id: component_game
+        Game {
+            game: gamehandler.game
+            onMenuClicked: {
+                mainArea.pop();
+            }
+            onGameSummaryClicked: {
+                mainArea.push(component_GameFinished);
             }
         }
     }

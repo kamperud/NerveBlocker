@@ -6,6 +6,8 @@ import UllApp 1.0;
 Rectangle {
     property var game: gamehandler.game
     signal menuClicked()
+    signal gameSummaryClicked()
+    state: "ingame"
 
     //todo move to a service
     function getOrganName(organ){
@@ -56,6 +58,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: botMenu.top
     }
+
 
     Rectangle {
         id: botMenu
@@ -110,10 +113,10 @@ Rectangle {
             id: nextButton
             anchors.fill: parent
             onClicked: {
-                if(!gamehandler.gameFinished) {
-                    gamehandler.newTask()
-                } else {
-                    mainArea.state = "doneGame"
+                if(game.finished) {
+                    gameSummaryClicked();
+                } else if (game.currentTask.answered){
+                    game.newTask()
                 }
             }
         }

@@ -18,6 +18,7 @@ public:
     static Task* createRandomTask(QObject* parent = nullptr);
     Organ::Type getOrgan() const;
     UltraSoundImage* getImage();
+    bool isCorrect() const;
 
 
 public slots:

@@ -22,6 +22,7 @@ Item {
             return "Unknown";
         }
     }
+
     Item {
         id: textArea
         anchors.left: parent.left
@@ -142,19 +143,18 @@ Item {
             visible: gamehandler.game.currentTask.answered
             source: "icons/cancel-50.png"
         }
+
         MouseArea {
             id: imageArea
             anchors.fill: parent
             onClicked: {
-                if(!gamehandler.nextButtonVisible) {
-                    crox.x = mouse.x - crox.width/2;
-                    crox.y = mouse.y - crox.width/2;
-                }
+                if(task.answered)return;
+                crox.x = mouse.x - crox.width/2;
+                crox.y = mouse.y - crox.width/2;
                 var unscaledX = taskImage.sourceSize.width*mouse.x/width;
                 var unscaledY = taskImage.sourceSize.height*mouse.y/height;
                 gamehandler.game.currentTask.answerTask(unscaledX, unscaledY);
             }
         }
     }
-
 }
