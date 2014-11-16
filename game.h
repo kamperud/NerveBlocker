@@ -12,7 +12,7 @@ class Game : public QObject
     Q_PROPERTY(QObject *currentTask READ getCurrentTask NOTIFY currentTaskChanged)
     Q_PROPERTY(int points READ getPoints NOTIFY pointsChanged)
     Q_PROPERTY(int multiplier READ getMultiplier NOTIFY multiplierChanged)
-    Q_PROPERTY(bool m_isFinished READ isFinished NOTIFY finishedChanged)
+    Q_PROPERTY(bool finished READ isFinished NOTIFY finishedChanged)
     Q_PROPERTY(int tasksAnswered MEMBER m_tasksAnswered NOTIFY tasksAnsweredChanged)
     Q_PROPERTY(int tasksAnsweredCorrectly MEMBER m_tasksAnsweredCorrectly NOTIFY tasksAnsweredChanged)
     Q_PROPERTY(Mode::Type mode MEMBER m_mode CONSTANT)

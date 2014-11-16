@@ -38,7 +38,6 @@ ApplicationWindow {
             }
             onGameSummaryClicked: {
                 mainArea.push(component_GameFinished);
-                gamehandler.updateHighScore();
             }
         }
     }

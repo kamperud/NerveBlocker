@@ -14,8 +14,10 @@ Rectangle {
         interval: 10000
         running: true
         onTriggered: {
-            if(gamehandler.game.mode === Mode.TIMED)
+            if(gamehandler.game.mode === Mode.TIMED){
+                gamehandler.game.finishedChanged(true);
                 gameSummaryClicked();
+            }
         }
     }
 
