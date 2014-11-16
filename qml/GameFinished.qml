@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import UllApp 1.0
 
 Rectangle {
     signal mainMenuClicked()
@@ -44,7 +45,7 @@ Rectangle {
 
         Text{
             id:nofCorrectText
-            text: qsTr("You got " + "8" + "/" + "10")
+            text: qsTr("You got " + gamehandler.game.tasksAnsweredCorrectly + "\nout of " + gamehandler.game.tasksAnswered)
             font.pixelSize: parent.width/10
             font.family: ubuntu.name
 
@@ -68,6 +69,7 @@ Rectangle {
                text: "High Score:"
                font.family: ubuntu.name
                font.pixelSize: parent.parent.width/12
+               visible: gamehandler.game.mode !== Mode.TUTORIAL
            }
 
            Text{
@@ -76,6 +78,7 @@ Rectangle {
                font.family: scoreFont.name
                font.pixelSize: parent.parent.width/9
                anchors.baseline: highestscoreText.baseline
+               visible: highestscoreText.visible
            }
         }
     }

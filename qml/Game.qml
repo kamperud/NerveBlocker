@@ -9,6 +9,22 @@ Rectangle {
     signal gameSummaryClicked()
     state: "ingame"
 
+    Timer{
+        id: timer
+        interval: 10000
+        running: true
+        onTriggered: {
+            if(gamehandler.game.mode === Mode.TIMED)
+                gameSummaryClicked();
+        }
+    }
+
+    function startTimer(){
+        timer.running = true;
+        task.progressBarWidth = task.progressBarStarterWidth;
+        task.progressBarRunning = true;
+    }
+
     //todo move to a service
     function getOrganName(organ){
         switch(organ){
@@ -52,7 +68,9 @@ Rectangle {
     }
 
     Task {
+        id: task
         task: game.currentTask
+        progressBarInterval:timer.interval
         anchors.top: topPoints.bottom
         anchors.left: parent.left
         anchors.right: parent.right
@@ -113,7 +131,7 @@ Rectangle {
             id: nextButton
             anchors.fill: parent
             onClicked: {
-                if(game.finished) {
+                if(game.finished&&gamehandler.game.mode!==Mode.TIMED) {
                     gameSummaryClicked();
                 } else if (game.currentTask.answered){
                     game.newTask()

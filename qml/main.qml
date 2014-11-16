@@ -24,6 +24,7 @@ ApplicationWindow {
             onPlayAgainClicked: {
                 gamehandler.newGame(gamehandler.game.mode);
                 mainArea.pop();
+                mainArea.currentItem.startTimer();
             }
         }
     }
@@ -37,6 +38,7 @@ ApplicationWindow {
             }
             onGameSummaryClicked: {
                 mainArea.push(component_GameFinished);
+                gamehandler.updateHighScore();
             }
         }
     }
@@ -46,20 +48,16 @@ ApplicationWindow {
         MainMenu {
             id: mainMenu
             onBeginnerClicked: {
-                gamehandler.timed = false;
                 gamehandler.newGame(Mode.NORMAL);
-
                 mainArea.push(component_game);
             }
             onTimedClicked: {
-                gamehandler.timed = true;
                 gamehandler.newGame(Mode.TIMED);
                 mainArea.push(component_game);
+                mainArea.currentItem.startTimer();
             }
             onTutorialClicked: {
-                gamehandler.timed = false;
                 gamehandler.newGame(Mode.TUTORIAL);
-
                 mainArea.push(component_game);
             }
         }

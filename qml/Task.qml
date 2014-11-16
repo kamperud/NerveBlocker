@@ -6,6 +6,10 @@ import UllApp 1.0;
 
 Item {
     property var task
+    property alias progressBarInterval: animation.duration
+    property alias progressBarWidth: yellowBar.width
+    property alias progressBarRunning: seqAnimation.running
+    property alias progressBarStarterWidth: greyBar.width
     function getOrganColor(organ) {
         switch(organ){
         case Organ.FEMUR:
@@ -103,7 +107,8 @@ Item {
     }
 
     Rectangle {
-        width: taskImage.width/2
+        id: yellowBar
+        width: taskImage.width
         height: taskImage.height/20
         color: "#f7e967"
         visible: gamehandler.game.mode === Mode.TIMED
@@ -111,9 +116,21 @@ Item {
         z: 1
         x: taskImage.x
         anchors.bottom: taskImage.top
+        SequentialAnimation {
+            id: seqAnimation
+            running: true
+            PropertyAnimation { duration: 50 }
+            PropertyAnimation { id: animation;
+                target: yellowBar;
+                property: "width";
+                to: 1;
+                duration: 5000
+            }
+        }
     }
 
     Rectangle {
+        id: greyBar
         width: taskImage.width
         height: taskImage.height/20
         color: "#666666"
@@ -160,4 +177,7 @@ Item {
             }
         }
     }
+
+
 }
+

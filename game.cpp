@@ -8,6 +8,7 @@ Game::Game(Mode::Type mode, QObject *parent):
     m_points(0),
     m_multiplier(1),
     m_tasksAnswered(0),
+    m_tasksAnsweredCorrectly(0),
     m_mode(mode)
 {
     newTask();
@@ -44,6 +45,8 @@ void Game::onTaskAnswered()
 {
     bool oldFinished = isFinished();
     m_tasksAnswered++;
+    if(m_currentTask->isCorrect())
+        m_tasksAnsweredCorrectly++;
     emit tasksAnsweredChanged(m_tasksAnswered);
 
     if(m_currentTask->isCorrect()){
