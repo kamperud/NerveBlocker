@@ -78,7 +78,7 @@ Item {
 
             visible: task.answered
             text: task.correct ? "Correct" : "Wrong"
-            color: task.correct ? "#a9e7ba" : "red"
+            color: task.correct ? "#a0e153" : "red"
 
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter

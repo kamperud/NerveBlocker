@@ -11,7 +11,7 @@ Rectangle {
 
     Timer{
         id: timer
-        interval: 10000
+        interval: 15000
         running: true
         onTriggered: {
             if(gamehandler.game.mode === Mode.TIMED){
