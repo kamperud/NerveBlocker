@@ -25,20 +25,43 @@ QString UltraSoundImage::getMappedImagePath() const
 
 bool UltraSoundImage::hasOrganTypeAtPosition(int x, int y, Organ::Type organ) const
 {
-    QImage img(":"+getMappedImagePath(), "PNG");
-
     switch (organ) {
         case Organ::NERVE:
-            return img.pixel(x,y) == qRgb(255,255,0); //yellow
+            return hasColorInArea(x, y, qRgb(255,255,0)); //yellow
         case Organ::ARTERY:
-            return img.pixel(x,y) == qRgb(255,0,0);   //red
+            return hasColorInArea(x, y, qRgb(255,0,0));   //red
         case Organ::ILIACA:
-            return img.pixel(x,y) == qRgb(255,0,255); //pink-purple
+            return hasColorInArea(x, y,qRgb(255,0,255)); //pink-purple
         case Organ::LATA:
-            return img.pixel(x,y) == qRgb(0,255,255); //cyan
+            return hasColorInArea(x, y, qRgb(0,255,255)); //cyan
         case Organ::FEMUR:
-            return img.pixel(x,y) == qRgb(0,255,0);   //green
+            return hasColorInArea(x, y,qRgb(0,255,0));   //green
         default:
             return false;
     }
 }
+
+bool UltraSoundImage::hasColorInArea(int x, int y, QRgb color) const{
+    QImage img(":"+getMappedImagePath(), "PNG");
+
+    int radius = 100;
+
+    for(int i = x-radius; i < x+radius; ++i){
+        for(int k = y-radius; k < y+radius; ++k){
+
+            if(!img.valid(i,k) || radius*radius < (i-x)*(i-x) + (k-y)*(k-y))
+                continue;
+
+            if(img.pixel(i, k) == color)
+                return true;
+
+        }
+    }
+
+    return false;
+}
+
+
+
+
+

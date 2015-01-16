@@ -2,6 +2,7 @@
 #define ULTRASOUNDIMAGE_H
 
 #include <QObject>
+#include <QColor>
 
 #include "organ.h"
 
@@ -22,9 +23,10 @@ public slots:
     QString getMappedImagePath() const;
     bool hasOrganTypeAtPosition(int x, int y, Organ::Type organ) const;
 
+
 private:
     int m_imageId;
-
+    bool hasColorInArea(int x, int y, QRgb color) const;
 };
 
 #endif // ULTRASOUNDIMAGE_H
