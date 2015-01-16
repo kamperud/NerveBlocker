@@ -149,19 +149,24 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
 
         fillMode: Image.PreserveAspectFit
-        source: (gamehandler.game.mode === Mode.TUTORIAL || task.answered ?
-                task.image.annotatedImagePath
-                : task.image.imagePath)
+        source: task.image.imagePath
 
         Image {
             id: crox
-            z: 1
+            z: 2
             x: 0
             y: 0
             width: parent.width/10
             height: width
-            visible: gamehandler.game.currentTask.answered
+            visible: task.answered
             source: "icons/cancel-50.png"
+        }
+        Image{
+            id:mappedImage
+            anchors.fill: parent
+            z: 1
+            source: task.image.mappedImagePath
+            visible: gamehandler.game.mode === Mode.TUTORIAL || task.answered
         }
 
         MouseArea {
