@@ -13,11 +13,6 @@ QString UltraSoundImage::getImagePath() const
     return QString("gameImages/%1a.png").arg(m_imageId);
 }
 
-QString UltraSoundImage::getAnnotatedImagePath() const
-{
-    return QString("gameImages/%1.png").arg(m_imageId);
-}
-
 QString UltraSoundImage::getMappedImagePath() const
 {
     return QString("gameImages/%1_map.png").arg(m_imageId);
