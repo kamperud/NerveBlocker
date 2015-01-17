@@ -10,7 +10,7 @@ UltraSoundImage::UltraSoundImage(int imageId, QObject *parent) :
 
 QString UltraSoundImage::getImagePath() const
 {
-    return QString("gameImages/%1a.png").arg(m_imageId);
+    return QString("gameImages/%1.png").arg(m_imageId);
 }
 
 QString UltraSoundImage::getMappedImagePath() const

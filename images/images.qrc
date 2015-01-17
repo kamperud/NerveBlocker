@@ -1,19 +1,14 @@
 <RCC>
     <qresource prefix="/">
-        <file>gameImages/1a.png</file>
         <file>gameImages/1.png</file>
         <file>gameImages/1_map.png</file>
         <file>gameImages/2_map.png</file>
-        <file>gameImages/2a.png</file>
         <file>gameImages/2.png</file>
         <file>gameImages/3_map.png</file>
-        <file>gameImages/3a.png</file>
         <file>gameImages/3.png</file>
         <file>gameImages/4_map.png</file>
-        <file>gameImages/4a.png</file>
         <file>gameImages/4.png</file>
         <file>gameImages/5_map.png</file>
-        <file>gameImages/5a.png</file>
         <file>gameImages/5.png</file>
         <file>icons/cancel-50.png</file>
         <file>icons/arrow-19-grey.png</file>
@@ -23,33 +18,23 @@
         <file>icons/back-50-C2E0FF.png</file>
         <file>gameImages/6_map.png</file>
         <file>gameImages/6.png</file>
-        <file>gameImages/6a.png</file>
         <file>gameImages/7_map.png</file>
         <file>gameImages/7.png</file>
-        <file>gameImages/7a.png</file>
         <file>gameImages/8_map.png</file>
         <file>gameImages/8.png</file>
-        <file>gameImages/8a.png</file>
         <file>gameImages/9_map.png</file>
         <file>gameImages/9.png</file>
-        <file>gameImages/9a.png</file>
         <file>gameImages/10_map.png</file>
         <file>gameImages/10.png</file>
-        <file>gameImages/10a.png</file>
         <file>gameImages/11_map.png</file>
         <file>gameImages/11.png</file>
-        <file>gameImages/11a.png</file>
         <file>gameImages/12_map.png</file>
         <file>gameImages/12.png</file>
-        <file>gameImages/12a.png</file>
         <file>gameImages/13_map.png</file>
         <file>gameImages/13.png</file>
-        <file>gameImages/13a.png</file>
         <file>gameImages/14_map.png</file>
         <file>gameImages/14.png</file>
-        <file>gameImages/14a.png</file>
         <file>gameImages/15_map.png</file>
         <file>gameImages/15.png</file>
-        <file>gameImages/15a.png</file>
     </qresource>
 </RCC>
