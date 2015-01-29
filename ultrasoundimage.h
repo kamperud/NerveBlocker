@@ -24,7 +24,7 @@ public slots:
 
 private:
     int m_imageId;
-    bool hasColorInArea(int x, int y, QRgb color) const;
+    bool hasColorInArea(int x, int y, QRgb color, int radius=10) const;
 };
 
 #endif // ULTRASOUNDIMAGE_H
