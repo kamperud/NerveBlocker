@@ -43,12 +43,4 @@ HEADERS += \
 
 macx:CONFIG += x86
 
-## Facebook SDK framework
-LIBS += -F/path/to/FacebookSDK -framework FacebookSDK
-INCLUDEPATH += /path/to/QtFacebook
-HEADERS += \
-    /path/to/QtFacebook/qfacebook.h
-SOURCES += \
-    /path/to/QtFacebook/qfacebook.cpp
-OBJECTIVE_SOURCES += \
-    /path/to/QtFacebook/qfacebook_ios.mm
+
