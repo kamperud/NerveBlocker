@@ -7,5 +7,6 @@
         <file>PointsBox.qml</file>
         <file>Task.qml</file>
         <file>GameModeButton.qml</file>
+        <file>Multimedia.qml</file>
     </qresource>
 </RCC>

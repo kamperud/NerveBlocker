@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick widgets svg core gui
+QT += qml quick widgets svg core gui multimedia
 
 CONFIG += c++11
 
@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     question.cpp \
     ultrasoundimage.cpp \
     organ.cpp \
-    mode.cpp
+    mode.cpp \
+    multimedia.cpp
 
 RESOURCES += \
     qml/qml.qrc \
@@ -37,7 +38,17 @@ HEADERS += \
     ultrasoundimage.h \
     organ.h \
     constants.h \
-    mode.h
+    mode.h \
+    multimedia.h
 
 macx:CONFIG += x86
 
+## Facebook SDK framework
+LIBS += -F/path/to/FacebookSDK -framework FacebookSDK
+INCLUDEPATH += /path/to/QtFacebook
+HEADERS += \
+    /path/to/QtFacebook/qfacebook.h
+SOURCES += \
+    /path/to/QtFacebook/qfacebook.cpp
+OBJECTIVE_SOURCES += \
+    /path/to/QtFacebook/qfacebook_ios.mm
