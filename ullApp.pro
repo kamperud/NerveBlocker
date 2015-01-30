@@ -11,8 +11,7 @@ SOURCES += main.cpp \
     question.cpp \
     ultrasoundimage.cpp \
     organ.cpp \
-    mode.cpp \
-    multimedia.cpp
+    mode.cpp
 
 RESOURCES += \
     qml/qml.qrc \
@@ -38,9 +37,11 @@ HEADERS += \
     ultrasoundimage.h \
     organ.h \
     constants.h \
-    mode.h \
-    multimedia.h
+    mode.h
 
 macx:CONFIG += x86
+
+DISTFILES += \
+    qml/VideoTask.qml
 
 
