@@ -20,6 +20,8 @@ bool Task::answerTask(int x, int y)
     return m_correct;
 }
 
+
+
 Task *Task::createRandomTask(QObject *parent)
 {
     const std::array<int, 15+1> supportsFemur = { //TODO: cleanup

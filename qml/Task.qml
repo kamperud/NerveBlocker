@@ -10,6 +10,8 @@ Item {
     property alias progressBarWidth: yellowBar.width
     property alias progressBarRunning: seqAnimation.running
     property alias progressBarStarterWidth: greyBar.width
+    property alias croXvisible: crox.visible
+
     function getOrganColor(organ) {
         switch(organ){
         case Organ.FEMUR:
@@ -158,7 +160,7 @@ Item {
             y: 0
             width: parent.width/10
             height: width
-            visible: task.answered
+            visible: false
             source: "icons/cancel-50.png"
         }
         Image{
@@ -168,21 +170,22 @@ Item {
             source: task.image.mappedImagePath
             visible: gamehandler.game.mode === Mode.TUTORIAL || task.answered
         }
-
+        
+        //Show cross on image
         MouseArea {
             id: imageArea
             anchors.fill: parent
             onClicked: {
-                if(task.answered)return;
-                crox.x = mouse.x - crox.width/2;
-                crox.y = mouse.y - crox.width/2;
-                var unscaledX = taskImage.sourceSize.width*mouse.x/width;
-                var unscaledY = taskImage.sourceSize.height*mouse.y/height;
-                gamehandler.game.currentTask.answerTask(unscaledX, unscaledY);
+                if(!taskConfirmed) {
+                    crox.x = mouse.x - crox.width/2;
+                    crox.y = mouse.y - crox.width/2;
+                    unscaledX = taskImage.sourceSize.width*mouse.x/width;
+                    unscaledY = taskImage.sourceSize.height*mouse.y/height;
+                    taskXSet = true;
+                    crox.visible = true;
+                }
             }
         }
     }
-
-
 }
 
