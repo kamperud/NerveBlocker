@@ -10,7 +10,8 @@ public:
     enum Type{
         TUTORIAL,
         NORMAL,
-        TIMED
+        TIMED,
+        VIDEO
     };
     Q_ENUMS(Type)
     explicit Mode(QObject *parent = 0);

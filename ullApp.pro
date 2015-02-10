@@ -41,7 +41,6 @@ HEADERS += \
 
 macx:CONFIG += x86
 
-DISTFILES += \
-    qml/VideoTask.qml
+
 
 

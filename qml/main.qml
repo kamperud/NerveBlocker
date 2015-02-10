@@ -59,6 +59,10 @@ ApplicationWindow {
                 gamehandler.newGame(Mode.TUTORIAL);
                 mainArea.push(component_game);
             }
+            onVideoClicked: {
+                gamehandler.newGame(Mode.VIDEO);
+                mainArea.push(component_game);
+            }
         }
     }
 

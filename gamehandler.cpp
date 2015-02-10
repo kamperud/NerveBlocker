@@ -22,6 +22,7 @@ GameHandler::GameHandler(QObject *parent) :
 void GameHandler::newGame(int mode)
 {
     if(m_game!=nullptr) m_game->deleteLater();
+
     m_game = new Game(Mode::Type(mode), this);
     connect(m_game, &Game::finishedChanged, this, &GameHandler::updateHighScore);
     emit gameChanged(m_game);
