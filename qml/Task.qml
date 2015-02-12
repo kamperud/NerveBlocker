@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 1.2
 import UllApp 1.0;
+import QtMultimedia 5.0;
 
 
 Item {
@@ -141,6 +142,18 @@ Item {
         x: taskImage.x
         anchors.bottom: taskImage.top
     }
+    Video {
+        id: taskVideo
+        autoPlay: true
+
+        source: "gameVideos/FL_1.mp4"
+        width: parent.width*11/12
+        //anchors.bottom: parent.bottom
+        //anchors.bottomMargin: parent.width/20
+        //anchors.horizontalCenter: parent.horizontalCenter
+
+
+    }
 
     Image {
         id: taskImage
@@ -149,6 +162,8 @@ Item {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: parent.width/20
         anchors.horizontalCenter: parent.horizontalCenter
+
+        visible: gamehandler.game.mode !== Mode.VIDEO
 
         fillMode: Image.PreserveAspectFit
         source: task.image.imagePath
