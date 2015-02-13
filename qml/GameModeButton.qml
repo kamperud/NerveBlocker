@@ -9,7 +9,7 @@ Rectangle {
     
     width: parent.width*3/4
     height: width/3
-    
+
     MouseArea {
         id: mouseArea
         anchors.rightMargin: 0
@@ -21,7 +21,7 @@ Rectangle {
             button.clicked();
         }
     }
-    
+
     Text {
         id: buttonText
         color: "#ffffff"
