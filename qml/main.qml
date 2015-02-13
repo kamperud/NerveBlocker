@@ -63,6 +63,9 @@ ApplicationWindow {
                 gamehandler.newGame(Mode.VIDEO);
                 mainArea.push(component_game);
             }
+            onInstructionalClicked: {
+                mainArea.push
+            }
         }
     }
 

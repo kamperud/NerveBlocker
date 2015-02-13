@@ -148,6 +148,8 @@ Item {
 
         source: "gameVideos/FL_1.mp4"
         width: parent.width*11/12
+        height: parent.width*11/12
+
         //anchors.bottom: parent.bottom
         //anchors.bottomMargin: parent.width/20
         //anchors.horizontalCenter: parent.horizontalCenter

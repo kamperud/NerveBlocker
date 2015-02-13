@@ -5,6 +5,7 @@ Rectangle {
     signal timedClicked()
     signal tutorialClicked()
     signal videoClicked()
+    signal instructionalClicked()
     width: 300
     height: 500
     color: "#222222"
@@ -62,5 +63,15 @@ Rectangle {
             videoClicked();
         }
     }
+    /*GameModeButton {
+        id: instuctionButton
+        text: qsTr("Instructional")
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: timedButton.bottom
+        anchors.topMargin: parent.height/50
+        onClicked: {
+            instructionalClicked();
+        }
+    }*/
 
 }
