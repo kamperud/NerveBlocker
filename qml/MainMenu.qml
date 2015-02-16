@@ -53,7 +53,7 @@ Rectangle {
             timedClicked();
         }
     }
-    GameModeButton {
+    /*GameModeButton {
         id: videoButton
         text: qsTr("Video")
         anchors.horizontalCenter: parent.horizontalCenter
@@ -62,8 +62,9 @@ Rectangle {
         onClicked: {
             videoClicked();
         }
-    }
-    /*GameModeButton {
+    }*/
+
+    GameModeButton {
         id: instuctionButton
         text: qsTr("Instructional")
         anchors.horizontalCenter: parent.horizontalCenter
@@ -72,6 +73,5 @@ Rectangle {
         onClicked: {
             instructionalClicked();
         }
-    }*/
-
+    }
 }

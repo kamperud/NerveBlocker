@@ -41,6 +41,15 @@ ApplicationWindow {
             }
         }
     }
+    Component {
+        id: component_instructional
+        InstrPage {
+            onBackButtonClicked: {
+                mainArea.pop();
+            }
+        }
+
+    }
 
     Component {
         id: component_mainMenu
@@ -64,7 +73,7 @@ ApplicationWindow {
                 mainArea.push(component_game);
             }
             onInstructionalClicked: {
-                mainArea.push
+                mainArea.push(component_instructional);
             }
         }
     }

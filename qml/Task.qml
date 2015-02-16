@@ -142,7 +142,7 @@ Item {
         x: taskImage.x
         anchors.bottom: taskImage.top
     }
-    Video {
+    /*Video {
         id: taskVideo
         autoPlay: true
 
@@ -155,7 +155,7 @@ Item {
         //anchors.horizontalCenter: parent.horizontalCenter
 
 
-    }
+    }*/
 
     Image {
         id: taskImage
