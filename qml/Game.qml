@@ -92,7 +92,7 @@ Rectangle {
         id: botMenu
         width: parent.width*4.5/12
         height: parent.height/10
-        color: menuButton.pressed ?  "#cafcd8" :"#04bfbf"
+        color: menuButton.pressed ? "#1fdada" : "#04bfbf"
         radius: 15
         anchors.left: parent.left
         anchors.leftMargin: parent.width/12
@@ -124,7 +124,8 @@ Rectangle {
 
         width: parent.width*4.5/12
         height: parent.height/10
-        color: nextButton.pressed && gamehandler.nextButtonVisible ?  "#cafcd8" :"#04bfbf"
+        color: nextButton.pressed ? "#1fdada" : "#04bfbf"
+        //color: nextButton.pressed && gamehandler.nextButtonVisible ?  "#cafcd8" :"#04bfbf"
         radius: 15
         anchors.right: parent.right
         anchors.rightMargin: parent.width/12

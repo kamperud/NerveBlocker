@@ -8,7 +8,7 @@
         <file>Task.qml</file>
         <file>GameModeButton.qml</file>
         <file>VideoTask.qml</file>
-        <file>GameMenu.qml</file>
-        <file>GameMenuButton.qml</file>
+        <file>GameMenuPlayButton.qml</file>
+        <file>GameMenuExtraButton.qml</file>
     </qresource>
 </RCC>

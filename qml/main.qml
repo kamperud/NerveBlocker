@@ -24,6 +24,8 @@ ApplicationWindow {
             onPlayAgainClicked: {
                 gamehandler.newGame(gamehandler.game.mode);
                 mainArea.pop();
+                mainArea.pop();
+                mainArea.push(component_game);
                 mainArea.currentItem.startTimer();
             }
         }
@@ -32,6 +34,7 @@ ApplicationWindow {
     Component {
         id: component_game
         Game {
+            id: gameInstance
             game: gamehandler.game
             onMenuClicked: {
                 mainArea.pop();
@@ -46,6 +49,7 @@ ApplicationWindow {
         id: component_mainMenu
         MainMenu {
             id: mainMenu
+
             onBeginnerClicked: {
                 gamehandler.newGame(Mode.NORMAL);
                 mainArea.push(component_game);
@@ -59,6 +63,7 @@ ApplicationWindow {
                 gamehandler.newGame(Mode.TUTORIAL);
                 mainArea.push(component_game);
             }
+
         }
     }
 
@@ -83,4 +88,5 @@ ApplicationWindow {
 //        }
 
     }
+
 }
