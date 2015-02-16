@@ -41,10 +41,4 @@ HEADERS += \
 
 macx:CONFIG += x86
 
-DISTFILES += \
-    /home/hannapus/Desktop/instructional.mp4
-
-
-
-
-
+QMAKE_INFO_PLIST = ios/Info.plist

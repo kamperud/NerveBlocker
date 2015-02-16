@@ -80,7 +80,6 @@ Rectangle {
 
     GameMenuPlayButton{
         id: easyButton
-        x: 22
         text: qsTr("Easy")
 
         anchors.verticalCenter: parent.verticalCenter
