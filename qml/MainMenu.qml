@@ -80,7 +80,6 @@ Rectangle {
 
     GameMenuPlayButton{
         id: easyButton
-        x: 22
         text: qsTr("Easy")
 
         anchors.verticalCenter: parent.verticalCenter
@@ -150,7 +149,7 @@ Rectangle {
         anchors.verticalCenterOffset: parent.height / 10
 
         onClicked: {
-            videoClicked();
+            //videoClicked();
         }
     }
 
