@@ -4,18 +4,17 @@ Rectangle {
     id: button
     signal clicked()
     property alias text: buttonText.text
+    property alias fontSize: buttonText.font.pixelSize
     color: mouseArea.pressed ? "#1fdada" : "#04bfbf"
-    radius: 15
-    
-    width: parent.width*3/4
-    height: width/3
+
+
+    radius: 20
+
+    width: (parent.width * 5)/ 21
+    height: (parent.width * 5)/ 21
 
     MouseArea {
         id: mouseArea
-        anchors.rightMargin: 0
-        anchors.bottomMargin: 0
-        anchors.leftMargin: 0
-        anchors.topMargin: 0
         anchors.fill: parent
         onClicked: {
             button.clicked();
@@ -26,8 +25,9 @@ Rectangle {
         id: buttonText
         color: "#ffffff"
         text: qsTr("TODO")
+
         font.family: ubuntu.name
-        font.pixelSize: parent.width/8
+        font.pixelSize: parent.width/5
         font.capitalization: Font.AllUppercase
 
         verticalAlignment: Text.AlignVCenter
@@ -35,3 +35,4 @@ Rectangle {
         anchors.fill: parent
     }
 }
+
