@@ -3,6 +3,12 @@ import QtQuick.Controls 1.2
 import UllApp 1.0
 
 ApplicationWindow {
+    property string yellowMain: "#f7e967"
+    property string yellowLight: "#fffd89"
+    property string blueMain: "#04bfbf"
+    property string blueLight: "#1fdada"
+
+
     visible: true
     width: 300
     height: 500
