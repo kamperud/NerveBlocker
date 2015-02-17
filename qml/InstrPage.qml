@@ -16,7 +16,6 @@ Rectangle {
         height: width
         fillMode: Image.PreserveAspectFit
 
-        //anchors.leftMargin: width/20
         anchors.topMargin: width/5
         anchors.top: parent.top
         x: taskVideo.x-width/4
@@ -93,9 +92,9 @@ Rectangle {
         autoLoad: false
 
         // short clip
-        //source: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
+        source: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
         // long clip
-        source: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
+        //source: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
 
         width: parent.width*11/12
         height: width*3/4
@@ -109,7 +108,11 @@ Rectangle {
         id: videoController
         visible: outline.state === "playing"
         anchors.top: taskVideo.bottom
+        width: parent.width
+        height: parent.height/4
         anchors.horizontalCenter: parent.horizontalCenter
+
+        progressBarPecent: taskVideo.position*100/taskVideo.duration
         onPlayClicked: {
             if (taskVideo.playbackState===MediaPlayer.PlayingState) {
                 taskVideo.pause();
