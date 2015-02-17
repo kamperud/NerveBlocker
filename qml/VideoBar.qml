@@ -15,12 +15,12 @@ Item {
         }
         Image {
             id: playIcon
-            source: "icons/play_128x128.png"
+            source: "icons/Play-50.png"
             anchors.fill: parent
             visible: false
         }
         Image {
-            source: "icons/pause_128x128.png"
+            source: "icons/Pause-50.png"
             anchors.fill: parent
             visible: !playIcon.visible
         }

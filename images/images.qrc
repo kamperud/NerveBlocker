@@ -13,11 +13,9 @@
         <file>icons/cancel-50.png</file>
         <file>icons/arrow-19-grey.png</file>
         <file>icons/arrow-19-512.png</file>
-        <file>icons/back-50-3399FF.png</file>
-        <file>icons/back-25-3399FF.png</file>
-        <file>icons/back-50-C2E0FF.png</file>
-        <file>icons/pause_128x128.png</file>
-        <file>icons/play_128x128.png</file>
+        <file>icons/Left4-50.png</file>
+        <file>icons/Pause-50.png</file>
+        <file>icons/Play-50.png</file>
         <file>gameImages/6_map.png</file>
         <file>gameImages/6.png</file>
         <file>gameImages/7_map.png</file>

@@ -1,11 +1,9 @@
 import QtQuick 2.0
 
-Rectangle{
+Item{
     signal buttonClicked()
     width: parent.width/5
     height: width
-    radius: 5
-    color: mouseArea.pressed ? yellowLight : yellowMain
 
     MouseArea {
         id: mouseArea
