@@ -92,9 +92,9 @@ Rectangle {
         autoLoad: false
 
         // short clip
-        source: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
+        //source: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
         // long clip
-        //source: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
+        source: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
 
         width: parent.width*11/12
         height: width*3/4
@@ -116,10 +116,15 @@ Rectangle {
         onPlayClicked: {
             if (taskVideo.playbackState===MediaPlayer.PlayingState) {
                 taskVideo.pause();
+                playVisible = true;
             }
             else {
                 taskVideo.play();
+                playVisible = false;
             }
+        }
+        onProgressClicked: {
+            taskVideo.seek(taskVideo.position+circleDistance*taskVideo.duration);
         }
 
     }

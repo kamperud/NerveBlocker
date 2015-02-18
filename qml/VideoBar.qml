@@ -6,6 +6,8 @@ Item {
     signal playClicked()
     signal progressClicked()
     property real progressBarPecent: 1
+    property real circleDistance: 1
+    property alias playVisible: playIcon.visible
     width: parent.width/2
 
     Rectangle {
@@ -26,18 +28,18 @@ Item {
             border.color: "#494949"
             border.width: 2
 
-            radius: 18
+            radius: width/2
             height: parent.height*2
             width: height
 
             anchors.verticalCenter: parent.verticalCenter
-            x: blueBar.width - width/2
+            x: progressArea.drag.active ? circle.x : blueBar.width - width/2
             Rectangle {
                 color: blueMain
                 border.color: "#494949"
                 border.width: 2
 
-                radius: 9
+                radius: width/2
                 height: parent.height/2
                 width: height
 
@@ -59,15 +61,23 @@ Item {
         anchors.verticalCenterOffset: -parent.height/5
     }
 
-    /*MouseArea {
+    MouseArea {
+        id: progressArea
         anchors.fill: greyBar
-        onClicked: progressClicked()
         drag.target: circle
         drag.maximumX: greyBar.width+greyBar.x
         drag.minimumX: greyBar.x
-        drag.minimumY:
+        drag.axis: Drag.XAxis
+        onReleased: {
+            circleDistance = (mouse.x-blueBar.width)/greyBar.width;
+            progressClicked();
+            blueBar.width = mouse.x;
 
-    }*/
+        }
+
+
+
+    }
 
 
     PlayerButton{
@@ -82,7 +92,8 @@ Item {
 
         onButtonClicked:{
             playClicked();
-            playIcon.visible = !playIcon.visible;
+            //playIcon.visible = !playIcon.visible;
+            // visibility is toggled by the video class, but can be toggled here
         }
         Image {
             id: playIcon
