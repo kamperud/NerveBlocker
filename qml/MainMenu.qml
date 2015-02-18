@@ -149,7 +149,7 @@ Rectangle {
         anchors.verticalCenterOffset: parent.height / 10
 
         onClicked: {
-            videoClicked();
+            //videoClicked();
         }
     }
 

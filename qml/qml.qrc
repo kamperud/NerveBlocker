@@ -9,8 +9,9 @@
         <file>GameModeButton.qml</file>
         <file>VideoTask.qml</file>
         <file>InstrPage.qml</file>
-        <file>videoBar.qml</file>
+        <file>VideoBar.qml</file>
         <file>GameMenuPlayButton.qml</file>
         <file>GameMenuExtraButton.qml</file>
+        <file>PlayerButton.qml</file>
     </qresource>
 </RCC>
