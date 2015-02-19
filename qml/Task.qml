@@ -12,6 +12,8 @@ Item {
     property alias progressBarRunning: seqAnimation.running
     property alias progressBarStarterWidth: greyBar.width
     property alias croXvisible: crox.visible
+    property alias animation: animation
+    property alias seqAnimation: seqAnimation
 
     function getOrganColor(organ) {
         switch(organ){
@@ -111,7 +113,7 @@ Item {
 
     Rectangle {
         id: yellowBar
-        width: taskImage.width
+        width: taskImage.width //progressBarWidth
         height: taskImage.height/20
         color: "#f7e967"
         visible: gamehandler.game.mode === Mode.TIMED
@@ -119,22 +121,30 @@ Item {
         z: 1
         x: taskImage.x
         anchors.bottom: taskImage.top
+
+
         SequentialAnimation {
             id: seqAnimation
-            running: true
-            PropertyAnimation { duration: 50 }
-            PropertyAnimation { id: animation;
+            running: true //progressBarRunning
+
+            PropertyAnimation {
+                duration: 50
+            }
+
+            PropertyAnimation {
+                id: animation;
                 target: yellowBar;
                 property: "width";
                 to: 1;
-                duration: 5000
+                duration: 5000 //progressBarInterval
             }
         }
+
     }
 
     Rectangle {
         id: greyBar
-        width: taskImage.width
+        width: taskImage.width //progressBarStarterWidth
         height: taskImage.height/20
         color: "#666666"
         visible: gamehandler.game.mode === Mode.TIMED
