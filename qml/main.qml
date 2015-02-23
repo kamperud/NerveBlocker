@@ -59,6 +59,21 @@ ApplicationWindow {
         }
 
     }
+    Component {
+        id: component_video
+        VideoTask {
+            onBackButtonClicked: {
+                mainArea.pop();
+            }
+            onVideoRestarted: {
+                mainArea.pop();
+            }
+
+            onTempVideoPaused: {
+                mainArea.push(component_game);
+            }
+        }
+    }
 
     Component {
         id: component_mainMenu
