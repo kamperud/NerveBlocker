@@ -116,12 +116,12 @@ ApplicationWindow {
             push(component_mainMenu);
         }
 
-//        Keys.onReleased: {
-//           if (event.key === Qt.Key_Back) {
-//               event.accepted = true
-//               //TODO eventually goto mainmenu
-//           }
-//        }
+        Keys.onReleased: {
+           if (event.key === Qt.Key_Back) {
+               event.accepted = true
+               mainArea.pop(null);
+           }
+        }
 
     }
 
