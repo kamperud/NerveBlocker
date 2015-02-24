@@ -1,36 +1,30 @@
 import QtQuick 2.0
 import QtMultimedia 5.4
-
-//import QtQuick.Layouts 1.1
-//import QtQuick.Controls 1.2
-//import QtQml 2.2
 import UllApp 1.0;
 
 
 Rectangle {
-    signal backButtonClicked()
+    signal menuClicked()
     signal videoRestarted()
     signal tempVideoPaused()
-
+    color: "#222222"
 
     Text {
         id: title
-        text: "An introduction to\n FEMORAL NERVE BLOCKS"
+        text: "Watch the Video"
         horizontalAlignment: Text.AlignHCenter
         color: "#ffffff"
         font.family: ubuntu.name
         font.pixelSize: parent.width/15
-        visible: outline.state === "playing"
 
+        anchors.top: parent.top
+        anchors.topMargin: parent.height/10
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: backButton.bottom
     }
-
 
     Video {
         id: taskVideo
-        autoPlay: false
-        autoLoad: false
+        autoPlay: true
 
         // short clip
         source: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
@@ -39,17 +33,17 @@ Rectangle {
 
         width: parent.width*11/12
         height: width*3/4
-        visible: outline.state === "playing"
 
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: -parent.height/10
     }
 
     VideoBar {
         id: videoController
-        visible: outline.state === "playing"
         anchors.top: taskVideo.bottom
+        circleVisible: false
         width: parent.width
         height: parent.height/4
         anchors.horizontalCenter: parent.horizontalCenter
@@ -68,11 +62,17 @@ Rectangle {
         onProgressClicked: {
             taskVideo.seek(taskVideo.position+circleDistance*taskVideo.duration);
         }
-
     }
 
+    MenuButton {
+        id: botMenu
 
+        width: taskVideo.width
+        anchors.horizontalCenter: parent.horizontalCenter
 
-
+        onMenuClicked: {
+            menuClicked();
+        }
+    }
 }
 

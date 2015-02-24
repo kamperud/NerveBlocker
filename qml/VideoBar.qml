@@ -8,6 +8,8 @@ Item {
     property real progressBarPecent: 1
     property real circleDistance: 1
     property alias playVisible: playIcon.visible
+    property alias circleVisible: circle.visible
+    property int movieLength: 1000
     width: parent.width/2
 
     Rectangle {
@@ -21,6 +23,26 @@ Item {
 
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height/5
+
+        Repeater {
+            id: repeater
+            model: 2
+            visible: false
+            Rectangle{
+                color: "#ffffff"
+                height: parent.height*2
+                width: parent.height/2
+
+                anchors.verticalCenter: parent.verticalCenter
+
+            }
+
+            onItemAdded: {
+                var positions = [20, 200];
+
+                item.x = positions[index]
+            }
+        }
 
         Rectangle {
             id: circle
@@ -52,33 +74,39 @@ Item {
     Rectangle {
         id: greyBar
         width: parent.width*11/12
-        height: parent.height/8
+        height: parent.height/10
         color: "grey"
         radius: 3
 
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: -parent.height/5
+
+
+
     }
 
     MouseArea {
         id: progressArea
+        visible: circle.visible
         anchors.fill: greyBar
         drag.target: circle
-        drag.maximumX: greyBar.width+greyBar.x
-        drag.minimumX: greyBar.x
+        drag.maximumX: greyBar.width -circle.width/2
+        drag.minimumX: -circle.width/2
         drag.axis: Drag.XAxis
         onReleased: {
-            circleDistance = (mouse.x-blueBar.width)/greyBar.width;
+            var x = mouse.x;
+            if (x>drag.maximumX) {
+                x = drag.maximumX;
+            }
+            else if (x < drag.minimumX){
+                x = drag.minimumX;
+            }
+            circleDistance = (x-blueBar.width)/greyBar.width;
             progressClicked();
-            blueBar.width = mouse.x;
-
+            blueBar.width = x;
         }
-
-
-
     }
-
 
     PlayerButton{
         id: playPause
@@ -92,8 +120,6 @@ Item {
 
         onButtonClicked:{
             playClicked();
-            //playIcon.visible = !playIcon.visible;
-            // visibility is toggled by the video class, but can be toggled here
         }
         Image {
             id: playIcon
@@ -107,12 +133,6 @@ Item {
             visible: !playIcon.visible
         }
     }
-
-
-
-
-
-
 
 }
 
