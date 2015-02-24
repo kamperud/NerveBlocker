@@ -13,5 +13,8 @@
         <file>GameMenuPlayButton.qml</file>
         <file>GameMenuExtraButton.qml</file>
         <file>PlayerButton.qml</file>
+        <file>MenuButton.qml</file>
+        <file>NextButton.qml</file>
+        <file>PathDraw.qml</file>
     </qresource>
 </RCC>

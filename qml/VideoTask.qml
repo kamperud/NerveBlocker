@@ -2,7 +2,6 @@ import QtQuick 2.0
 import QtMultimedia 5.4
 import UllApp 1.0;
 
-
 Rectangle {
     signal menuClicked()
     signal videoRestarted()
@@ -74,5 +73,6 @@ Rectangle {
             menuClicked();
         }
     }
+
 }
 

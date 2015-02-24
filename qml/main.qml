@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.2
 import QtQuick.Controls 1.2
 import UllApp 1.0
 
@@ -42,7 +42,7 @@ ApplicationWindow {
         Game {
             id: gameInstance
             game: gamehandler.game
-            onMenuClicked: {
+            onGameMenuClicked: {
                 mainArea.pop();
             }
             onGameSummaryClicked: {
@@ -59,10 +59,10 @@ ApplicationWindow {
         }
 
     }
-    Component {
+    /*Component {
         id: component_video
         VideoTask {
-            onBackButtonClicked: {
+            onGameMenuClicked: {
                 mainArea.pop();
             }
             onVideoRestarted: {
@@ -73,7 +73,8 @@ ApplicationWindow {
                 mainArea.push(component_game);
             }
         }
-    }
+    }*/
+
 
     Component {
         id: component_mainMenu
@@ -94,11 +95,15 @@ ApplicationWindow {
                 mainArea.push(component_game);
             }
             onVideoClicked: {
-                gamehandler.newGame(Mode.VIDEO);
-                mainArea.push(component_game);
+                //gamehandler.newGame(Mode.VIDEO);
+                //mainArea.push(component_video);
             }
             onInstructionalClicked: {
                 mainArea.push(component_instructional);
+            }
+            onAnnotationClicked: {
+                gamehandler.newGame(Mode.DRAG);
+                mainArea.push(component_game);
             }
         }
     }
@@ -122,7 +127,5 @@ ApplicationWindow {
                mainArea.pop(null);
            }
         }
-
     }
-
 }
