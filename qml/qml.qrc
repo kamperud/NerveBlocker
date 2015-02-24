@@ -15,5 +15,6 @@
         <file>PlayerButton.qml</file>
         <file>MenuButton.qml</file>
         <file>NextButton.qml</file>
+        <file>PathDraw.qml</file>
     </qresource>
 </RCC>

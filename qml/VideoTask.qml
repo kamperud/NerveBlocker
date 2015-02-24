@@ -6,7 +6,6 @@ import QtMultimedia 5.4
 //import QtQml 2.2
 import UllApp 1.0;
 
-
 Rectangle {
     signal backButtonClicked()
     signal videoRestarted()
@@ -70,9 +69,6 @@ Rectangle {
         }
 
     }
-
-
-
 
 }
 
