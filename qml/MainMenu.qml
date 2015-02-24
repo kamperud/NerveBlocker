@@ -6,6 +6,7 @@ Rectangle {
     signal tutorialClicked()
     signal videoClicked()
     signal instructionalClicked()
+    signal annotationClicked()
 
     id: gameMenu
     width: 300
@@ -149,7 +150,7 @@ Rectangle {
         anchors.verticalCenterOffset: parent.height / 10
 
         onClicked: {
-            //videoClicked();
+            videoClicked();
         }
     }
 
@@ -168,5 +169,9 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
 
         anchors.verticalCenterOffset: parent.height / 4
+
+        onClicked: {
+            annotationClicked();
+        }
     }
 }

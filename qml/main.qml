@@ -42,7 +42,7 @@ ApplicationWindow {
         Game {
             id: gameInstance
             game: gamehandler.game
-            onMenuClicked: {
+            onGameMenuClicked: {
                 mainArea.pop();
             }
             onGameSummaryClicked: {
@@ -62,7 +62,7 @@ ApplicationWindow {
     Component {
         id: component_video
         VideoTask {
-            onBackButtonClicked: {
+            onMenuClicked: {
                 mainArea.pop();
             }
             onVideoRestarted: {
@@ -95,10 +95,14 @@ ApplicationWindow {
             }
             onVideoClicked: {
                 gamehandler.newGame(Mode.VIDEO);
-                mainArea.push(component_game);
+                mainArea.push(component_video);
             }
             onInstructionalClicked: {
                 mainArea.push(component_instructional);
+            }
+            onAnnotationClicked: {
+                gamehandler.newGame(Mode.DRAG);
+                mainArea.push(component_game);
             }
         }
     }
@@ -122,7 +126,5 @@ ApplicationWindow {
                mainArea.pop(null);
            }
         }
-
     }
-
 }

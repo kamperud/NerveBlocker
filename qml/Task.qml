@@ -113,6 +113,7 @@ Item {
         }
     }
 
+
     Rectangle {
         id: yellowBar
         width: taskImage.width //progressBarWidth
@@ -154,20 +155,7 @@ Item {
         x: taskImage.x
         anchors.bottom: taskImage.top
     }
-    /*Video {
-        id: taskVideo
-        autoPlay: true
 
-        source: "gameVideos/FL_1.mp4"
-        width: parent.width*11/12
-        height: parent.width*11/12
-
-        //anchors.bottom: parent.bottom
-        //anchors.bottomMargin: parent.width/20
-        //anchors.horizontalCenter: parent.horizontalCenter
-
-
-    }*/
 
     Image {
         id: taskImage
