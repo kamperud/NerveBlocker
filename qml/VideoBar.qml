@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import UllApp 1.0
 
 
 Item {
@@ -10,6 +11,9 @@ Item {
     property alias playVisible: playIcon.visible
     property alias circleVisible: circle.visible
     property int movieLength: 1000
+    property var positions: [50, 200];
+
+
     width: parent.width/2
 
     Rectangle {
@@ -27,20 +31,21 @@ Item {
         Repeater {
             id: repeater
             model: 2
-            visible: false
             Rectangle{
                 color: "#ffffff"
                 height: parent.height*2
                 width: parent.height/2
+                visible: false
 
                 anchors.verticalCenter: parent.verticalCenter
 
             }
 
             onItemAdded: {
-                var positions = [20, 200];
-
-                item.x = positions[index]
+                if (gamehandler.game.mode === Mode.VIDEO) {
+                    item.x = positions[index];
+                    item.visible = true;
+                }
             }
         }
 

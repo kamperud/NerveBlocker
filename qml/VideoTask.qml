@@ -3,7 +3,7 @@ import QtMultimedia 5.4
 import UllApp 1.0;
 
 Rectangle {
-    signal menuClicked()
+    signal gameMenuClicked()
     signal videoRestarted()
     signal tempVideoPaused()
     color: "#222222"
@@ -48,6 +48,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
 
         progressBarPecent: taskVideo.position*100/taskVideo.duration
+        movieLength: taskVideo.duration
         onPlayClicked: {
             if (taskVideo.playbackState===MediaPlayer.PlayingState) {
                 taskVideo.pause();
@@ -70,7 +71,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
 
         onMenuClicked: {
-            menuClicked();
+            gameMenuClicked();
         }
     }
 

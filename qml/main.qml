@@ -59,7 +59,7 @@ ApplicationWindow {
         }
 
     }
-    /*Component {
+    Component {
         id: component_video
         VideoTask {
             onGameMenuClicked: {
@@ -73,7 +73,7 @@ ApplicationWindow {
                 mainArea.push(component_game);
             }
         }
-    }*/
+    }
 
 
     Component {
@@ -95,10 +95,11 @@ ApplicationWindow {
                 mainArea.push(component_game);
             }
             onVideoClicked: {
-                //gamehandler.newGame(Mode.VIDEO);
-                //mainArea.push(component_video);
+                gamehandler.newGame(Mode.VIDEO);
+                mainArea.push(component_video);
             }
             onInstructionalClicked: {
+                gamehandler.newGame(Mode.NONE);
                 mainArea.push(component_instructional);
             }
             onAnnotationClicked: {

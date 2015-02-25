@@ -1,13 +1,5 @@
 import QtQuick 2.0
-import UllApp 1.0;
-
-// Disse har jeg fjernet fordi jeg
-// mistenker at de ikke gjoer noe
-// De bruker mye plass hvis de faar vaere her
-
-//import QtQuick.Layouts 1.1
-//import QtQuick.Controls 1.2
-//import QtQml 2.2
+import UllApp 1.0
 
 
 Rectangle {

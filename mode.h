@@ -12,7 +12,8 @@ public:
         NORMAL,
         TIMED,
         VIDEO,
-        DRAG
+        DRAG,
+        NONE
     };
     Q_ENUMS(Type)
     explicit Mode(QObject *parent = 0);
