@@ -93,7 +93,6 @@ ApplicationWindow {
             onVideoRestarted: {
                 mainArea.pop();
             }
-
             onTempVideoPaused: {
                 mainArea.push(component_game);
             }
@@ -133,6 +132,5 @@ ApplicationWindow {
             }
         }
     }
-
 
 }

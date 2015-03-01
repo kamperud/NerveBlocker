@@ -97,8 +97,15 @@ Item {
         }
     }
 
-    PlayerButton{
+    Item{
         id: playPause
+
+        MouseArea {
+            id: mouseArea
+            anchors.fill: parent
+            onClicked: playClicked()
+
+        }
 
         width: parent.width/10
         height: width
@@ -107,9 +114,6 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: parent.height/5
 
-        onButtonClicked:{
-            playClicked();
-        }
         Image {
             id: playIcon
             source: "icons/Play-50.png"
