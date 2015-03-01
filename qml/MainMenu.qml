@@ -26,7 +26,7 @@ Rectangle {
             anchors.bottomMargin: parent.height/10
             anchors.topMargin: parent.height/5
 
-            color: "#000000"
+            color: "black"
             text: qsTr("Instructional")
 
             font.family: ubuntu.name

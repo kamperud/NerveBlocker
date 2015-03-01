@@ -15,7 +15,6 @@ Rectangle {
         anchors.rightMargin: 0
         anchors.bottomMargin: 0
         anchors.leftMargin: 0
-        anchors.topMargin: 0
         anchors.fill: parent
         onClicked: {
             button.clicked();

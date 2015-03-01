@@ -7,6 +7,7 @@ ApplicationWindow {
     property string yellowLight: "#fffd89"
     property string blueMain: "#04bfbf"
     property string blueLight: "#1fdada"
+    property string backgroundGrey: "#222222"
 
 
     visible: true
@@ -19,6 +20,30 @@ ApplicationWindow {
     FontLoader { id: scoreFont; source: "fonts/whysoserious.ttf" }
     FontLoader { id: orangeFont; source: "fonts/orange.ttf" }
     FontLoader { id: ubuntu; source: "fonts/Ubuntu-R.ttf" }
+
+
+    StackView {
+        id: mainArea
+        anchors.fill: parent
+        focus: true // important - otherwise we'll get no key events
+
+        //stops animation between stack changes
+        delegate: StackViewDelegate {
+            pushTransition: StackViewTransition{}
+        }
+
+        Component.onCompleted: {
+            push(component_mainMenu);
+        }
+
+        // Android back-button
+        Keys.onReleased: {
+           if (event.key === Qt.Key_Back) {
+               event.accepted = true;
+               mainArea.pop(null);
+           }
+        }
+    }
 
     Component {
         id: component_GameFinished
@@ -109,24 +134,5 @@ ApplicationWindow {
         }
     }
 
-    StackView {
-        id: mainArea
-        anchors.fill: parent
-        focus: true // important - otherwise we'll get no key events
 
-        delegate: StackViewDelegate {
-            pushTransition: StackViewTransition{}
-        }
-
-        Component.onCompleted: {
-            push(component_mainMenu);
-        }
-
-        Keys.onReleased: {
-           if (event.key === Qt.Key_Back) {
-               event.accepted = true
-               mainArea.pop(null);
-           }
-        }
-    }
 }

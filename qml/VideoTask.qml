@@ -10,14 +10,14 @@ Rectangle {
 
     Text {
         id: title
-        text: "Watch the Video"
+        text: "Pause the video when\n you find the perfect position\n and click confirm"
         horizontalAlignment: Text.AlignHCenter
         color: "#ffffff"
         font.family: ubuntu.name
         font.pixelSize: parent.width/15
 
         anchors.top: parent.top
-        anchors.topMargin: parent.height/10
+        anchors.topMargin: parent.height/20
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
@@ -42,7 +42,6 @@ Rectangle {
     VideoBar {
         id: videoController
         anchors.top: taskVideo.bottom
-        circleVisible: false
         width: parent.width
         height: parent.height/4
         anchors.horizontalCenter: parent.horizontalCenter

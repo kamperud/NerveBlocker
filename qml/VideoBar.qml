@@ -9,7 +9,6 @@ Item {
     property real progressBarPecent: 1
     property real circleDistance: 1
     property alias playVisible: playIcon.visible
-    property alias circleVisible: circle.visible
     property int movieLength: 1000
     property var positions: [50, 200];
 
@@ -28,26 +27,6 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height/5
 
-        Repeater {
-            id: repeater
-            model: 2
-            Rectangle{
-                color: "#ffffff"
-                height: parent.height*2
-                width: parent.height/2
-                visible: false
-
-                anchors.verticalCenter: parent.verticalCenter
-
-            }
-
-            onItemAdded: {
-                if (gamehandler.game.mode === Mode.VIDEO) {
-                    item.x = positions[index];
-                    item.visible = true;
-                }
-            }
-        }
 
         Rectangle {
             id: circle
@@ -60,7 +39,7 @@ Item {
             width: height
 
             anchors.verticalCenter: parent.verticalCenter
-            x: progressArea.drag.active ? circle.x : blueBar.width - width/2
+            x: /*progressArea.drag.active ? circle.x :*/ blueBar.width - width/2
             Rectangle {
                 color: blueMain
                 border.color: "#494949"
@@ -86,9 +65,6 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: -parent.height/5
-
-
-
     }
 
     MouseArea {
@@ -99,7 +75,15 @@ Item {
         drag.maximumX: greyBar.width -circle.width/2
         drag.minimumX: -circle.width/2
         drag.axis: Drag.XAxis
+        onPositionChanged:  {
+             if (drag.active && gamehandler.game.mode===Mode.VIDEO)
+                 updatePosition(mouse)
+        }
         onReleased: {
+             updatePosition(mouse)
+        }
+        function updatePosition(mouse) {
+            // TODO. The position returned is inaccurate and must be revised
             var x = mouse.x;
             if (x>drag.maximumX) {
                 x = drag.maximumX;
