@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Controls 1.2
 import UllApp 1.0
 
 Item {
@@ -116,6 +117,13 @@ Item {
             source: task.image.mappedImagePath
             visible: gamehandler.game.mode === Mode.TUTORIAL || task.answered
         }
+
+       /* Component.onComplete: {
+            if(task.organ===Organ.ARTERY) {
+                load
+            }
+
+        }*/
         
         AnnotationFigure{
             id: annotationFigure

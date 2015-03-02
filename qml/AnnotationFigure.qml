@@ -1,9 +1,9 @@
 import QtQuick 2.0
 
 Item {
-    property alias startPoint: startPoint
-    property alias midPoint: mid
-    property alias stopPoint: stopPoint
+    property alias startPoint: point1
+    property alias midPoint: point2
+    property alias stopPoint: point3
 
     property int maxX
     property int maxY
@@ -12,7 +12,7 @@ Item {
     property real scalingX
     property real scalingY
 
-    property var list: [startPoint.x*scalingX, startPoint.y*scalingY, midPoint.x*scalingX, midPoint.y*scalingY, stopPoint.x*scalingX, stopPoint.y*scalingY]
+    property var list: [point1.x*scalingX, point1.y*scalingY, midPoint.x*scalingX, midPoint.y*scalingY, point3.x*scalingX, point3.y*scalingY]
     function getListOfPoints(){
         var pointsList = []
         for(var i in list){
@@ -24,73 +24,61 @@ Item {
 
 
 
-    Rectangle{
-        id: startPoint
-        width: 10
-        height: 10
+    AnnotationPoint{
+        id: point1
         x: 0
         y: 0
-        color: "red"
-        radius: 5
     }
 
-    Rectangle{
-        id: mid
-        width: 10
-        height: 10
+    AnnotationPoint {
+        id: point2
         x: 150
         y: 200
-        color: "red"
-        radius: 5
     }
 
-    Rectangle{
-        id: stopPoint
-        width: 10
-        height: 10
+    AnnotationPoint{
+        id: point3
         x: 250
         y: 10
-        color: "red"
-        radius: 5
     }
 
     AnnotationMouseArea{
         id: moveStart
-        anchors.fill: startPoint
-        drag.target: startPoint
+        anchors.fill: point1
+        drag.target: point1
     }
 
     AnnotationMouseArea{
         id: moveMid
-        anchors.fill: mid
-        drag.target: mid
+        anchors.fill: point2
+        drag.target: point2
     }
 
 
     AnnotationMouseArea {
         id: moveStop
-        anchors.fill: stopPoint
-        drag.target: stopPoint
+        anchors.fill: point3
+        drag.target: point3
     }
 
     PathDraw {
         id: line1
         lineWidth: 1
         lineColor: "#FFF"
-        point1x: startPoint.x + (startPoint.width / 2)
-        point1y: startPoint.y + (startPoint.height / 2)
-        point2x: mid.x + (mid.width / 2)
-        point2y: mid.y + (mid.height / 2)
+        point1x: point1.x + (point1.width / 2)
+        point1y: point1.y + (point1.height / 2)
+        point2x: point2.x + (point2.width / 2)
+        point2y: point2.y + (point2.height / 2)
     }
 
     PathDraw{
         id: line2
         lineWidth: 1
         lineColor: "#FFF"
-        point1x: mid.x + (mid.width / 2)
-        point1y: mid.y + (mid.height / 2)
-        point2x: stopPoint.x + (stopPoint.width / 2)
-        point2y: stopPoint.y + (stopPoint.height / 2)
+        point1x: point2.x + (point2.width / 2)
+        point1y: point2.y + (point2.height / 2)
+        point2x: point3.x + (point3.width / 2)
+        point2y: point3.y + (point3.height / 2)
     }
 }
 

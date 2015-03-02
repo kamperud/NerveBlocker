@@ -25,7 +25,7 @@ bool Task::answerTask(int x, int y)
     return m_correct;
 }
 
-int Task::answerAnnotation(QList<double> listOfPoints)
+bool Task::answerAnnotation(QList<double> listOfPoints)
 {
     m_answered = true;
     m_correct = true;
@@ -35,18 +35,15 @@ int Task::answerAnnotation(QList<double> listOfPoints)
         if(m_image->hasOrganTypeAtPosition(i.next(), i.next(), m_organ)){
             m_score += 200;
             qDebug() << "New score: "<< m_score << endl;
-
         }
-
     }
 
     if(m_correct){
         emit correctChanged(m_correct);
     }
-
-
     emit answeredChanged(m_answered);
-    return m_score;
+    emit scoreChanged(m_score);
+    return m_correct;
 }
 
 

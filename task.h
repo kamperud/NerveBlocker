@@ -26,7 +26,7 @@ public:
 
 public slots:
     bool answerTask(int x, int y);
-    int answerAnnotation(QList<double> list);
+    bool answerAnnotation(QList<double> list);
 
 signals:
     void answeredChanged(bool newValue);

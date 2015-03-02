@@ -49,12 +49,19 @@ void Game::onTaskAnswered()
         m_tasksAnsweredCorrectly++;
     emit tasksAnsweredChanged(m_tasksAnswered);
 
-    if(m_currentTask->isCorrect()){
-        int receivedPoints = 50 * getMultiplier();
-        setPoints(getPoints() + receivedPoints);
-        setMultiplier(getMultiplier()+1);
-    } else {
-        setMultiplier(1);
+
+    // Adding points
+    if (getMode()==Mode::DRAG) {
+        setPoints(getPoints() + m_currentTask->getScore());
+    }
+    else {
+        if(m_currentTask->isCorrect()){
+            int receivedPoints = 50 * getMultiplier();
+            setPoints(getPoints() + receivedPoints);
+            setMultiplier(getMultiplier()+1);
+        } else {
+            setMultiplier(1);
+        }
     }
 
     bool newFinished = isFinished();
