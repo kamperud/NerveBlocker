@@ -1,9 +1,10 @@
 #include "task.h"
 #include "constants.h"
 
-#include <array>
+//#include <array>
 #include <QList>
 #include <QListIterator>
+#include <QDebug>
 
 
 Task::Task(Organ::Type organ, int imageId, QObject* parent) :
@@ -11,7 +12,8 @@ Task::Task(Organ::Type organ, int imageId, QObject* parent) :
     m_organ(organ),
     m_image(new UltraSoundImage(imageId, this)),
     m_answered(false),
-    m_correct(false)
+    m_correct(false),
+    m_score(0)
 {}
 
 bool Task::answerTask(int x, int y)
@@ -29,10 +31,11 @@ bool Task::answerAnnotation(QList<double> listOfPoints)
     m_correct = true;
     int score = 0;
 
-    QListIterator<double> i(listOfPoints);
+    QListIterator<int> i(listOfPoints);
     while(i.hasNext()){
         if(m_image->hasOrganTypeAtPosition(i.next(), i.next(), m_organ)){
             score += 200;
+            qDebug() << "New score: "<<score<<endl;
         }
     }
 
@@ -89,4 +92,8 @@ UltraSoundImage *Task::getImage()
 bool Task::isCorrect() const
 {
     return m_correct;
+}
+
+int Task::getScore() {
+    return m_score;
 }
