@@ -84,7 +84,7 @@ Rectangle {
     }
 
     //POINTS box
-    PointsBox {
+    GamePointsBox {
         id: topPoints
         contentText: gamehandler.game.points
         width: parent.width*4.5/12
@@ -96,7 +96,7 @@ Rectangle {
     }
 
     //MULTIPLIER box
-    PointsBox {
+    GamePointsBox {
         id: topMulti
         contentText: "x" + gamehandler.game.multiplier
         labelText: qsTr("MULTIPLIER")
@@ -109,7 +109,7 @@ Rectangle {
     }
 
     //TASK
-    Task {
+    GameTask {
         id: task
         task: game.currentTask
         progressBarInterval:timer.interval

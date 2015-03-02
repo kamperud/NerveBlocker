@@ -13,7 +13,7 @@ Rectangle {
     height: 500
     color: "#222222"
 
-    GameMenuExtraButton{
+    StartMenuExtraButton{
         id: instructionalVideoButton
         text: ""
 
@@ -68,7 +68,7 @@ Rectangle {
         }
     }
 
-    GameMenuExtraButton{
+    StartMenuExtraButton{
         id: downloadsButton
         text: qsTr("Downloads")
 
@@ -79,7 +79,7 @@ Rectangle {
         anchors.rightMargin: parent.width * 2 / 21
     }
 
-    GameMenuPlayButton{
+    StartMenuPlayButton{
         id: easyButton
         text: qsTr("Easy")
 
@@ -96,7 +96,7 @@ Rectangle {
         }
     }
 
-    GameMenuPlayButton{
+    StartMenuPlayButton{
         id: normalButton
         text: qsTr("Normal")
 
@@ -116,7 +116,7 @@ Rectangle {
     }
 
 
-    GameMenuPlayButton{
+    StartMenuPlayButton{
         id: expertButton
         text: qsTr("Expert")
 
@@ -133,7 +133,7 @@ Rectangle {
         }
     }
 
-    GameMenuPlayButton{
+    StartMenuPlayButton{
         id: videoButton
         text: qsTr("Video")
 
@@ -154,7 +154,7 @@ Rectangle {
         }
     }
 
-    GameMenuPlayButton{
+    StartMenuPlayButton{
         id: annotationButton
         text: qsTr("Annotation")
 

@@ -2,15 +2,15 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Game.qml</file>
-        <file>MainMenu.qml</file>
-        <file>GameFinished.qml</file>
-        <file>PointsBox.qml</file>
-        <file>Task.qml</file>
+        <file>StartMenu.qml</file>
+        <file>FinishedScreen.qml</file>
+        <file>GamePointsBox.qml</file>
+        <file>GameTask.qml</file>
         <file>VideoTask.qml</file>
-        <file>InstrPage.qml</file>
+        <file>StartMenuInstruction.qml</file>
         <file>VideoBar.qml</file>
-        <file>GameMenuPlayButton.qml</file>
-        <file>GameMenuExtraButton.qml</file>
+        <file>StartMenuPlayButton.qml</file>
+        <file>StartMenuExtraButton.qml</file>
         <file>MenuButton.qml</file>
         <file>NextButton.qml</file>
         <file>PathDraw.qml</file>

@@ -14,7 +14,7 @@ ApplicationWindow {
     width: 300
     height: 500
     title: qsTr("UllApp")
-    color: "#ffffff"
+    color: "white"
 
     FontLoader { id: birdFont; source: "fonts/LittleBird.ttf" }
     FontLoader { id: scoreFont; source: "fonts/whysoserious.ttf" }
@@ -47,7 +47,7 @@ ApplicationWindow {
 
     Component {
         id: component_GameFinished
-        GameFinished {
+        FinishedScreen {
             onMainMenuClicked: {
                 mainArea.pop();
                 mainArea.pop();
@@ -77,7 +77,7 @@ ApplicationWindow {
     }
     Component {
         id: component_instructional
-        InstrPage {
+        StartMenuInstruction {
             onBackButtonClicked: {
                 mainArea.pop();
             }
@@ -102,7 +102,7 @@ ApplicationWindow {
 
     Component {
         id: component_mainMenu
-        MainMenu {
+        StartMenu {
             id: mainMenu
 
             onBeginnerClicked: {
