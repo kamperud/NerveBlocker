@@ -20,6 +20,12 @@ Rectangle {
     state: "ingame"
     color: "#222222"
 
+    property var unscaledX1
+    property var unscaledX2
+    property var unscaledX3
+    property var unscaledY1
+    property var unscaledY2
+    property var unscaledY3
 
     Timer{
         id: timer

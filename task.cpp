@@ -2,6 +2,9 @@
 #include "constants.h"
 
 #include <array>
+#include <QList>
+#include <QListIterator>
+
 
 Task::Task(Organ::Type organ, int imageId, QObject* parent) :
     QObject(parent),
@@ -20,6 +23,26 @@ bool Task::answerTask(int x, int y)
     return m_correct;
 }
 
+bool Task::answerAnnotation(QList<double> listOfPoints)
+{
+    m_answered = true;
+    m_correct = true;
+    int score = 0;
+
+    QListIterator<double> i(listOfPoints);
+    while(i.hasNext()){
+        if(m_image->hasOrganTypeAtPosition(i.next(), i.next(), m_organ)){
+            score += 200;
+        }
+    }
+
+    if(m_correct){
+        emit correctChanged(m_correct);
+    }
+
+
+    emit answeredChanged(m_answered);
+}
 
 
 Task *Task::createRandomTask(QObject *parent)
