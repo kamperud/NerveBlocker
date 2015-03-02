@@ -5,21 +5,31 @@ Item {
     property alias midPoint: mid
     property alias stopPoint: stopPoint
 
-    property var list: [startPoint.x, startPoint.y, midPoint.x, midPoint.y, stopPoint.x, stopPoint.y]
+    property int maxX
+    property int maxY
+    property int minX
+    property int minY
+    property real scalingX
+    property real scalingY
+
+    property var list: [startPoint.x*scalingX, startPoint.y*scalingY, midPoint.x*scalingX, midPoint.y*scalingY, stopPoint.x*scalingX, stopPoint.y*scalingY]
     function getListOfPoints(){
         var pointsList = []
         for(var i in list){
-            pointsList.push(i);
+            pointsList.push(list[i]);
+            console.log(pointsList[i]);
         }
         return pointsList;
     }
+
+
 
     Rectangle{
         id: startPoint
         width: 10
         height: 10
-        x: 30
-        y: 50
+        x: 0
+        y: 0
         color: "red"
         radius: 5
     }
@@ -44,20 +54,20 @@ Item {
         radius: 5
     }
 
-    MouseArea{
+    AnnotationMouseArea{
         id: moveStart
         anchors.fill: startPoint
         drag.target: startPoint
     }
 
-    MouseArea{
+    AnnotationMouseArea{
         id: moveMid
         anchors.fill: mid
         drag.target: mid
     }
 
 
-    MouseArea{
+    AnnotationMouseArea {
         id: moveStop
         anchors.fill: stopPoint
         drag.target: stopPoint

@@ -1,14 +1,9 @@
 import QtQuick 2.0
-import UllApp 1.0;
-//import QtMultimedia 5.0;
-//import QtQuick.Layouts 1.1
-//import QtQuick.Controls 1.2
-// Fjernet for aa gjoere appen mindre
-
-
+import UllApp 1.0
 
 Item {
     property var task
+
     property alias progressBarInterval: animation.duration
     property alias progressBarWidth: yellowBar.width
     property alias progressBarRunning: seqAnimation.running
@@ -125,12 +120,13 @@ Item {
         AnnotationFigure{
             id: annotationFigure
             visible: gamehandler.game.mode === Mode.DRAG
-        }
 
-        MouseArea{
-            id: moveFigure
-            anchors.fill: annotationFigure
-            drag.target: annotationFigure
+            maxX: parent.width
+            maxY: parent.height
+            minX: 0
+            minY: 0
+            scalingX: taskImage.sourceSize.width/imageArea.width
+            scalingY: taskImage.sourceSize.height/imageArea.height
         }
 
         MouseArea {

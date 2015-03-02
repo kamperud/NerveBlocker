@@ -1,7 +1,7 @@
 #include "task.h"
 #include "constants.h"
 
-//#include <array>
+#include <array>
 #include <QList>
 #include <QListIterator>
 #include <QDebug>
@@ -25,18 +25,19 @@ bool Task::answerTask(int x, int y)
     return m_correct;
 }
 
-bool Task::answerAnnotation(QList<double> listOfPoints)
+int Task::answerAnnotation(QList<double> listOfPoints)
 {
     m_answered = true;
     m_correct = true;
-    int score = 0;
 
-    QListIterator<int> i(listOfPoints);
+    QListIterator<double> i(listOfPoints);
     while(i.hasNext()){
         if(m_image->hasOrganTypeAtPosition(i.next(), i.next(), m_organ)){
-            score += 200;
-            qDebug() << "New score: "<<score<<endl;
+            m_score += 200;
+            qDebug() << "New score: "<< m_score << endl;
+
         }
+
     }
 
     if(m_correct){
@@ -45,6 +46,7 @@ bool Task::answerAnnotation(QList<double> listOfPoints)
 
 
     emit answeredChanged(m_answered);
+    return m_score;
 }
 
 

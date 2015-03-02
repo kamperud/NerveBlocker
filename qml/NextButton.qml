@@ -62,7 +62,7 @@ Rectangle {
             //CONFIRM (annoteringsspill)
             else if(gamehandler.game.mode === Mode.DRAG && !taskConfirmed){
                 taskConfirmed = true;
-                console.log(gamehandler.game.currentTask.confirmAnnotation(task.annotationFigure.getListOfPoints()));
+                console.log(gamehandler.game.currentTask.answerAnnotation(task.annotationFigure.getListOfPoints()));
             }
             //NEXT
             else if(game.currentTask.answered){
