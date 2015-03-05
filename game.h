@@ -5,6 +5,7 @@
 #include "mode.h"
 
 #include <QObject>
+#include <QVector>
 
 class Game : public QObject
 {
@@ -48,6 +49,7 @@ private:
     int m_tasksAnswered;
     int m_tasksAnsweredCorrectly;
     const Mode::Type m_mode;
+    QVector<int> m_listOfVideoIntervals;
 
 };
 

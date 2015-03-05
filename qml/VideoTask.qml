@@ -64,14 +64,18 @@ Rectangle {
     }
 
     MenuButton {
-        id: botMenu
-
-        width: taskVideo.width
-        anchors.horizontalCenter: parent.horizontalCenter
+        id: menuButton
 
         onMenuClicked: {
             gameMenuClicked();
         }
+    }
+
+    NextButton {
+        id: nextButton
+
+        arrowVisible: false
+
     }
 
 }

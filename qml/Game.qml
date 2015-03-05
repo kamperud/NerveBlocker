@@ -18,7 +18,7 @@ Rectangle {
     signal gameMenuClicked()
     signal gameSummaryClicked()
     state: "ingame"
-    color: "#222222"
+    color: backgroundGrey
 
     property var unscaledX1
     property var unscaledX2
@@ -135,5 +135,33 @@ Rectangle {
 
     NextButton {
         id: botNext
+        arrowVisible: taskConfirmed
+
+        onNextClicked: {
+            //Game done
+
+            if(game.finished && gamehandler.game.mode !== Mode.TIMED){
+                gameSummaryClicked();
+            }
+            //CONFIRM (vis annoret bilde)
+            else if(taskXSet && !taskConfirmed){
+                taskConfirmed = true;
+                if(gamehandler.game.currentTask.answerTask(unscaledX, unscaledY) && gamehandler.game.mode === Mode.TIMED){
+                    addTime();
+                }
+            }
+            //CONFIRM (annoteringsspill)
+            else if(gamehandler.game.mode === Mode.DRAG && !taskConfirmed){
+                taskConfirmed = true;
+                console.log(gamehandler.game.currentTask.answerAnnotation(task.annotationFigure.getListOfPoints()));
+            }
+            //NEXT
+            else if(game.currentTask.answered){
+                taskConfirmed = false;
+                taskXSet = false;
+                task.croXvisible = false;
+                game.newTask();
+            }
+        }
     }
 }

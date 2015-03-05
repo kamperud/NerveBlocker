@@ -22,8 +22,8 @@ Rectangle {
     width: parent.width*4.5/12
     height: parent.height/10
     color: menuButton.pressed ? "#1fdada" : "#04bfbf"
-    radius: 15
-    
+    radius: height/4
+
     Text {
         color: "#ffffff"
         text: qsTr("MENU")

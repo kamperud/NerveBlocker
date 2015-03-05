@@ -8,8 +8,8 @@ Rectangle {
 
     id: pointsBox
     color: "#f7e967"
-    radius: 15
-    
+    radius: height/4
+
     Text {
         id: label
         text: qsTr("POINTS")

@@ -11,6 +11,14 @@ Game::Game(Mode::Type mode, QObject *parent):
     m_tasksAnsweredCorrectly(0),
     m_mode(mode)
 {
+    /*if(mode==Mode.VIDEO){
+        m_listOfVideoIntervals = new QVector(2);
+        m_listOfVideoIntervals[0] = 1000;
+        m_listOfVideoIntervals[0] = 5000;
+    }
+    else {
+        m_listOfVideoIntervals = nullptr;
+    }*/
     newTask();
 }
 
