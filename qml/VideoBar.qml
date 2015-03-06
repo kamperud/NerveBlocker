@@ -18,14 +18,14 @@ Item {
     Rectangle {
         id: blueBar
         width: greyBar.width*item.progressBarPecent/100
-        height: parent.height/10
+        height: parent.height/5
         color: blueMain
         radius: 3
         z: 1
         x: greyBar.x
 
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -parent.height/5
+        anchors.top: parent.top
+
 
 
         Rectangle {
@@ -58,13 +58,12 @@ Item {
     Rectangle {
         id: greyBar
         width: parent.width*11/12
-        height: parent.height/10
+        height: parent.height/5
         color: "grey"
         radius: 3
 
-        anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenterOffset: -parent.height/5
+        anchors.top: parent.top
     }
 
     MouseArea {
@@ -107,12 +106,12 @@ Item {
 
         }
 
-        width: parent.width/10
+        width: parent.height/2
         height: width
 
-        anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenterOffset: parent.height/5
+        anchors.top: greyBar.bottom
+        anchors.topMargin: height/3
 
         Image {
             id: playIcon

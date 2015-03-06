@@ -46,7 +46,7 @@ Rectangle {
         autoPlay: true
 
         // short clip
-        source: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
+        source: "http://folk.ntnu.no/solvehel/instructional.mp4"
         // long clip
         //source: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
 

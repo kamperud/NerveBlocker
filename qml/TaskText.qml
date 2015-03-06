@@ -1,11 +1,5 @@
 import QtQuick 2.0
 import UllApp 1.0;
-//import QtMultimedia 5.0;
-//import QtQuick.Layouts 1.1
-//import QtQuick.Controls 1.2
-// Fjernet for aa gjoere appen mindre
-
-
 
 Item {
     id: textArea
@@ -16,7 +10,7 @@ Item {
     height: parent.height - taskImage.height;
     
     Text {
-        color: "#ffffff"
+        color: "white"
         text: gamehandler.game.mode !== Mode.DRAG ? qsTr("Touch the") : qsTr("Annotate the")
         font.family: ubuntu.name
         font.pixelSize:parent.height/5

@@ -8,13 +8,13 @@ Rectangle {
     id: gameFinishedScreen
     width: 300
     height: 500
-    color: "#333333"
+    color: backgroundGrey
 
     Rectangle {
         id: rectangle1
         width: parent.width / 1.3
         height: parent.height * 8/15
-        color: "#f7e967"
+        color: yellowMain
         radius: 15
         anchors.top: parent.top
         anchors.topMargin: parent.height/10
@@ -93,7 +93,7 @@ Rectangle {
             id: buttMainMenu
             width: parent.parent.width / 4
             height: width
-            color: "#04bfbf"
+            color: menuButton.pressed ? blueLight : blueMain
             radius: 15
 
             Text{
@@ -121,12 +121,12 @@ Rectangle {
             width: parent.parent.width / 4
             height: width
 
-            color: "#04bfbf"
+            color: playButton.pressed ? blueLight : blueMain
             radius: 15
 
             Text{
                 text: "Play \nAgain"
-                color: "#ffffff"
+                color: "white"
                 font.family: ubuntu.name
                 font.pixelSize: parent.width/4
 

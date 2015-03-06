@@ -8,43 +8,49 @@ Rectangle {
     signal tempVideoPaused()
     color: "#222222"
 
-    Text {
-        id: title
-        text: "Pause the video when\n you find the perfect position\n and click confirm"
-        horizontalAlignment: Text.AlignHCenter
-        color: "#ffffff"
-        font.family: ubuntu.name
-        font.pixelSize: parent.width/15
-
+    Item {
+        id: textArea
+        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.top: parent.top
-        anchors.topMargin: parent.height/20
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
+        anchors.bottom: taskVideo.top
+        height: parent.height - taskVideo.height;
 
+        Text {
+            id: title
+            text: "Pause the video when\n you find the perfect position\n and click confirm"
+            color: "white"
+            font.family: ubuntu.name
+            font.pixelSize:parent.height/5
+
+            verticalAlignment: Text.AlignBottom
+            horizontalAlignment: Text.AlignHCenter
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            anchors.left: parent.left
+
+        }
+    }
     Video {
         id: taskVideo
         autoPlay: true
 
-        // short clip
-        source: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
-        // long clip
-        //source: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
+        source: "http://folk.ntnu.no/solvehel/FL_Acq04_2DFrames_RGB_v1.mp4"
 
         width: parent.width*11/12
-        height: width*3/4
+        height: width
 
 
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -parent.height/10
+        anchors.bottom: videoController.top
     }
 
     VideoBar {
         id: videoController
-        anchors.top: taskVideo.bottom
         width: parent.width
-        height: parent.height/4
+        height: parent.height/8
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: menuButton.top
 
         progressBarPecent: taskVideo.position*100/taskVideo.duration
         movieLength: taskVideo.duration
@@ -65,7 +71,6 @@ Rectangle {
 
     MenuButton {
         id: menuButton
-
         onMenuClicked: {
             gameMenuClicked();
         }
@@ -73,10 +78,8 @@ Rectangle {
 
     NextButton {
         id: nextButton
-
         arrowVisible: false
 
     }
-
 }
 

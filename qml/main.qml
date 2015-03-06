@@ -11,8 +11,8 @@ ApplicationWindow {
 
 
     visible: true
-    width: 300
-    height: 500
+    width: 400
+    height: 640
     title: qsTr("UllApp")
     color: "white"
 
