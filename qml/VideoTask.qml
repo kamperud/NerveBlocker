@@ -13,8 +13,8 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.bottom: taskVideo.top
-        height: parent.height - taskVideo.height;
+
+        height: parent.height/5;
 
         Text {
             id: title
@@ -37,11 +37,9 @@ Rectangle {
 
         source: "http://folk.ntnu.no/solvehel/FL_Acq04_2DFrames_RGB_v1.mp4"
 
-        //width: parent.width*11/12
-        //height: parent.height
-        width: metaData.resolution ? metaData.resolution.width : parent.width*11/12
-        height: metaData.resolution ? metaData.resolution.height : parent.height
-
+        // Don't fuck with the following values. iOS needs these
+        width: parent.width*11/12
+        height: parent.height
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
