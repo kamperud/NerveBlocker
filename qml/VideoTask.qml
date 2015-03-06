@@ -40,11 +40,12 @@ Rectangle {
         //width: parent.width*11/12
         //height: parent.height
         width: metaData.resolution ? metaData.resolution.width : parent.width*11/12
-        height: metaData.resolution ? metaData.resolution.height : parent.height/2
+        height: metaData.resolution ? metaData.resolution.height : parent.height
 
 
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: videoController.top
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: -parent.height/20
     }
 
     VideoBar {
