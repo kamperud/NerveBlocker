@@ -7,7 +7,7 @@ Rectangle {
     color: backgroundGrey
     // TODO, add buffering animation
 
-    Image {
+    /*Image {
         id: backButton
         source: "icons/Left4-50.png"
         width: parent.width/10
@@ -25,7 +25,7 @@ Rectangle {
                 backButtonClicked();
             }
         }
-    }
+    }*/
 
 
     Text {
@@ -37,7 +37,8 @@ Rectangle {
         font.pixelSize: parent.width/15
 
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: backButton.bottom
+        anchors.top: parent.top
+        anchors.topMargin: parent.height/20
     }
 
 
@@ -47,21 +48,23 @@ Rectangle {
 
         // short clip
         source: "http://folk.ntnu.no/solvehel/instructional.mp4"
-        // long clip
-        //source: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
 
+        // Don't fuck with the following values. iOS needs these
         width: parent.width*11/12
-        height: width*3/4
+        height: parent.height
+
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: -parent.height/20
     }
     VideoBar {
         id: videoController
-        anchors.top: taskVideo.bottom
         width: parent.width
-        height: parent.height/4
+        height: parent.height/8
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: menuButton.top
+        anchors.bottomMargin: parent.height/40
 
         progressBarPecent: taskVideo.position*100/taskVideo.duration
         onPlayClicked: {
@@ -79,5 +82,16 @@ Rectangle {
         }
 
     }
+    MenuButton {
+        id: menuButton
+        width:parent.width*11/12
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        onMenuClicked: {
+            taskVideo.stop();
+            backButtonClicked();;
+        }
+    }
+
 }
 
