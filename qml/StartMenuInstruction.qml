@@ -53,20 +53,18 @@ Rectangle {
         width: parent.width*11/12
         height: parent.height
 
-
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height/20
     }
     VideoBar {
-        id: videoController
-        width: parent.width
-        height: parent.height/8
-        anchors.horizontalCenter: parent.horizontalCenter
+        id: videoController       
+        progressBarPecent: taskVideo.position*100/taskVideo.duration
+        movieLength: taskVideo.duration
+
         anchors.bottom: menuButton.top
         anchors.bottomMargin: parent.height/40
 
-        progressBarPecent: taskVideo.position*100/taskVideo.duration
         onPlayClicked: {
             if (taskVideo.playbackState===MediaPlayer.PlayingState) {
                 taskVideo.pause();
@@ -78,7 +76,7 @@ Rectangle {
             }
         }
         onProgressClicked: {
-            taskVideo.seek(taskVideo.position+circleDistance*taskVideo.duration);
+            taskVideo.seek(circleDistance*taskVideo.duration);
         }
 
     }

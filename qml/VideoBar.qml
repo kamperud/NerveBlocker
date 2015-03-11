@@ -12,8 +12,9 @@ Item {
     property int movieLength: 1000
     property var positions: [50, 200];
 
-
-    width: parent.width/2
+    width: parent.width
+    height: parent.height/8
+    anchors.horizontalCenter: parent.horizontalCenter
 
     Rectangle {
         id: blueBar
@@ -82,7 +83,6 @@ Item {
              updatePosition(mouse)
         }
         function updatePosition(mouse) {
-            // TODO. The position returned is inaccurate and must be revised
             var x = mouse.x;
             if (x>drag.maximumX) {
                 x = drag.maximumX;
@@ -90,9 +90,8 @@ Item {
             else if (x < drag.minimumX){
                 x = drag.minimumX;
             }
-            circleDistance = (x-blueBar.width)/greyBar.width;
+            circleDistance = (x+circle.width/2)/greyBar.width;
             progressClicked();
-            blueBar.width = x;
         }
     }
 

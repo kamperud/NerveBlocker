@@ -48,13 +48,11 @@ Rectangle {
 
     VideoBar {
         id: videoController
-        width: parent.width
-        height: parent.height/8
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: menuButton.top
-
         progressBarPecent: taskVideo.position*100/taskVideo.duration
         movieLength: taskVideo.duration
+
+        anchors.bottom: menuButton.top
+
         onPlayClicked: {
             if (taskVideo.playbackState===MediaPlayer.PlayingState) {
                 taskVideo.pause();
@@ -66,7 +64,7 @@ Rectangle {
             }
         }
         onProgressClicked: {
-            taskVideo.seek(taskVideo.position+circleDistance*taskVideo.duration);
+            taskVideo.seek(circleDistance*taskVideo.duration);
         }
     }
 
