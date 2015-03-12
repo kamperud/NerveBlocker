@@ -139,24 +139,18 @@ Rectangle {
 
         onNextClicked: {
             //Game done
+            gameSummaryClicked();
 
-            if(game.finished && gamehandler.game.mode !== Mode.TIMED){
-                gameSummaryClicked();
-            }
             //CONFIRM (vis annoret bilde)
-            else if(taskXSet && !taskConfirmed){
+            if(taskXSet && !taskConfirmed){
                 taskConfirmed = true;
                 if(gamehandler.game.currentTask.answerTask(unscaledX, unscaledY) && gamehandler.game.mode === Mode.TIMED){
                     addTime();
                 }
             }
-            //CONFIRM (annoteringsspill)
-            else if(gamehandler.game.mode === Mode.DRAG && !taskConfirmed){
-                taskConfirmed = true;
-                console.log(gamehandler.game.currentTask.answerAnnotation(task.annotationFigure.getListOfPoints()));
-            }
+
             //NEXT
-            else if(game.currentTask.answered){
+            else if(game.mode!== Mode.VIDEO && game.currentTask.answered){
                 taskConfirmed = false;
                 taskXSet = false;
                 task.croXvisible = false;

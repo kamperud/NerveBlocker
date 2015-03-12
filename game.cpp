@@ -5,27 +5,28 @@
 Game::Game(Mode::Type mode, QObject *parent):
     QObject(parent),
     m_currentTask(nullptr),
+    m_currentVideoTask(nullptr),
     m_points(0),
     m_multiplier(1),
     m_tasksAnswered(0),
     m_tasksAnsweredCorrectly(0),
     m_mode(mode)
 {
-    /*if(mode==Mode.VIDEO){
-        m_listOfVideoIntervals = new QVector(2);
-        m_listOfVideoIntervals[0] = 1000;
-        m_listOfVideoIntervals[0] = 5000;
-    }
-    else {
-        m_listOfVideoIntervals = nullptr;
-    }*/
-    newTask();
+    if(mode == Mode::VIDEO)
+        newVideoTask();
+    else
+        newTask();
 }
 
 Task *Game::getCurrentTask()
 {
     return m_currentTask;
 }
+TaskVideo *Game::getCurrentVideoTask()
+{
+    return m_currentVideoTask;
+}
+
 
 bool Game::isFinished() const
 {
@@ -47,6 +48,17 @@ void Game::newTask()
                            this, &Game::onTaskAnswered);
 
     emit currentTaskChanged(m_currentTask);
+}
+void Game::newVideoTask()
+{
+
+    if(m_currentVideoTask!=nullptr)
+        m_currentVideoTask->deleteLater();
+    m_currentVideoTask = new TaskVideo(this);
+    m_currentVideoTask->connect(m_currentVideoTask, &TaskVideo::answeredChanged,
+                           this, &Game::onVideoTaskAnswered);
+
+    emit currentVideoTaskChanged(m_currentVideoTask);
 }
 
 void Game::onTaskAnswered()
@@ -74,6 +86,10 @@ void Game::onTaskAnswered()
 
     bool newFinished = isFinished();
     if(oldFinished != newFinished)emit finishedChanged(newFinished);
+}
+
+void Game::onVideoTaskAnswered(){
+    // TODO get the score and put it in m_points?
 }
 
 int Game::getMultiplier() const {

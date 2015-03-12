@@ -35,7 +35,7 @@ Rectangle {
         id: taskVideo
         autoPlay: true
 
-        source: "http://folk.ntnu.no/solvehel/FL_Acq04_2DFrames_RGB_v1.mp4"
+        source: gamehandler.game.currentVideoTask.videoPath
 
         // Don't fuck with the following values. iOS needs these
         width: parent.width*11/12
@@ -45,6 +45,8 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height/20
     }
+
+
 
     VideoBar {
         id: videoController
@@ -78,7 +80,19 @@ Rectangle {
     NextButton {
         id: nextButton
         arrowVisible: false
+        onNextClicked: {
+            //Game done
+            if(!arrowVisible){
+                arrowVisible = true;
+                var bestTime = gamehandler.game.currentVideoTask.answerVideoTask(taskVideo.position);
+                taskVideo.seek(bestTime);
+            }
 
+            //NEXT
+            else {
+                gameSummaryClicked();
+            }
+        }
     }
 }
 
