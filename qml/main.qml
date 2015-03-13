@@ -11,8 +11,8 @@ ApplicationWindow {
 
 
     visible: true
-    width: 400
-    height: 640
+    width: 640
+    height: 960
     title: qsTr("UllApp")
     color: "white"
 
@@ -56,8 +56,13 @@ ApplicationWindow {
                 gamehandler.newGame(gamehandler.game.mode);
                 mainArea.pop();
                 mainArea.pop();
-                mainArea.push(component_game);
-                mainArea.currentItem.startTimer();
+                if(gamehandler.game.mode===Mode.VIDEO){
+                    mainArea.push(component_video);
+                }
+                else{
+                    mainArea.push(component_game);
+                    mainArea.currentItem.startTimer();
+                }
             }
         }
     }
@@ -90,11 +95,8 @@ ApplicationWindow {
             onGameMenuClicked: {
                 mainArea.pop();
             }
-            onVideoRestarted: {
-                mainArea.pop();
-            }
-            onTempVideoPaused: {
-                mainArea.push(component_game);
+            onGameSummaryClicked: {
+                mainArea.push(component_GameFinished);
             }
         }
     }

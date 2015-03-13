@@ -2,6 +2,9 @@
 #include "task.h"
 #include "constants.h"
 
+#include <QDebug>
+
+
 Game::Game(Mode::Type mode, QObject *parent):
     QObject(parent),
     m_currentTask(nullptr),
@@ -89,7 +92,8 @@ void Game::onTaskAnswered()
 }
 
 void Game::onVideoTaskAnswered(){
-    // TODO get the score and put it in m_points?
+    qDebug() << "I got here\n";
+    setPoints(m_currentVideoTask->getScore());
 }
 
 int Game::getMultiplier() const {

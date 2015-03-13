@@ -4,9 +4,9 @@ import UllApp 1.0;
 
 Rectangle {
     signal gameMenuClicked()
-    signal videoRestarted()
-    signal tempVideoPaused()
+    signal gameSummaryClicked()
     color: "#222222"
+    property var task: gamehandler.game.currentVideoTask
 
     Item {
         id: textArea
@@ -14,11 +14,11 @@ Rectangle {
         anchors.right: parent.right
         anchors.top: parent.top
 
-        height: parent.height/5;
+        height: parent.height/6;
 
         Text {
             id: title
-            text: "Pause the video when\n you find the perfect position\n and click confirm"
+            text: task.answered ? text2 : text1
             color: "white"
             font.family: ubuntu.name
             font.pixelSize:parent.height/5
@@ -29,13 +29,17 @@ Rectangle {
             anchors.right: parent.right
             anchors.left: parent.left
 
+
+            property string text1: "Pause the video when\n you find the perfect position\n and click confirm"
+            property string text2: "The closest good spot\n is shown below. Go to next\n page to see your score"
+
         }
     }
     Video {
         id: taskVideo
         autoPlay: true
 
-        source: gamehandler.game.currentVideoTask.videoPath
+        source: task.videoPath
 
         // Don't fuck with the following values. iOS needs these
         width: parent.width*11/12
@@ -44,6 +48,10 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height/20
+
+        onStopped: {
+            play();
+        }
     }
 
 
