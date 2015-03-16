@@ -92,8 +92,7 @@ void Game::onTaskAnswered()
 }
 
 void Game::onVideoTaskAnswered(){
-    qDebug() << "I got here\n";
-    setPoints(m_currentVideoTask->getScore());
+     setPoints(m_currentVideoTask->getScore());
 }
 
 int Game::getMultiplier() const {

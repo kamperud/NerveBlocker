@@ -11,8 +11,8 @@ ApplicationWindow {
 
 
     visible: true
-    width: 640
-    height: 960
+    width: 533
+    height: 800
     title: qsTr("UllApp")
     color: "white"
 
@@ -129,8 +129,8 @@ ApplicationWindow {
                 mainArea.push(component_instructional);
             }
             onAnnotationClicked: {
-                gamehandler.newGame(Mode.DRAG);
-                mainArea.push(component_game);
+            /*    gamehandler.newGame(Mode.DRAG);
+                mainArea.push(component_game);*/
             }
         }
     }

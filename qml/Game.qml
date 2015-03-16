@@ -139,7 +139,9 @@ Rectangle {
 
         onNextClicked: {
             //Game done
-            gameSummaryClicked();
+            if(game.finished && gamehandler.game.mode !== Mode.TIMED){
+                           gameSummaryClicked();
+            }
 
             //CONFIRM (vis annoret bilde)
             if(taskXSet && !taskConfirmed){
