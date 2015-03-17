@@ -15,8 +15,6 @@ Item {
     property alias taskImageSizeWidth: taskImage.sourceSize.width
     property alias taskImageSizeHeight: taskImage.sourceSize.height
 
-    property alias annotationFigure: annotationFigure
-
 
     function getOrganColor(organ) {
         switch(organ){
@@ -92,8 +90,6 @@ Item {
         anchors.bottomMargin: parent.width/20
         anchors.horizontalCenter: parent.horizontalCenter
 
-        visible: gamehandler.game.mode !== Mode.VIDEO
-
         fillMode: Image.PreserveAspectFit
         source: task.image.imagePath
 
@@ -118,24 +114,6 @@ Item {
             visible: gamehandler.game.mode === Mode.TUTORIAL || task.answered
         }
 
-       /* Component.onComplete: {
-            if(task.organ===Organ.ARTERY) {
-                load
-            }
-
-        }*/
-        
-        AnnotationFigure{
-            id: annotationFigure
-            visible: gamehandler.game.mode === Mode.DRAG
-
-            maxX: parent.width
-            maxY: parent.height
-            minX: 0
-            minY: 0
-            scalingX: taskImage.sourceSize.width/imageArea.width
-            scalingY: taskImage.sourceSize.height/imageArea.height
-        }
 
         MouseArea {
             id: imageArea

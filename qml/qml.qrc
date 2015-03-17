@@ -18,5 +18,6 @@
         <file>AnnotationFigure.qml</file>
         <file>AnnotationMouseArea.qml</file>
         <file>AnnotationPoint.qml</file>
+        <file>AnnotationTask.qml</file>
     </qresource>
 </RCC>

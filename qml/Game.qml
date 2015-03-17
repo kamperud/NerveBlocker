@@ -17,15 +17,9 @@ Rectangle {
     property var unscaledY
     signal gameMenuClicked()
     signal gameSummaryClicked()
-    state: "ingame"
+    //state: "ingame"
     color: backgroundGrey
 
-    property var unscaledX1
-    property var unscaledX2
-    property var unscaledX3
-    property var unscaledY1
-    property var unscaledY2
-    property var unscaledY3
 
     Timer{
         id: timer
@@ -152,7 +146,7 @@ Rectangle {
             }
 
             //NEXT
-            else if(game.mode!== Mode.VIDEO && game.currentTask.answered){
+            else if(game.currentTask.answered){
                 taskConfirmed = false;
                 taskXSet = false;
                 task.croXvisible = false;

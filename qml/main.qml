@@ -101,6 +101,18 @@ ApplicationWindow {
         }
     }
 
+    Component {
+        id: component_annotation
+        AnnotationTask {
+            onGameMenuClicked: {
+                mainArea.pop();
+            }
+            onGameSummaryClicked: {
+                mainArea.push(component_GameFinished);
+            }
+        }
+    }
+
 
     Component {
         id: component_mainMenu
@@ -129,8 +141,8 @@ ApplicationWindow {
                 mainArea.push(component_instructional);
             }
             onAnnotationClicked: {
-            /*    gamehandler.newGame(Mode.DRAG);
-                mainArea.push(component_game);*/
+                gamehandler.newGame(Mode.DRAG);
+                mainArea.push(component_annotation);
             }
         }
     }
