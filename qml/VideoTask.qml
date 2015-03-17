@@ -7,6 +7,7 @@ Rectangle {
     signal gameSummaryClicked()
     color: "#222222"
     property var task: gamehandler.game.currentVideoTask
+    property bool active: true
 
     Item {
         id: textArea
@@ -64,6 +65,7 @@ Rectangle {
         anchors.bottom: menuButton.top
 
         onPlayClicked: {
+            if(active === false)    return
             if (taskVideo.playbackState===MediaPlayer.PlayingState) {
                 taskVideo.pause();
                 playVisible = true;
@@ -74,6 +76,7 @@ Rectangle {
             }
         }
         onProgressClicked: {
+            if(active === false)    return
             taskVideo.seek(circleDistance*taskVideo.duration);
         }
     }
@@ -92,6 +95,9 @@ Rectangle {
             //Game done
             if(!arrowVisible){
                 arrowVisible = true;
+                taskVideo.pause();
+                videoController.playVisible = true;
+                active = false;
                 var bestTime = gamehandler.game.currentVideoTask.answerVideoTask(taskVideo.position);
                 taskVideo.seek(bestTime);
             }
