@@ -33,29 +33,52 @@ Rectangle {
                 var ctx = getContext("2d")
                 ctx.clearRect (0, 0, width, height);
                 ctx.strokeStyle = "red"
+                ctx.lineWidth = parent.height/80
                 ctx.beginPath()
-                ctx.moveTo(point1.x,point1.y)
-                ctx.lineTo(point2.x,point2.y)
+                ctx.moveTo(point1.x+point1.width/2,point1.y+point1.height/2)
+                ctx.lineTo(point2.x+point2.width/2,point2.y+point2.height/2)
+                ctx.lineTo(point3.x+point3.width/2,point3.y+point3.height/2)
+                ctx.lineTo(point4.x+point4.width/2,point4.y+point4.height/2)
+                ctx.lineTo(point5.x+point5.width/2,point5.y+point5.height/2)
+
                 ctx.stroke()
 
             }
         }
+
+        property int commonStartingY: height/2
         AnnotationPoint {
             id: point1
-            x: 50
-            y: 200
-            onDragActive: {
-                canvas.requestPaint();
-            }
+            x: parent.width/18
+            y: parent.commonStartingY
+            onDragActive: canvas.requestPaint();
 
         }
         AnnotationPoint {
             id: point2
-            x: 200
-            y: 200
-            onDragActive: {
-                canvas.requestPaint();
-            }
+            x: parent.width*5/18
+            y: parent.commonStartingY
+            onDragActive: canvas.requestPaint();
+
+        }
+        AnnotationPoint {
+            id: point3
+            x: parent.width*9/18
+            y: parent.commonStartingY
+            onDragActive: canvas.requestPaint();
+
+        }
+        AnnotationPoint {
+            id: point4
+            x: parent.width*13/18
+            y: parent.commonStartingY
+            onDragActive: canvas.requestPaint();
+        }
+        AnnotationPoint {
+            id: point5
+            x: parent.width*17/18
+            y: parent.commonStartingY
+            onDragActive: canvas.requestPaint();
         }
 
     }
