@@ -14,7 +14,7 @@ Rectangle{
         id: mouseArea
         anchors.fill: parent
         drag.target: parent
-        drag.axis: Drag.YAxis
+        drag.axis: Drag.XAndYAxis
         onPositionChanged: dragActive()
 
     }

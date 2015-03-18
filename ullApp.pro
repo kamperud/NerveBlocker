@@ -12,7 +12,8 @@ SOURCES += main.cpp \
     ultrasoundimage.cpp \
     organ.cpp \
     mode.cpp \
-    taskvideo.cpp
+    taskvideo.cpp \
+    taskannotation.cpp
 
 RESOURCES += \
     qml/qml.qrc \
@@ -39,7 +40,8 @@ HEADERS += \
     organ.h \
     constants.h \
     mode.h \
-    taskvideo.h
+    taskvideo.h \
+    taskannotation.h
 
 macx:CONFIG += x86
 

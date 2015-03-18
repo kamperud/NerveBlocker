@@ -20,14 +20,14 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
 
         fillMode: Image.PreserveAspectFit
-        source: game.currentTask.image.imagePath
+        source: "gameImages/1.png"
 
 
         //Mapped image
         Image{
             id:mappedImage
             anchors.fill: parent
-            source: game.currentTask.image.mappedImagePath
+            source: "gameImages/1_map.png"
         }
         Canvas {
             id: canvas
@@ -104,7 +104,11 @@ Rectangle {
             if(active){
                 arrowVisible = true;
                 active = false;
-                //TODO contact C++ and answer task
+                console.log("x: "+ taskImage.sourceSize.width*point1.x/taskImage.width + " y: " +taskImage.sourceSize.height*point1.y/taskImage.height+"\n");
+                console.log("x: "+ taskImage.sourceSize.width*point2.x/taskImage.width + " y: " +taskImage.sourceSize.height*point2.y/taskImage.height+"\n");
+                console.log("x: "+ taskImage.sourceSize.width*point3.x/taskImage.width+ " y: " +taskImage.sourceSize.height*point3.y/taskImage.height+"\n");
+                console.log("x: "+ taskImage.sourceSize.width*point4.x/taskImage.width+ " y: " +taskImage.sourceSize.height*point4.y/taskImage.height+"\n");
+                console.log("x: "+ taskImage.sourceSize.width*point5.x/taskImage.width+ " y: " +taskImage.sourceSize.height*point5.y/taskImage.height+"\n");
             }
 
             //NEXT, Game done
