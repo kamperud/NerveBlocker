@@ -6,8 +6,10 @@ Rectangle{
     id: annotationPoint
     width: parent.width/20
     height: width
-    color: "red"
+    color: backgroundGrey
     radius: width/2
+    border.color: "white"
+    border.width: width/7
     MouseArea {
         id: mouseArea
         anchors.fill: parent

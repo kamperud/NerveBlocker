@@ -6,6 +6,10 @@ Rectangle {
 
     property var game: gamehandler.game
     property bool active: true
+    property int commonStartingY: taskImage.height/2
+
+    color: backgroundGrey
+
 
     Image {
         id: taskImage
@@ -32,7 +36,7 @@ Rectangle {
             onPaint: {
                 var ctx = getContext("2d")
                 ctx.clearRect (0, 0, width, height);
-                ctx.strokeStyle = "red"
+                ctx.strokeStyle = "white"
                 ctx.lineWidth = parent.height/80
                 ctx.beginPath()
                 ctx.moveTo(point1.x+point1.width/2,point1.y+point1.height/2)
@@ -45,39 +49,37 @@ Rectangle {
 
             }
         }
-
-        property int commonStartingY: height/2
         AnnotationPoint {
             id: point1
             x: parent.width/18
-            y: parent.commonStartingY
+            y: commonStartingY
             onDragActive: canvas.requestPaint();
 
         }
         AnnotationPoint {
             id: point2
             x: parent.width*5/18
-            y: parent.commonStartingY
+            y: commonStartingY
             onDragActive: canvas.requestPaint();
 
         }
         AnnotationPoint {
             id: point3
             x: parent.width*9/18
-            y: parent.commonStartingY
+            y: commonStartingY
             onDragActive: canvas.requestPaint();
 
         }
         AnnotationPoint {
             id: point4
             x: parent.width*13/18
-            y: parent.commonStartingY
+            y: commonStartingY
             onDragActive: canvas.requestPaint();
         }
         AnnotationPoint {
             id: point5
             x: parent.width*17/18
-            y: parent.commonStartingY
+            y: commonStartingY
             onDragActive: canvas.requestPaint();
         }
 
