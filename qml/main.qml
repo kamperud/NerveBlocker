@@ -80,6 +80,7 @@ ApplicationWindow {
             }
         }
     }
+
     Component {
         id: component_instructional
         StartMenuInstruction {

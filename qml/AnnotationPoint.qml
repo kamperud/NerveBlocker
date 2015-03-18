@@ -1,9 +1,19 @@
 import QtQuick 2.0
 
 Rectangle{
+    signal dragActive()
+    property alias mouse: mouseArea
     id: annotationPoint
-    width: 10
-    height: 10
+    width: parent.width/20
+    height: width
     color: "red"
-    radius: 5
+    radius: width/2
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        drag.target: parent
+        drag.axis: Drag.YAxis
+        onPositionChanged: dragActive()
+
+    }
 }
