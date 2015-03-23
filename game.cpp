@@ -17,6 +17,8 @@ Game::Game(Mode::Type mode, QObject *parent):
 {
     if(mode == Mode::VIDEO)
         newVideoTask();
+    if(mode == Mode::DRAG)
+        newAnnotationTask();
     else
         newTask();
 }
@@ -29,6 +31,11 @@ TaskVideo *Game::getCurrentVideoTask()
 {
     return m_currentVideoTask;
 }
+TaskAnnotation* Game::getCurrentAnnotationTask(){
+    return m_currentAnnotationTask;
+
+}
+
 
 
 bool Game::isFinished() const
@@ -63,6 +70,16 @@ void Game::newVideoTask()
 
     emit currentVideoTaskChanged(m_currentVideoTask);
 }
+void Game::newAnnotationTask(){
+    if(m_currentAnnotationTask!=nullptr)
+        m_currentAnnotationTask->deleteLater();
+    m_currentAnnotationTask = new TaskAnnotation(this);
+    m_currentAnnotationTask->connect(m_currentAnnotationTask, &TaskAnnotation::answeredChanged,
+                           this, &Game::onAnnotationTaskAnswered);
+
+    emit currentAnnotationTaskChanged(m_currentAnnotationTask);
+}
+
 
 void Game::onTaskAnswered()
 {
@@ -93,6 +110,9 @@ void Game::onTaskAnswered()
 
 void Game::onVideoTaskAnswered(){
      setPoints(m_currentVideoTask->getScore());
+}
+void Game::onAnnotationTaskAnswered(){
+     setPoints(m_currentAnnotationTask->getScore());
 }
 
 int Game::getMultiplier() const {

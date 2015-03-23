@@ -17,12 +17,13 @@ TaskAnnotation::TaskAnnotation(QObject *parent) :
 int TaskAnnotation::getScore() const{
     return m_score;
 }
+QList<int> TaskAnnotation::getYValues() const{
+    return yValues;
+}
 
 QString TaskAnnotation::getImagePath() const{
     return QString("gameImages/1.png");
 }
-
-
 
 int TaskAnnotation::answerAnnotationTask(QList<int> answers){
 

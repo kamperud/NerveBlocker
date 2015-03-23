@@ -8,12 +8,14 @@ class TaskAnnotation : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString imagePath READ getImagePath CONSTANT)
+    Q_PROPERTY(QList yValues READ getYValues CONSTANT)
     Q_PROPERTY(int score READ getScore NOTIFY scoreChanged)
     Q_PROPERTY(bool answered MEMBER m_answered NOTIFY answeredChanged)
 public:
     explicit TaskAnnotation(QObject *parent = 0);
     QString getImagePath() const;
     int getScore() const;
+    QList<int> getYValues() const;
 
 signals:
     void scoreChanged(int newValue);

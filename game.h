@@ -3,6 +3,7 @@
 
 #include "task.h"
 #include "taskvideo.h"
+#include "taskannotation.h"
 #include "mode.h"
 
 #include <QObject>
@@ -13,6 +14,7 @@ class Game : public QObject
     Q_OBJECT
     Q_PROPERTY(QObject *currentTask READ getCurrentTask NOTIFY currentTaskChanged)
     Q_PROPERTY(QObject *currentVideoTask READ getCurrentVideoTask NOTIFY currentVideoTaskChanged)
+    Q_PROPERTY(QObject *currentAnnotationTask READ getCurrentAnnotationTask NOTIFY currentAnnotationTaskChanged)
     Q_PROPERTY(int points READ getPoints NOTIFY pointsChanged)
     Q_PROPERTY(int multiplier READ getMultiplier NOTIFY multiplierChanged)
     Q_PROPERTY(bool finished READ isFinished NOTIFY finishedChanged)
@@ -26,6 +28,7 @@ public:
     int getMultiplier() const;
     Task* getCurrentTask();
     TaskVideo* getCurrentVideoTask();
+    TaskAnnotation* getCurrentAnnotationTask();
     bool isFinished() const;
     void addPoints(int pointsToBeAdded);
     Mode::Type getMode();
@@ -33,12 +36,15 @@ public:
 public slots:
     void newTask();
     void newVideoTask();
+    void newAnnotationTask();
     void onTaskAnswered();
     void onVideoTaskAnswered();
+    void onAnnotationTaskAnswered();
 
 signals:
     void currentTaskChanged(Task* newValue);
     void currentVideoTaskChanged(TaskVideo* newValue);
+    void currentAnnotationTaskChanged(TaskAnnotation* newValue);
     void pointsChanged(int newValue);
     void multiplierChanged(int newValue);
     void finishedChanged(bool newValue);
@@ -51,6 +57,7 @@ private:
 
     Task* m_currentTask;
     TaskVideo* m_currentVideoTask;
+    TaskAnnotation* m_currentAnnotationTask;
     int m_points;
     int m_multiplier;
     int m_tasksAnswered;

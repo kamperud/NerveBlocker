@@ -4,7 +4,7 @@ Rectangle {
     signal gameMenuClicked()
     signal gameSummaryClicked()
 
-    property var game: gamehandler.game
+    property var task: gamehandler.game.currentAnnotationTask
     property bool active: true
     property int commonStartingY: taskImage.height/2
 
@@ -20,7 +20,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
 
         fillMode: Image.PreserveAspectFit
-        source: "gameImages/1.png"
+        source: task.imagePath
 
 
         //Mapped image
@@ -49,6 +49,15 @@ Rectangle {
 
             }
         }
+        Repeater{
+            model: 5
+            AnnotationPoint {
+                y: commonStartingY
+                onDragActive: canvas.requestPaint();
+
+            }
+        }
+
         AnnotationPoint {
             id: point1
             x: parent.width/18
@@ -104,12 +113,12 @@ Rectangle {
             if(active){
                 arrowVisible = true;
                 active = false;
-                console.log("x: "+ taskImage.sourceSize.width*point1.x/taskImage.width + " y: " +taskImage.sourceSize.height*point1.y/taskImage.height+"\n");
+                /*console.log("x: "+ taskImage.sourceSize.width*point1.x/taskImage.width + " y: " +taskImage.sourceSize.height*point1.y/taskImage.height+"\n");
                 console.log("x: "+ taskImage.sourceSize.width*point2.x/taskImage.width + " y: " +taskImage.sourceSize.height*point2.y/taskImage.height+"\n");
                 console.log("x: "+ taskImage.sourceSize.width*point3.x/taskImage.width+ " y: " +taskImage.sourceSize.height*point3.y/taskImage.height+"\n");
                 console.log("x: "+ taskImage.sourceSize.width*point4.x/taskImage.width+ " y: " +taskImage.sourceSize.height*point4.y/taskImage.height+"\n");
                 console.log("x: "+ taskImage.sourceSize.width*point5.x/taskImage.width+ " y: " +taskImage.sourceSize.height*point5.y/taskImage.height+"\n");
-            }
+           */ }
 
             //NEXT, Game done
             else {
