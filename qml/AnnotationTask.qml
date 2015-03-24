@@ -34,31 +34,37 @@ Rectangle {
             anchors.fill: parent
 
             onPaint: {
-                var ctx = getContext("2d")
+              /*  var ctx = getContext("2d")
                 ctx.clearRect (0, 0, width, height);
                 ctx.strokeStyle = "white"
                 ctx.lineWidth = parent.height/80
                 ctx.beginPath()
-                ctx.moveTo(point1.x+point1.width/2,point1.y+point1.height/2)
-                ctx.lineTo(point2.x+point2.width/2,point2.y+point2.height/2)
-                ctx.lineTo(point3.x+point3.width/2,point3.y+point3.height/2)
-                ctx.lineTo(point4.x+point4.width/2,point4.y+point4.height/2)
-                ctx.lineTo(point5.x+point5.width/2,point5.y+point5.height/2)
+                ctx.moveTo(points.itemAt(1).x+points.itemAt(1).width/2,points.itemAt(1).y+points.itemAt(1).height/2)
+                ctx.lineTo(points.itemAt(2).x+points.itemAt(2).width/2,points.itemAt(2).y+points.itemAt(2).height/2)
+                ctx.lineTo(points.itemAt(3).x+points.itemAt(3).width/2,points.itemAt(3).y+points.itemAt(3).height/2)
+                ctx.lineTo(points.itemAt(4).x+points.itemAt(4).width/2,points.itemAt(4).y+points.itemAt(4).height/2)
+                ctx.lineTo(points.itemAt(5).x+points.itemAt(5).width/2,points.itemAt(5).y+points.itemAt(5).height/2)
 
                 ctx.stroke()
-
+*/
             }
         }
-        Repeater{
+        Repeater {
+            id: points
             model: 5
             AnnotationPoint {
                 y: commonStartingY
                 onDragActive: canvas.requestPaint();
+            }
 
+            onItemAdded: {
+                //points.itemAt(index).x = task.xValues[index];
+                // this x needs to be calculated, but not yet
             }
         }
 
-        AnnotationPoint {
+
+        /*AnnotationPoint {
             id: point1
             x: parent.width/18
             y: commonStartingY
@@ -90,7 +96,7 @@ Rectangle {
             x: parent.width*17/18
             y: commonStartingY
             onDragActive: canvas.requestPaint();
-        }
+        }*/
 
     }
 
