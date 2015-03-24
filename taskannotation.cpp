@@ -34,7 +34,7 @@ void TaskAnnotation::answerAnnotationTask(QList<int> answers){
     }
     int distance = 0;
     for(int i=0; i<5; i++){
-        qDebug() << answers[i]<<"\n";
+       // qDebug() << answers[i]<<"\n";
 
         distance += abs(answers[i]-yValues[i]);
     }
