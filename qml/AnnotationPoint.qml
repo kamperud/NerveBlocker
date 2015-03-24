@@ -13,6 +13,7 @@ Rectangle{
     MouseArea {
         id: mouseArea
         anchors.fill: parent
+        anchors.margins: -parent.width
         drag.target: parent
         drag.axis: Drag.YAxis
         onPositionChanged: dragActive()

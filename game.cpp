@@ -9,6 +9,7 @@ Game::Game(Mode::Type mode, QObject *parent):
     QObject(parent),
     m_currentTask(nullptr),
     m_currentVideoTask(nullptr),
+    m_currentAnnotationTask(nullptr),
     m_points(0),
     m_multiplier(1),
     m_tasksAnswered(0),
