@@ -84,9 +84,11 @@ Rectangle {
             model: 5
             AnnotationPoint {
                 y: listOfY[modelData]
-                x: task.xValues[modelData] * parent.width / taskImage.sourceSize.width
+                x: task.xValues[modelData] * taskImage.width / taskImage.sourceSize.width
                 onYChanged: {
                     listOfY[modelData] = mouse.Y;
+                    console.log(listOfY);
+
                     canvas.requestPaint();
                 }
             }
@@ -113,8 +115,12 @@ Rectangle {
             if(active){
                 arrowVisible = true;
                 active = false;
-                task.answerAnnotationTask(listOfY);
-               }
+
+                var a = listOfY;
+                //a = a.map(function(foo){return foo * taskImage.sourceSize.height / taskImage.height;});
+                console.log(listOfY);
+                task.answerAnnotationTask(a);
+            }
 
             //NEXT, Game done
             else {

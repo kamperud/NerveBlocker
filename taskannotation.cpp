@@ -32,8 +32,18 @@ void TaskAnnotation::answerAnnotationTask(QList<int> answers){
     if(answers.size()>0)    {
         qDebug() << "Arguments!\n";
     }
+    int distance = 0;
+    for(int i=0; i<5; i++){
+        qDebug() << answers[i]<<"\n";
 
-    emit scoreChanged(0);
+        distance += abs(answers[i]-yValues[i]);
+    }
+    distance = 3000 - distance;
+    if(distance > m_score) {
+        m_score = distance;
+        emit scoreChanged(m_score);
+    }
+
     emit answeredChanged(false);
 }
 

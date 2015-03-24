@@ -59,6 +59,9 @@ ApplicationWindow {
                 if(gamehandler.game.mode===Mode.VIDEO){
                     mainArea.push(component_video);
                 }
+                if(gamehandler.game.mode===Mode.DRAG){
+                    mainArea.push(component_annotation);
+                }
                 else{
                     mainArea.push(component_game);
                     mainArea.currentItem.startTimer();
