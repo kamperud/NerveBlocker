@@ -85,8 +85,10 @@ Rectangle {
             AnnotationPoint {
                 y: listOfY[modelData]
                 x: task.xValues[modelData] * taskImage.width / taskImage.sourceSize.width
+                mouse.drag.maximumY: taskImage.height - height
+                mouse.drag.minimumY: 0
                 onYChanged: {
-                    listOfY[modelData] = mouse.Y;
+                    listOfY[modelData] = y;
                     //console.log(listOfY);
 
                     canvas.requestPaint();
