@@ -27,20 +27,14 @@ QString TaskAnnotation::getImagePath() const{
 }
 
 void TaskAnnotation::answerAnnotationTask(QList<int> answers){
-    qDebug() << "Annotation, I got here\n";
 
-    if(answers.size()>0)    {
-        qDebug() << "Arguments!\n";
-    }
     int distance = 0;
     for(int i=0; i<5; i++){
-       // qDebug() << answers[i]<<"\n";
-
         distance += abs(answers[i]-yValues[i]);
     }
-    distance = 3000 - distance;
+    distance = 1000 - distance*7;
     if(distance > m_score) {
-        m_score = distance;
+        m_score = distance*2;
         emit scoreChanged(m_score);
     }
 

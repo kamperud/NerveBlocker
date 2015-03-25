@@ -89,8 +89,6 @@ Rectangle {
                 mouse.drag.minimumY: 0
                 onYChanged: {
                     listOfY[modelData] = y;
-                    //console.log(listOfY);
-
                     canvas.requestPaint();
                 }
             }
@@ -119,8 +117,7 @@ Rectangle {
                 active = false;
 
                 var a = listOfY;
-                //a = a.map(function(foo){return foo * taskImage.sourceSize.height / taskImage.height;});
-                //console.log(listOfY);
+                a = a.map(function(foo){return foo * taskImage.sourceSize.height / taskImage.height;});
                 task.answerAnnotationTask(a);
             }
 
