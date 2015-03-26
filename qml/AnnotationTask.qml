@@ -24,7 +24,7 @@ Rectangle {
             text: active ? text1 : text2
             color: "white"
             font.family: ubuntu.name
-            font.pixelSize:parent.height/7
+            font.pixelSize:parent.height/8
 
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
@@ -44,7 +44,7 @@ Rectangle {
         width: parent.width*11/12
         height: sourceSize.height*width/sourceSize.width
         anchors.bottom: botMenu.top
-        anchors.bottomMargin: parent.width/20
+        anchors.bottomMargin: parent.width/10
         anchors.horizontalCenter: parent.horizontalCenter
 
         fillMode: Image.PreserveAspectFit
