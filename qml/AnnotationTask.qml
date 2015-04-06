@@ -55,7 +55,7 @@ Rectangle {
         Image{
             id:mappedImage
             anchors.fill: parent
-            visible: !active
+            //visible: !active
             source: "gameImages/1_map.png"
         }
         Canvas {
@@ -68,14 +68,47 @@ Rectangle {
                 ctx.strokeStyle = "white"
                 ctx.lineWidth = parent.height/80
                 ctx.beginPath()
-                ctx.moveTo(points.itemAt(0).x+points.itemAt(0).width/2,points.itemAt(0).y+points.itemAt(0).height/2)
-                ctx.lineTo(points.itemAt(1).x+points.itemAt(1).width/2,points.itemAt(1).y+points.itemAt(1).height/2)
-                ctx.lineTo(points.itemAt(2).x+points.itemAt(2).width/2,points.itemAt(2).y+points.itemAt(2).height/2)
-                ctx.lineTo(points.itemAt(3).x+points.itemAt(3).width/2,points.itemAt(3).y+points.itemAt(3).height/2)
-                ctx.lineTo(points.itemAt(4).x+points.itemAt(4).width/2,points.itemAt(4).y+points.itemAt(4).height/2)
+
+                for(var i=1; i<points.model; ++i){
+                    var fromItem = points.itemAt(i-1);
+                    var toItem = points.itemAt(i);
+                    drawCurve({ context: ctx,
+                                  start: fromItem.center,
+                                  end: toItem.center
+                              });
+                }
 
                 ctx.stroke()
+            }
 
+            function tangential(options){
+                var prev = options.previous;
+                var center = options.center;
+                var next = options.next;
+                var alpha = Math.atan2()
+            }
+
+            function drawCurve(options) {
+                var ctx = options.context;
+                var start = options.start;
+                var end = options.end;
+                var startAngle = options.startAngle || 0;
+                var endAngle = options.endAngle || Math.PI;
+                var weight = options.weight || 50;
+
+                var control1 = {
+                    x: start.x + Math.cos(startAngle) * weight,
+                    y: start.y + Math.sin(startAngle) * weight
+                };
+                var control2 = {
+                    x: end.x + Math.cos(endAngle) * weight,
+                    y: end.y + Math.sin(endAngle) * weight
+                };
+
+                ctx.moveTo(start.x, start.y);
+                ctx.bezierCurveTo(control1.x, control1.y,
+                                  control2.x, control2.y,
+                                  end.x, end.y);
             }
         }
 
@@ -91,6 +124,7 @@ Rectangle {
                     listOfY[modelData] = y;
                     canvas.requestPaint();
                 }
+
             }
         }
 

@@ -3,6 +3,7 @@ import QtQuick 2.0
 Rectangle{
     signal dragActive()
     property alias mouse: mouseArea
+    property point center: Qt.point(x + width/2, y+height/2)
     id: annotationPoint
     width: parent.width/20
     height: width
