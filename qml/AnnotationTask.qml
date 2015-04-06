@@ -55,7 +55,7 @@ Rectangle {
         Image{
             id:mappedImage
             anchors.fill: parent
-            //visible: !active
+            visible: !active
             source: "gameImages/1_map.png"
         }
         Canvas {
@@ -69,12 +69,20 @@ Rectangle {
                 ctx.lineWidth = parent.height/80
                 ctx.beginPath()
 
-                for(var i=1; i<points.model; ++i){
-                    var fromItem = points.itemAt(i-1);
-                    var toItem = points.itemAt(i);
+                for(var i=0; i<points.model-1; ++i){
+                    var fromItem = points.itemAt(i);
+                    var toItem = points.itemAt(i+1);
+                    var startAngle =    i === 0 ?
+                                        Math.atan2(toItem.y-fromItem.y, toItem.x-fromItem.x) :
+                                        tangential({previous: points.itemAt(i-1), center: points.itemAt(i), next: points.itemAt(i+1) }) - Math.PI/2;
+                    var endAngle =    i === points.model-2 ?
+                                        Math.atan2(fromItem.y-toItem.y, fromItem.x-toItem.x) :
+                                        tangential({previous: points.itemAt(i), center: points.itemAt(i+1), next: points.itemAt(i+2) }) + Math.PI/2;
                     drawCurve({ context: ctx,
                                   start: fromItem.center,
-                                  end: toItem.center
+                                  end: toItem.center,
+                                  startAngle: startAngle,
+                                  endAngle: endAngle
                               });
                 }
 
@@ -85,7 +93,11 @@ Rectangle {
                 var prev = options.previous;
                 var center = options.center;
                 var next = options.next;
-                var alpha = Math.atan2()
+                var alpha = Math.atan2(prev.y-center.y, prev.x-center.x);
+                var beta = Math.atan2(next.y-center.y, next.x-center.x);
+                if(alpha<0) alpha+=Math.PI*2;
+                if(beta<0) beta+=Math.PI*2;
+                return (alpha+beta)/2;
             }
 
             function drawCurve(options) {
@@ -94,7 +106,7 @@ Rectangle {
                 var end = options.end;
                 var startAngle = options.startAngle || 0;
                 var endAngle = options.endAngle || Math.PI;
-                var weight = options.weight || 50;
+                var weight = (end.x-start.x)*0.5;
 
                 var control1 = {
                     x: start.x + Math.cos(startAngle) * weight,
@@ -120,6 +132,8 @@ Rectangle {
                 x: task.xValues[modelData] * taskImage.width / taskImage.sourceSize.width
                 mouse.drag.maximumY: taskImage.height - height
                 mouse.drag.minimumY: 0
+                visible: active
+                //opacity: 0.5
                 onYChanged: {
                     listOfY[modelData] = y;
                     canvas.requestPaint();
