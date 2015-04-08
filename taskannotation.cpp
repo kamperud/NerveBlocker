@@ -1,4 +1,5 @@
 #include "taskannotation.h"
+#include "constants.h"
 
 #include <QList>
 #include <QDebug>
@@ -8,11 +9,26 @@ TaskAnnotation::TaskAnnotation(QObject *parent) :
     yValues((QList<int>())),
     xValues((QList<int>())),
     m_score(0),
-    m_answered(false)
-
+    m_answered(false),
+    m_index(DRAG_PICS[(rand() % MAX_DRAG_IMAGES)])
 {
-    yValues<<143<<160<<187<<266<<293;
-    xValues<<7<<181<<286<<369<<593;
+    switch (m_index){
+    case 1:
+        xValues<<7<<181<<286<<369<<593;
+        yValues<<142<<162<<190<<258<<290;
+        break;
+    case 2:
+        xValues<<3<<188<<288<<368<<641;
+        yValues<<133<<150<<172<<178<<309;
+        break;
+    case 3:
+        xValues<<18<<338<<442<<519<<640;
+        yValues<<124<<191<<209<<271<<283;
+        break;
+    default:
+        xValues<<0<<0<<0<<0<<0;
+        yValues<<142<<162<<190<<258<<290;
+    }
 }
 
 int TaskAnnotation::getScore() const{
@@ -23,7 +39,10 @@ QList<int> TaskAnnotation::getXValues() const{
 }
 
 QString TaskAnnotation::getImagePath() const{
-    return QString("gameImages/1.png");
+    return QString("gameImages/%1.png").arg(m_index);
+}
+QString TaskAnnotation::getMappedImagePath() const{
+    return QString("gameImages/%1_map.png").arg(m_index);
 }
 
 void TaskAnnotation::answerAnnotationTask(QList<int> answers){
@@ -37,7 +56,6 @@ void TaskAnnotation::answerAnnotationTask(QList<int> answers){
         m_score = distance*2;
         emit scoreChanged(m_score);
     }
-
     emit answeredChanged(false);
 }
 

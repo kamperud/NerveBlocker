@@ -49,14 +49,17 @@ Rectangle {
 
         fillMode: Image.PreserveAspectFit
         source: task.imagePath
+        //source: "gameImages/3.png"
+
 
 
         //Mapped image
         Image{
             id:mappedImage
             anchors.fill: parent
-            visible: !active
-            source: "gameImages/1_map.png"
+            //visible: !active
+            source: task.mappedImagePath
+            //source: "gameImages/3_map.png"
         }
         Canvas {
             id: canvas
@@ -133,7 +136,6 @@ Rectangle {
                 mouse.drag.maximumY: taskImage.height - height
                 mouse.drag.minimumY: 0
                 visible: active
-                //opacity: 0.5
                 onYChanged: {
                     listOfY[modelData] = y;
                     canvas.requestPaint();
@@ -164,8 +166,14 @@ Rectangle {
                 arrowVisible = true;
                 active = false;
 
+                var b = [points.itemAt(0).x, points.itemAt(1).x, points.itemAt(2).x, points.itemAt(3).x, points.itemAt(4).x];
+                b = b.map(function(foo){return foo * taskImage.sourceSize.width / taskImage.width;});
                 var a = listOfY;
                 a = a.map(function(foo){return foo * taskImage.sourceSize.height / taskImage.height;});
+                console.log("x: ");
+                console.log(b);
+                console.log("y: ");
+                console.log(a);
                 task.answerAnnotationTask(a);
             }
 
