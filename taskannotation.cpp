@@ -10,6 +10,7 @@ TaskAnnotation::TaskAnnotation(QObject *parent) :
     xValues((QList<int>())),
     m_score(0),
     m_answered(false),
+    //m_index(10)
     m_index(DRAG_PICS[(rand() % MAX_DRAG_IMAGES)])
 {
     switch (m_index){
@@ -24,6 +25,22 @@ TaskAnnotation::TaskAnnotation(QObject *parent) :
     case 3:
         xValues<<18<<338<<442<<519<<640;
         yValues<<124<<191<<209<<271<<283;
+        break;
+    case 6:
+        xValues<<8<<223<<354<<419<<560;
+        yValues<<71<<92<<117<<203<<224;
+        break;
+    case 8:
+        xValues<<0<<100<<304<<421<<498;
+        yValues<<184<<183<<190<<269<<291;
+        break;
+    case 9:
+        xValues<<1<<362<<485<<556<<640;
+        yValues<<71<<81<<106<<162<<184;
+        break;
+    case 10:
+        xValues<<89<<272<<385<<435<<612;
+        yValues<<77<<105<<125<<166<<227;
         break;
     default:
         xValues<<0<<0<<0<<0<<0;
