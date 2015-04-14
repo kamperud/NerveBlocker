@@ -11,8 +11,14 @@ TaskVideo::TaskVideo(QObject *parent) :
     m_score(0),
     m_answered(false)
 {
-   m_timeSpots.append(5000);
-   m_timeSpots.append(18860);
+   m_timeSpots.append(2000);
+   m_timeSpots.append(10000);
+   m_timeSpots.append(15000);
+   m_timeSpots.append(17000);
+   m_timeSpots.append(20000);
+   m_timeSpots.append(23000);
+   m_timeSpots.append(25000);
+
 }
 
 QString TaskVideo::getVideoPath() const

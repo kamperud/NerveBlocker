@@ -71,6 +71,7 @@ Item {
         id: progressArea
         visible: circle.visible
         anchors.fill: greyBar
+        anchors.margins: -greyBar.height
         drag.target: circle
         drag.maximumX: greyBar.width -circle.width/2
         drag.minimumX: -circle.width/2

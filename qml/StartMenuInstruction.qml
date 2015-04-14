@@ -56,6 +56,12 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height/20
+        onPaused:{
+            videoController.playVisible = true;
+        }
+        onPlaying:{
+            videoController.playVisible = false;
+        }
     }
     VideoBar {
         id: videoController       
@@ -68,11 +74,9 @@ Rectangle {
         onPlayClicked: {
             if (taskVideo.playbackState===MediaPlayer.PlayingState) {
                 taskVideo.pause();
-                playVisible = true;
             }
             else {
                 taskVideo.play();
-                playVisible = false;
             }
         }
         onProgressClicked: {

@@ -53,6 +53,12 @@ Rectangle {
         onStopped: {
             play();
         }
+        onPaused:{
+            videoController.playVisible = true;
+        }
+        onPlaying:{
+            videoController.playVisible = false;
+        }
     }
 
 
@@ -62,17 +68,16 @@ Rectangle {
         progressBarPecent: taskVideo.position*100/taskVideo.duration
         movieLength: taskVideo.duration
 
+
         anchors.bottom: menuButton.top
 
         onPlayClicked: {
             if(active === false)    return
             if (taskVideo.playbackState===MediaPlayer.PlayingState) {
                 taskVideo.pause();
-                playVisible = true;
             }
             else {
                 taskVideo.play();
-                playVisible = false;
             }
         }
         onProgressClicked: {
