@@ -59,7 +59,7 @@ ApplicationWindow {
                 if(gamehandler.game.mode===Mode.VIDEO){
                     mainArea.push(component_video);
                 }
-                if(gamehandler.game.mode===Mode.DRAG){
+                else if(gamehandler.game.mode===Mode.DRAG){
                     mainArea.push(component_annotation);
                 }
                 else{
