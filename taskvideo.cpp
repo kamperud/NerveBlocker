@@ -17,7 +17,7 @@ TaskVideo::TaskVideo(QObject *parent) :
 
 QString TaskVideo::getVideoPath() const
 {
-    return QString("http://folk.ntnu.no/solvehel/FL_Acq04_2DFrames_RGB_v1.mp4");
+    return QString("http://folk.ntnu.no/solvehel/video_03.mp4");
 }
 int TaskVideo::getScore() const{
     return m_score;

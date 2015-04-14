@@ -10,7 +10,6 @@ TaskAnnotation::TaskAnnotation(QObject *parent) :
     xValues((QList<int>())),
     m_score(0),
     m_answered(false),
-    //m_index(10)
     m_index(DRAG_PICS[(rand() % MAX_DRAG_IMAGES)])
 {
     switch (m_index){
