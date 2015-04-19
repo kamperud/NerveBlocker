@@ -65,7 +65,8 @@ void TaskAnnotation::answerAnnotationTask(QList<int> answers){
 
     int distance = 0;
     for(int i=0; i<5; i++){
-        distance += abs(answers[i]-yValues[i]);
+        int temp = abs(answers[i]-yValues[i]);
+        distance += (temp>10) ? temp*5 : temp;
     }
     distance = 1000 - distance*5;
     if(distance > m_score) {
