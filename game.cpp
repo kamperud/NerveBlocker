@@ -14,6 +14,7 @@ Game::Game(Mode::Type mode, QObject *parent):
     m_multiplier(1),
     m_tasksAnswered(0),
     m_tasksAnsweredCorrectly(0),
+    m_maxPoints(0),
     m_mode(mode)
 {
     if(mode == Mode::VIDEO)
@@ -77,6 +78,7 @@ void Game::newAnnotationTask(){
     m_currentAnnotationTask = new TaskAnnotation(this);
     m_currentAnnotationTask->connect(m_currentAnnotationTask, &TaskAnnotation::answeredChanged,
                            this, &Game::onAnnotationTaskAnswered);
+    Game::setMaxPoints();
 
     emit currentAnnotationTaskChanged(m_currentAnnotationTask);
 }
@@ -132,4 +134,10 @@ int Game::getPoints() const {
 void Game::setPoints(int newValue){
     m_points = newValue;
     emit pointsChanged(newValue);
+}
+void Game::setMaxPoints(){
+    if(m_mode == Mode::DRAG){
+        m_maxPoints = m_currentAnnotationTask->getMaxScore();
+        emit maxPointsChanged(m_maxPoints);
+    }
 }

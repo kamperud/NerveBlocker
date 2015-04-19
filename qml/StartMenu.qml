@@ -166,9 +166,7 @@ Rectangle {
 
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height / 25
-
         anchors.right: parent.right
-
         anchors.leftMargin: parent.width / 21
         anchors.rightMargin: parent.width * 2 / 21
 
@@ -182,15 +180,11 @@ Rectangle {
         text: qsTr("Video")
 
         fontSize: parent.width/12
-
-        radius: 10
-
         height: (parent.width * 3) / 16
         width: (parent.width * 10) / 16
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-
         anchors.verticalCenterOffset: parent.height / 7
 
         onClicked: {
@@ -203,8 +197,6 @@ Rectangle {
         text: qsTr("Annotation")
 
         fontSize: parent.width/12
-
-        radius: 10
 
         height: (parent.width * 3) / 16
         width: (parent.width * 10) / 16

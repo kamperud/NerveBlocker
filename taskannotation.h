@@ -17,6 +17,7 @@ public:
     QString getImagePath() const;
     QString getMappedImagePath() const;
     int getScore() const;
+    int getMaxScore() const;
     QList<int> getXValues() const;
 
 signals:

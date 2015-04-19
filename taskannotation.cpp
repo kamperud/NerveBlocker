@@ -50,6 +50,11 @@ TaskAnnotation::TaskAnnotation(QObject *parent) :
 int TaskAnnotation::getScore() const{
     return m_score;
 }
+int TaskAnnotation::getMaxScore() const{
+    //TODO, create actual max score
+    return 2000;
+}
+
 QList<int> TaskAnnotation::getXValues() const{
     return xValues;
 }
@@ -66,7 +71,7 @@ void TaskAnnotation::answerAnnotationTask(QList<int> answers){
     int distance = 0;
     for(int i=0; i<5; i++){
         int temp = abs(answers[i]-yValues[i]);
-        distance += (temp>10) ? temp*5 : temp;
+        distance += (temp>15) ? temp*5 : temp;
     }
     distance = 1000 - distance*5;
     if(distance > m_score) {

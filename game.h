@@ -19,6 +19,7 @@ class Game : public QObject
     Q_PROPERTY(int multiplier READ getMultiplier NOTIFY multiplierChanged)
     Q_PROPERTY(bool finished READ isFinished NOTIFY finishedChanged)
     Q_PROPERTY(int tasksAnswered MEMBER m_tasksAnswered NOTIFY tasksAnsweredChanged)
+    Q_PROPERTY(int maxPoints MEMBER m_maxPoints NOTIFY maxPointsChanged)
     Q_PROPERTY(int tasksAnsweredCorrectly MEMBER m_tasksAnsweredCorrectly NOTIFY tasksAnsweredChanged)
     Q_PROPERTY(Mode::Type mode MEMBER m_mode CONSTANT)
 
@@ -49,11 +50,13 @@ signals:
     void multiplierChanged(int newValue);
     void finishedChanged(bool newValue);
     void tasksAnsweredChanged(int newValue);
+    void maxPointsChanged(int newValue);
 
 private:
     void setPoints(int newValue);
     void setMultiplier(int newValue);
     void setFinished(bool newValue);
+    void setMaxPoints();
 
     Task* m_currentTask;
     TaskVideo* m_currentVideoTask;
@@ -62,6 +65,7 @@ private:
     int m_multiplier;
     int m_tasksAnswered;
     int m_tasksAnsweredCorrectly;
+    int m_maxPoints;
     const Mode::Type m_mode;
 };
 

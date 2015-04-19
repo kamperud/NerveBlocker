@@ -55,7 +55,7 @@ Rectangle {
         Image{
             id:mappedImage
             anchors.fill: parent
-            //visible: !active
+            visible: !active
             source: task.mappedImagePath
         }
         Canvas {
