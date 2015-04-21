@@ -8,7 +8,7 @@ Rectangle {
     color: mouseArea.pressed ? "#1fdada" : "#04bfbf"
 
 
-    radius: 20
+    radius: parent.width/40
 
     width: (parent.width * 5)/ 21
     height: (parent.width * 5)/ 21

@@ -44,11 +44,24 @@ Rectangle {
         }
 
         Text{
-            id:nofCorrectText
+            id:noCorrectText
             text: qsTr("You got " + gamehandler.game.tasksAnsweredCorrectly + "\nout of " + gamehandler.game.tasksAnswered)
             font.pixelSize: parent.width/10
             font.family: ubuntu.name
+            visible: !annotationText.visible
 
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: scoreNumber.bottom
+            anchors.topMargin: parent.height/8
+            horizontalAlignment: Text.AlignHCenter
+
+        }
+        Text{
+            id: annotationText
+            text: qsTr("out of " + gamehandler.game.maxPoints)
+            font.pixelSize: parent.width/10
+            font.family: ubuntu.name
+            visible: gamehandler.game.mode === Mode.DRAG
 
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: scoreNumber.bottom
@@ -97,7 +110,7 @@ Rectangle {
             radius: 15
 
             Text{
-                color: "#ffffff"
+                color: "white"
                 text: "Main \nMenu"
                 font.pixelSize: parent.width/4
                 font.family: ubuntu.name

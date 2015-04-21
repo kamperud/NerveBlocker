@@ -6,7 +6,7 @@ Rectangle {
     property alias text: buttonText.text
     color: mouseArea.pressed ? "#fffd89" : "#f7e967"
 
-    radius: 5
+    radius: parent.width/50
 
     width: (parent.width * 8 ) / 21
     height: parent.height / 11

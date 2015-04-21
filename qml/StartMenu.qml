@@ -11,7 +11,36 @@ Rectangle {
     id: gameMenu
     width: 300
     height: 500
-    color: "#222222"
+    color: backgroundGrey
+
+    Item {
+        id: title
+        anchors.bottom: instructionalVideoButton.top
+        anchors.right: parent.right
+        anchors.left: parent.left
+        anchors.top: parent.top
+        Text {
+            color: "white"
+            text: "An overview of the"
+            font.pixelSize: parent.width/25
+            font.family: ubuntu.name
+
+            anchors.verticalCenterOffset: -parent.height/9
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+        Text {
+            color: "white"
+            text: "FEMORAL NERVE BLOCK"
+            font.pixelSize: parent.width/22
+            font.family: ubuntu.name
+
+            anchors.verticalCenterOffset: parent.height/11
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+
+        }
+    }
 
     StartMenuExtraButton{
         id: instructionalVideoButton
@@ -45,7 +74,7 @@ Rectangle {
             anchors.bottomMargin: parent.height/5
             anchors.topMargin: parent.height/10
 
-            color: "#000000"
+            color: "black"
             text: qsTr("Video")
 
             font.family: ubuntu.name
@@ -79,12 +108,27 @@ Rectangle {
         anchors.rightMargin: parent.width * 2 / 21
     }
 
+    Text {
+        text: qsTr("Practice your skills\n with the GAME MODES below")
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+        font.pixelSize: parent.width/25
+        color: "white"
+        font.family: ubuntu.name
+
+
+        anchors.bottom: easyButton.top
+        anchors.top: instructionalVideoButton.bottom
+        anchors.right: parent.right
+        anchors.left: parent.left
+    }
+
     StartMenuPlayButton{
         id: easyButton
         text: qsTr("Easy")
 
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -parent.height / 10
+        anchors.verticalCenterOffset: -parent.height / 25
 
         anchors.left: parent.left
 
@@ -101,7 +145,7 @@ Rectangle {
         text: qsTr("Normal")
 
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -parent.height / 10
+        anchors.verticalCenterOffset: -parent.height / 25
 
         anchors.left: easyButton.right
         anchors.right: expertButton.left
@@ -121,10 +165,8 @@ Rectangle {
         text: qsTr("Expert")
 
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -parent.height / 10
-
+        anchors.verticalCenterOffset: -parent.height / 25
         anchors.right: parent.right
-
         anchors.leftMargin: parent.width / 21
         anchors.rightMargin: parent.width * 2 / 21
 
@@ -138,16 +180,12 @@ Rectangle {
         text: qsTr("Video")
 
         fontSize: parent.width/12
-
-        radius: 10
-
         height: (parent.width * 3) / 16
         width: (parent.width * 10) / 16
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-
-        anchors.verticalCenterOffset: parent.height / 10
+        anchors.verticalCenterOffset: parent.height / 7
 
         onClicked: {
             videoClicked();
@@ -160,18 +198,17 @@ Rectangle {
 
         fontSize: parent.width/12
 
-        radius: 10
-
         height: (parent.width * 3) / 16
         width: (parent.width * 10) / 16
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
 
-        anchors.verticalCenterOffset: parent.height / 4
+        anchors.verticalCenterOffset: parent.height / 3.3
 
         onClicked: {
             annotationClicked();
         }
     }
+
 }

@@ -7,27 +7,6 @@ Rectangle {
     color: backgroundGrey
     // TODO, add buffering animation
 
-    /*Image {
-        id: backButton
-        source: "icons/Left4-50.png"
-        width: parent.width/10
-        height: width
-        fillMode: Image.PreserveAspectFit
-
-        anchors.topMargin: width/5
-        anchors.top: parent.top
-        x: taskVideo.x-width/4
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                taskVideo.stop();
-                backButtonClicked();
-            }
-        }
-    }*/
-
-
     Text {
         id: title
         text: "An introduction to\n FEMORAL NERVE BLOCKS"
