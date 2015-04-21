@@ -45,4 +45,4 @@ HEADERS += \
 
 macx:CONFIG += x86
 
-QMAKE_INFO_PLIST = ios/Info.plist
+#QMAKE_INFO_PLIST = ios/Info.plist

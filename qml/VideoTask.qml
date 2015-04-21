@@ -50,15 +50,34 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height/20
 
-        onStopped: {
-            play();
+
+        // BUG! in iOS the video resizes to original file width and height
+        // if it is allowed to read EndOfFile and then starts playing again.
+        // Debugging did not show any wrong values in QML, so we can't fix it
+        // The following Timer-element is a hack to try to prevent video from
+        // reaching EndOfFile. You can still trick it into resizing though
+        Timer{
+            id: timer
+            interval: 50
+            repeat: true
+            running: true
+            onTriggered:{
+                if((parent.duration - parent.position)<200 && parent.position>5000){
+                    parent.seek(0);
+                }
+            }
         }
+
         onPaused:{
             videoController.playVisible = true;
+            timer.stop();
+
         }
         onPlaying:{
             videoController.playVisible = false;
+            timer.restart();
         }
+
     }
 
 
