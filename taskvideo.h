@@ -15,6 +15,7 @@ public:
     explicit TaskVideo(QObject *parent = 0);
     QString getVideoPath() const;
     int getScore() const;
+    int getMaxScore() const;
 
 
 signals:

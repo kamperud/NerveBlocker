@@ -70,6 +70,8 @@ void Game::newVideoTask()
     m_currentVideoTask->connect(m_currentVideoTask, &TaskVideo::answeredChanged,
                            this, &Game::onVideoTaskAnswered);
 
+    Game::setMaxPoints();
+
     emit currentVideoTaskChanged(m_currentVideoTask);
 }
 void Game::newAnnotationTask(){
@@ -138,6 +140,10 @@ void Game::setPoints(int newValue){
 void Game::setMaxPoints(){
     if(m_mode == Mode::DRAG){
         m_maxPoints = m_currentAnnotationTask->getMaxScore();
+        emit maxPointsChanged(m_maxPoints);
+    }
+    else if(m_mode == Mode::VIDEO){
+        m_maxPoints = m_currentVideoTask->getMaxScore();
         emit maxPointsChanged(m_maxPoints);
     }
 }

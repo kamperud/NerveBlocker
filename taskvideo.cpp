@@ -28,6 +28,10 @@ QString TaskVideo::getVideoPath() const
 int TaskVideo::getScore() const{
     return m_score;
 }
+int TaskVideo::getMaxScore() const{
+    //TODO, create actual max score
+    return 2000;
+}
 
 int TaskVideo::answerVideoTask(int timeSpot){
     m_answered = true;

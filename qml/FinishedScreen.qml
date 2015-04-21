@@ -48,7 +48,7 @@ Rectangle {
             text: qsTr("You got " + gamehandler.game.tasksAnsweredCorrectly + "\nout of " + gamehandler.game.tasksAnswered)
             font.pixelSize: parent.width/10
             font.family: ubuntu.name
-            visible: !annotationText.visible
+            visible: !annotationText.visible && gamehandler.game.mode !== Mode.VIDEO
 
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: scoreNumber.bottom
@@ -61,11 +61,11 @@ Rectangle {
             text: qsTr("out of " + gamehandler.game.maxPoints)
             font.pixelSize: parent.width/10
             font.family: ubuntu.name
-            visible: gamehandler.game.mode === Mode.DRAG
+            visible: gamehandler.game.mode === Mode.DRAG || gamehandler.game.mode === Mode.VIDEO
 
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: scoreNumber.bottom
-            anchors.topMargin: parent.height/8
+            anchors.topMargin: parent.height/6
             horizontalAlignment: Text.AlignHCenter
 
         }
@@ -76,6 +76,7 @@ Rectangle {
            anchors.horizontalCenter: parent.horizontalCenter
            anchors.bottom: parent.bottom
            anchors.bottomMargin: parent.height/15
+           visible: gamehandler.game.mode !== Mode.DRAG  && gamehandler.game.mode !== Mode.VIDEO
 
            Text{
                id:highestscoreText
