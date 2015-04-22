@@ -62,7 +62,7 @@ Rectangle {
             repeat: true
             running: true
             onTriggered:{
-                if((parent.duration - parent.position)<200 && parent.position>5000){
+                if((parent.position>5000 && parent.duration - parent.position)<200){
                     parent.seek(0);
                 }
             }
