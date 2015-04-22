@@ -9,8 +9,10 @@ Rectangle {
     signal annotationClicked()
 
     id: gameMenu
+    /*
     width: 300
     height: 500
+    */
     color: backgroundGrey
 
     Item {
@@ -52,14 +54,14 @@ Rectangle {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: parent.height/10
-            anchors.topMargin: parent.height/5
+            anchors.bottomMargin: parent.height/5
+            anchors.topMargin: parent.height/10
 
             color: "black"
             text: qsTr("Instructional")
 
             font.family: ubuntu.name
-            font.pixelSize: parent.width/12
+            font.pixelSize: parent.width/15
             font.capitalization: Font.AllUppercase
 
             verticalAlignment: Text.AlignTop
@@ -71,14 +73,14 @@ Rectangle {
             anchors.left: parent.left
             anchors.top: parent.top
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: parent.height/5
-            anchors.topMargin: parent.height/10
+            anchors.bottomMargin: parent.height/10
+            anchors.topMargin: parent.height/5
 
             color: "black"
             text: qsTr("Video")
 
             font.family: ubuntu.name
-            font.pixelSize: parent.width/8
+            font.pixelSize: parent.width/10
             font.capitalization: Font.AllUppercase
 
             verticalAlignment: Text.AlignBottom
@@ -86,26 +88,19 @@ Rectangle {
 
         }
 
+
         anchors.verticalCenter: parent.verticalCenter
         anchors.verticalCenterOffset: -parent.height / 3.5
 
+
         anchors.left: parent.left
-        anchors.leftMargin: parent.width * 2 / 21
+        anchors.leftMargin: parent.width * 4/21
+        anchors.right: parent.right
+        anchors.rightMargin: parent.width * 4/21
 
         onClicked: {
             instructionalClicked();
         }
-    }
-
-    StartMenuExtraButton{
-        id: downloadsButton
-        text: qsTr("Downloads")
-
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -parent.height / 3.5
-
-        anchors.right: parent.right
-        anchors.rightMargin: parent.width * 2 / 21
     }
 
     Text {
