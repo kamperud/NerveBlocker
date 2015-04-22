@@ -5,7 +5,7 @@ import UllApp 1.0;
 Rectangle {
     signal gameMenuClicked()
     signal gameSummaryClicked()
-    color: "#222222"
+    color: backgroundGrey
     property var task: gamehandler.game.currentVideoTask
     property bool active: true
 
@@ -30,7 +30,6 @@ Rectangle {
             anchors.right: parent.right
             anchors.left: parent.left
 
-
             property string text1: "Pause the video when\n you find the perfect position\n and click confirm"
             property string text2: "The closest good spot\n is shown below. Go to next\n page to see your score"
 
@@ -42,7 +41,6 @@ Rectangle {
 
         source: task.videoPath
 
-        // Don't fuck with the following values. iOS needs these
         width: parent.width*11/12
         height: parent.height
 
@@ -86,12 +84,11 @@ Rectangle {
         id: videoController
         progressBarPecent: taskVideo.position*100/taskVideo.duration
         movieLength: taskVideo.duration
-
+        taskActive: active
 
         anchors.bottom: menuButton.top
 
         onPlayClicked: {
-            if(active === false)    return
             if (taskVideo.playbackState===MediaPlayer.PlayingState) {
                 taskVideo.pause();
             }
@@ -100,7 +97,6 @@ Rectangle {
             }
         }
         onProgressClicked: {
-            if(active === false)    return
             taskVideo.seek(circleDistance*taskVideo.duration);
         }
     }
@@ -122,8 +118,7 @@ Rectangle {
                 taskVideo.pause();
                 videoController.playVisible = true;
                 active = false;
-                var bestTime = gamehandler.game.currentVideoTask.answerVideoTask(taskVideo.position);
-                taskVideo.seek(bestTime);
+                var bestTime = task.answerVideoTask(taskVideo.position);
             }
 
             //NEXT

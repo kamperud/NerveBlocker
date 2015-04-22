@@ -11,29 +11,49 @@ Item {
     property alias playVisible: playIcon.visible
     property int movieLength: 1000
     property var positions: [50, 200];
+    property bool taskActive: true;
 
     width: parent.width
     height: parent.height/8
     anchors.horizontalCenter: parent.horizontalCenter
 
+    onTaskActiveChanged: {
+        component_greenBars.createObject(item, {});
+    }
+    Component {
+        id: component_greenBars
+        Repeater {
+            id: greenBars
+            model: 1
+            Rectangle {
+                height: greyBar.height
+                width: greyBar.width/5
+                color: "lightgreen"
+                z: 1
+                x: greyBar.x
+            }
+
+        }
+    }
+
     Rectangle {
         id: blueBar
         width: greyBar.width*item.progressBarPecent/100
         height: parent.height/5
-        color: blueMain
+        color: taskActive ? blueMain : "transparent"
         radius: 3
-        z: 1
+        z: 2
         x: greyBar.x
 
         anchors.top: parent.top
 
 
-
         Rectangle {
             id: circle
-            color: "grey"
+            color: taskActive ? "grey" : "transparent"
             border.color: "#494949"
             border.width: 2
+
 
             radius: width/2
             height: parent.height*2
@@ -42,7 +62,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             x: /*progressArea.drag.active ? circle.x :*/ blueBar.width - width/2
             Rectangle {
-                color: blueMain
+                color: taskActive ? blueMain : "white"
                 border.color: "#494949"
                 border.width: 2
 
@@ -60,7 +80,7 @@ Item {
         id: greyBar
         width: parent.width*11/12
         height: parent.height/5
-        color: "grey"
+        color: taskActive ? "grey" : "red"
         radius: 3
 
         anchors.horizontalCenter: parent.horizontalCenter

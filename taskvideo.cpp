@@ -9,7 +9,9 @@ TaskVideo::TaskVideo(QObject *parent) :
     QObject(parent),
     m_timeSpots(QVector<int>()),
     m_score(0),
-    m_answered(false)
+    m_answered(false),
+    m_start(QList<int>()),
+    m_end(QList<int>())
 {
    m_timeSpots.append(2000);
    m_timeSpots.append(10000);
@@ -18,6 +20,9 @@ TaskVideo::TaskVideo(QObject *parent) :
    m_timeSpots.append(20000);
    m_timeSpots.append(23000);
    m_timeSpots.append(25000);
+
+   m_start.append(0);
+   m_end.append(5000);
 
 }
 
@@ -31,6 +36,12 @@ int TaskVideo::getScore() const{
 int TaskVideo::getMaxScore() const{
     //TODO, create actual max score
     return 2000;
+}
+QList<int> TaskVideo::getStartValues() const{
+    return m_start;
+}
+QList<int> TaskVideo::getEndValues() const{
+    return m_end;
 }
 
 int TaskVideo::answerVideoTask(int timeSpot){
