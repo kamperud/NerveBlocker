@@ -54,13 +54,14 @@ Rectangle {
         // Debugging did not show any wrong values in QML, so we can't fix it
         // The following Timer-element is a hack to try to prevent video from
         // reaching EndOfFile. You can still trick it into resizing though
+
         Timer{
             id: timer
             interval: 50
             repeat: true
             running: true
             onTriggered:{
-                if((parent.position>5000 && parent.duration - parent.position)<200){
+                if(parent.position>5000 && (parent.duration - parent.position)<200){
                     parent.seek(0);
                 }
             }
