@@ -20,6 +20,11 @@ Rectangle {
     //state: "ingame"
     color: backgroundGrey
 
+    onTaskXSetChanged: {
+        if(gamehandler.game.mode === Mode.TIMED){
+            botNext.nextClicked();
+        }
+    }
 
     Timer{
         id: timer
@@ -117,6 +122,8 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: botMenu.top
+
+
     }
 
     //MENU button
@@ -129,12 +136,12 @@ Rectangle {
 
     NextButton {
         id: botNext
-        arrowVisible: taskConfirmed
+        arrowVisible: taskConfirmed || gamehandler.game.mode === Mode.TIMED
 
         onNextClicked: {
             //Game done
             if(game.finished && gamehandler.game.mode !== Mode.TIMED){
-                           gameSummaryClicked();
+                 gameSummaryClicked();
             }
 
             //CONFIRM (vis annoret bilde)

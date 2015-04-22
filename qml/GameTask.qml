@@ -118,7 +118,6 @@ Item {
         MouseArea {
             id: imageArea
             anchors.fill: parent
-            visible: gamehandler.game.mode !== Mode.DRAG
             onClicked: {
                 //Show cross on image
                 if(!taskConfirmed) {
