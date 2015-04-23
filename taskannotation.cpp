@@ -30,16 +30,16 @@ TaskAnnotation::TaskAnnotation(QObject *parent) :
         yValues<<71<<92<<117<<203<<224;
         break;
     case 8:
-        xValues<<0<<100<<304<<421<<498;
-        yValues<<184<<183<<190<<269<<291;
+        xValues<<0<<207<<310<<438<<608;
+        yValues<<158<<163<<159<<127<<171;
         break;
     case 9:
-        xValues<<1<<362<<485<<556<<640;
-        yValues<<71<<81<<106<<162<<184;
+        xValues<<121<<319<<417<<511<<600;
+        yValues<<53<<71<<72<<86<<77;
         break;
     case 10:
-        xValues<<89<<272<<385<<435<<612;
-        yValues<<77<<105<<125<<166<<227;
+        xValues<<10<<323<<385<<514<<616;
+        yValues<<55<<88<<93<<75<<95;
         break;
     default:
         xValues<<0<<0<<0<<0<<0;
@@ -64,6 +64,10 @@ QString TaskAnnotation::getImagePath() const{
 }
 QString TaskAnnotation::getMappedImagePath() const{
     return QString("gameImages/%1_map.png").arg(m_index);
+}
+QString TaskAnnotation::getQuestionText() const{
+    if(m_index<8)   return QString("facia iliaca");
+    else            return QString("facia lata");
 }
 
 void TaskAnnotation::answerAnnotationTask(QList<int> answers){

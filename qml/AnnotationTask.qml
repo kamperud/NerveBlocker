@@ -33,7 +33,7 @@ Rectangle {
             anchors.left: parent.left
 
 
-            property string text1: "Move the line\n until it covers the\n FASCIA ILIACA"
+            property string text1: "Move the line\n until it covers the\n"+task.questionText.toUpperCase()
             property string text2: "The annotated image\n is shown below. Go to next\n page to see your score"
 
         }
@@ -55,7 +55,7 @@ Rectangle {
         Image{
             id:mappedImage
             anchors.fill: parent
-            //visible: !active
+            visible: !active
             source: task.mappedImagePath
         }
         Canvas {
