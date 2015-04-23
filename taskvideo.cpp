@@ -22,13 +22,18 @@ TaskVideo::TaskVideo(QObject *parent) :
    m_timeSpots.append(25000);
 
    m_start.append(0);
-   m_end.append(5000);
+   m_end.append(4000);
 
+   m_start.append(8000);
+   m_end.append(11000);
+
+   m_start.append(15000);
+   m_end.append(28120);
 }
 
 QString TaskVideo::getVideoPath() const
 {
-    return QString("http://folk.ntnu.no/solvehel/video_03.mp4");
+    return QString("http://folk.ntnu.no/solvehel/video_02.mp4");
 }
 int TaskVideo::getScore() const{
     return m_score;

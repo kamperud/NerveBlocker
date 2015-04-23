@@ -12,27 +12,30 @@ Item {
     property int movieLength: 1000
     property var positions: [50, 200];
     property bool taskActive: true;
+    property var task
 
     width: parent.width
     height: parent.height/8
     anchors.horizontalCenter: parent.horizontalCenter
 
     onTaskActiveChanged: {
+        task = gamehandler.game.currentVideoTask;
         component_greenBars.createObject(item, {});
     }
     Component {
         id: component_greenBars
         Repeater {
             id: greenBars
-            model: 1
+            model: 3
             Rectangle {
                 height: greyBar.height
-                width: greyBar.width/5
                 color: "lightgreen"
                 z: 1
-                x: greyBar.x
-            }
 
+                x: greyBar.x + task.startValues[modelData] *greyBar.width/movieLength
+                width: (task.endValues[modelData] - task.startValues[modelData]) *greyBar.width/movieLength
+
+            }
         }
     }
 
