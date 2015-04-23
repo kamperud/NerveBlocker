@@ -55,7 +55,7 @@ Rectangle {
         Image{
             id:mappedImage
             anchors.fill: parent
-            visible: !active
+            //visible: !active
             source: task.mappedImagePath
         }
         Canvas {
@@ -96,7 +96,6 @@ Rectangle {
                 var alpha = Math.atan2(prev.y-center.y, prev.x-center.x);
                 var beta = Math.atan2(next.y-center.y, next.x-center.x);
                 if(alpha<0) alpha+=Math.PI*2;
-                if(beta<0) beta+=Math.PI*2;
                 return (alpha+beta)/2;
             }
 
