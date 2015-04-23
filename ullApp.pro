@@ -8,7 +8,6 @@ SOURCES += main.cpp \
     gamehandler.cpp \
     task.cpp \
     game.cpp \
-    question.cpp \
     ultrasoundimage.cpp \
     organ.cpp \
     mode.cpp \
@@ -35,7 +34,6 @@ HEADERS += \
     gamehandler.h \
     task.h \
     game.h \
-    question.h \
     ultrasoundimage.h \
     organ.h \
     constants.h \
