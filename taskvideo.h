@@ -12,6 +12,8 @@ class TaskVideo : public QObject
     Q_PROPERTY(bool answered MEMBER m_answered NOTIFY answeredChanged)
     Q_PROPERTY(QList<int> startValues READ getStartValues CONSTANT)
     Q_PROPERTY(QList<int> endValues READ getEndValues CONSTANT)
+    Q_PROPERTY(int numIntervals READ getNumIntervals CONSTANT)
+
 
 
 public:
@@ -19,6 +21,7 @@ public:
     QString getVideoPath() const;
     int getScore() const;
     int getMaxScore() const;
+    int getNumIntervals() const;
     QList<int> getStartValues() const;
     QList<int> getEndValues() const;
 
@@ -31,8 +34,9 @@ public slots:
     int answerVideoTask(int timeSpot);
 
 private:
-    QVector<int> m_timeSpots;
     int m_score;
+    int m_numIntervals;
+    int m_index;
     bool m_answered;
     QList<int> m_start;
     QList<int> m_end;

@@ -26,7 +26,7 @@ Item {
         id: component_greenBars
         Repeater {
             id: greenBars
-            model: 3
+            model: task.numIntervals
             Rectangle {
                 height: greyBar.height
                 color: "lightgreen"
