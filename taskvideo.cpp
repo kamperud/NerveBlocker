@@ -1,4 +1,5 @@
 #include "taskvideo.h"
+#include "constants.h"
 
 #include <QVector>
 #include <QDebug>
@@ -9,22 +10,32 @@ TaskVideo::TaskVideo(QObject *parent) :
     QObject(parent),
     m_score(0),
     m_numIntervals(0),
-    m_index(2),
+    m_index((rand() % MAX_VIDEOS)+1),
     m_answered(false),
     m_start(QList<int>()),
     m_end(QList<int>())
 {
+   if(m_index==2){
+       m_start.append(0);
+       m_end.append(4000);
 
-   m_start.append(0);
-   m_end.append(4000);
+       m_start.append(8000);
+       m_end.append(11000);
 
-   m_start.append(8000);
-   m_end.append(11000);
+       m_start.append(15000);
+       m_end.append(28120);
 
-   m_start.append(15000);
-   m_end.append(28120);
+       m_numIntervals = 3;
+   }
+   else {
+       m_start.append(0);
+       m_end.append(2000);
 
-   m_numIntervals = 3;
+       m_start.append(16000);
+       m_end.append(20000);
+
+       m_numIntervals = 2;
+   }
 }
 
 QString TaskVideo::getVideoPath() const
