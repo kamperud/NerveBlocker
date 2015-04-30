@@ -15,7 +15,7 @@ Item {
     property var task
 
     width: parent.width
-    height: main.height/main.width<1.5 ? parent.height/10:parent.height/8
+    height: parent.height/8
     anchors.horizontalCenter: parent.horizontalCenter
 
     onTaskActiveChanged: {

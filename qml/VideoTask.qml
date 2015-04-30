@@ -90,6 +90,8 @@ Rectangle {
         movieLength: taskVideo.duration
         taskActive: active
         z: 1
+        height: main.height/main.width<1.5 ? parent.height/10:parent.height/8
+
 
         anchors.bottom: menuButton.top
 

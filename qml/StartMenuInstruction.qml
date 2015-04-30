@@ -13,7 +13,7 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         color: "white"
         font.family: ubuntu.name
-        font.pixelSize: parent.width/15
+        font.pixelSize: parent.width/18
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
