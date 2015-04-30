@@ -3,6 +3,7 @@ import QtQuick.Controls 1.2
 import UllApp 1.0
 
 ApplicationWindow {
+    id: main
     property string yellowMain: "#f7e967"
     property string yellowLight: "#fffd89"
     property string blueMain: "#04bfbf"
@@ -11,8 +12,18 @@ ApplicationWindow {
 
 
     visible: true
-    width: 533
+
+    // 4:3
+    //width: 600
+    //eight: 800
+
+    // 16:9
+    //width: 450
+    //height: 800
+    // 16:10
+    width: 500
     height: 800
+
     title: qsTr("UllApp")
     color: "white"
 

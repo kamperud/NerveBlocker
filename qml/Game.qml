@@ -11,7 +11,7 @@ Rectangle {
     property var startTime
     property var answerTime
     property real bonusTime: 0.15
-    property int maxTime: 15000
+    property int maxTime: 3000
 
     property var unscaledX
     property var unscaledY
@@ -78,9 +78,9 @@ Rectangle {
         case Organ.ARTERY:
             return "Femoral Artery";
         case Organ.ILIACA:
-            return "Fascia Iliaca";
+            return "Fascia Iliaca below the artery";
         case Organ.LATA:
-            return "Fascia lata";
+            return "Fascia Iliaca above the artery";
         case Organ.NERVE:
             return "Femoral Nerve";
         default:
@@ -93,7 +93,7 @@ Rectangle {
         id: topPoints
         contentText: gamehandler.game.points
         width: parent.width*4.5/12
-        height: parent.height/10
+        height: main.height/main.width<1.5 ? parent.height/13 : parent.height/10
         anchors.left: parent.left
         anchors.leftMargin: parent.width/12
         anchors.top: parent.top
@@ -106,7 +106,7 @@ Rectangle {
         contentText: "x" + gamehandler.game.multiplier
         labelText: qsTr("MULTIPLIER")
         width: parent.width*4.5/12
-        height: parent.height/10
+        height: main.height/main.width<1.5 ? parent.height/13 : parent.height/10
         anchors.top: parent.top
         anchors.topMargin: parent.width/20
         anchors.right: parent.right

@@ -11,16 +11,17 @@ Item {
     
     Text {
         color: "white"
-        text: gamehandler.game.mode !== Mode.DRAG ? qsTr("Touch the") : qsTr("Annotate the")
+        text: qsTr("Touch the")
         font.family: ubuntu.name
-        font.pixelSize:parent.height/5
+        font.pixelSize:main.height/main.width<1.5 ? parent.width/22 : parent.width/18
         
         visible: !task.answered
         
         verticalAlignment: Text.AlignBottom
         horizontalAlignment: Text.AlignHCenter
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: -question2.font.pixelSize
+
+        anchors.top: parent.top
+        anchors.topMargin: main.height/main.width<1.5 ? parent.height/20 : parent.height/10
         anchors.right: parent.right
         anchors.left: parent.left
     }
@@ -28,13 +29,15 @@ Item {
     Text {
         id: question2
         font.bold: true
-        font.pixelSize: parent.height/4
+        font.pixelSize: main.height/main.width<1.7 ? parent.width/20 : parent.width/15
         font.family: ubuntu.name
         font.capitalization: Font.AllUppercase
         
         visible: !task.answered
         text: getOrganName(gamehandler.game.currentTask.organ)
         color: "white"
+        width: parent.width
+        wrapMode: Text.WordWrap
         
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
@@ -67,7 +70,7 @@ Item {
         color: getOrganColor(task.organ)
         text: qsTr("It's the ") + getOrganColor(task.organ) + " one"
         font.family: ubuntu.name
-        font.pixelSize:parent.height/5
+        font.pixelSize: main.height/main.width<1.5 ? parent.width/25 : parent.width/18
         
         visible: (gamehandler.game.mode === Mode.TUTORIAL
                   || task.answered && !task.correct && gamehandler.game.mode != Mode.TIMED)

@@ -52,7 +52,7 @@ Rectangle {
 
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: scoreNumber.bottom
-            anchors.topMargin: parent.height/8
+            anchors.topMargin: parent.height/15
             horizontalAlignment: Text.AlignHCenter
 
         }
@@ -75,7 +75,7 @@ Rectangle {
            spacing: parent.width/20
            anchors.horizontalCenter: parent.horizontalCenter
            anchors.bottom: parent.bottom
-           anchors.bottomMargin: parent.height/15
+           anchors.bottomMargin: parent.height/35
            visible: gamehandler.game.mode !== Mode.DRAG  && gamehandler.game.mode !== Mode.VIDEO
 
            Text{

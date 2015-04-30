@@ -7,7 +7,7 @@ Rectangle {
     property alias arrowVisible: arrow.visible
     
     width: parent.width*4.5/12
-    height: parent.height/10
+    height: main.height/main.width<1.5 ? parent.height/13 : parent.height/10
     color: nextButton.pressed ? "#1fdada" : "#04bfbf"
     radius: height/4
     anchors.right: parent.right
