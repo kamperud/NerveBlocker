@@ -22,7 +22,7 @@ Rectangle {
             text: task.answered ? text2 : text1
             color: "white"
             font.family: ubuntu.name
-            font.pixelSize:parent.height/5
+            font.pixelSize:parent.height/6
 
             verticalAlignment: Text.AlignBottom
             horizontalAlignment: Text.AlignHCenter
@@ -30,8 +30,11 @@ Rectangle {
             anchors.right: parent.right
             anchors.left: parent.left
 
-            property string text1: "Pause the video when\n you find the perfect position\n and click confirm"
-            property string text2: "The closest good spot\n is shown below. Go to next\n page to see your score"
+            width: parent.width*11/12
+            wrapMode: Text.WordWrap
+
+            property string text1: "Pause the video when you find the perfect\nposition and click confirm"
+            property string text2: "The closest good spot is shown below.\nGo to next page to see your score"
 
         }
     }
@@ -86,6 +89,7 @@ Rectangle {
         progressBarPecent: taskVideo.position*100/taskVideo.duration
         movieLength: taskVideo.duration
         taskActive: active
+        z: 1
 
         anchors.bottom: menuButton.top
 

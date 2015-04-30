@@ -9,10 +9,6 @@ Rectangle {
     signal annotationClicked()
 
     id: gameMenu
-    /*
-    width: 300
-    height: 500
-    */
     color: backgroundGrey
 
     Item {
@@ -80,7 +76,7 @@ Rectangle {
             text: qsTr("Video")
 
             font.family: ubuntu.name
-            font.pixelSize: parent.width/10
+            font.pixelSize: parent.width/12
             font.capitalization: Font.AllUppercase
 
             verticalAlignment: Text.AlignBottom

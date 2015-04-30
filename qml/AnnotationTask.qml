@@ -31,6 +31,8 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.left: parent.left
+            width: parent.width
+            wrapMode: Text.WordWrap
 
 
             property string text1: "Move the line\n until it covers the\n"+task.questionText.toUpperCase()

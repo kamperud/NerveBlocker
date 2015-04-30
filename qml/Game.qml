@@ -11,13 +11,13 @@ Rectangle {
     property var startTime
     property var answerTime
     property real bonusTime: 0.15
-    property int maxTime: 3000
+    property int maxTime: 15000
 
     property var unscaledX
     property var unscaledY
     signal gameMenuClicked()
     signal gameSummaryClicked()
-    //state: "ingame"
+
     color: backgroundGrey
 
     onTaskXSetChanged: {
