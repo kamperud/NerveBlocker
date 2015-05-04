@@ -66,8 +66,8 @@ QString TaskAnnotation::getMappedImagePath() const{
     return QString("gameImages/%1_map.png").arg(m_index);
 }
 QString TaskAnnotation::getQuestionText() const{
-    if(m_index<8)   return QString("facia iliaca below the artery");
-    else            return QString("facia lata above the artery");
+    if(m_index<8)   return QString("fascia iliaca");
+    else            return QString("vascular sheath");
 }
 
 void TaskAnnotation::answerAnnotationTask(QList<int> answers){

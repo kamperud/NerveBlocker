@@ -78,9 +78,9 @@ Rectangle {
         case Organ.ARTERY:
             return "Femoral Artery";
         case Organ.ILIACA:
-            return "Fascia Iliaca below the artery";
+            return "Fascia Iliaca";
         case Organ.LATA:
-            return "Fascia Iliaca above the artery";
+            return "Vascular Sheeth";
         case Organ.NERVE:
             return "Femoral Nerve";
         default:
