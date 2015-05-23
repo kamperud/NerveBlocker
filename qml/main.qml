@@ -18,11 +18,11 @@ ApplicationWindow {
     //height: 800
 
     // 16:9
-    //width: 450
-    //height: 800
-    // 16:10
-    width: 500
+    width: 450
     height: 800
+    // 16:10
+    //width: 500
+    //height: 800
 
     title: qsTr("UllApp")
     color: "white"
@@ -53,6 +53,13 @@ ApplicationWindow {
                event.accepted = true;
                mainArea.pop(null);
            }
+        }
+        Connections {
+            target: Qt.application
+            onActiveChanged:
+                if(!Qt.application.active) {
+                    mainArea.pop(null);
+                }
         }
     }
 
