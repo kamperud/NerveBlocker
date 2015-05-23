@@ -57,7 +57,7 @@ ApplicationWindow {
         Connections {
             target: Qt.application
             onActiveChanged:
-                if(!Qt.application.active) {
+                if(Qt.application.state !== Qt.ApplicationActive) {
                     mainArea.pop(null);
                 }
         }
