@@ -56,10 +56,14 @@ ApplicationWindow {
         }
         Connections {
             target: Qt.application
-            onActiveChanged:
+            onActiveChanged: {
                 if(Qt.application.state !== Qt.ApplicationActive) {
-                    mainArea.pop(null);
+                    while(mainArea.depth>1){
+                        mainArea.currentItem.destroy();
+                        mainArea.pop();
+                    }
                 }
+            }
         }
     }
 
