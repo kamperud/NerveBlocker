@@ -92,7 +92,6 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
 
         onMenuClicked: {
-            taskVideo.stop();
             backButtonClicked();;
         }
     }
