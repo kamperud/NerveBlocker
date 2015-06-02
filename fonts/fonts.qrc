@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/fonts">
-        <file>whysoserious.ttf</file>
         <file>Ubuntu-R.ttf</file>
+        <file>Freshman.ttf</file>
     </qresource>
 </RCC>

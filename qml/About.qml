@@ -27,7 +27,11 @@ Rectangle {
         text: "This software was developed using Qt under the LGPLv3 license"
     }
     Text{
-        text: "This software was developed using Qt under the LGPLv3 license"
+        text: "the icons used come from www.icons8.com"
+    }
+    Text{
+        text: "The source code can be found at \
+        www.github.com/blackCheetah/RegAnesthAppMSc"
     }
 
     MenuButton {

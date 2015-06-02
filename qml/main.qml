@@ -27,7 +27,7 @@ ApplicationWindow {
     title: qsTr("UllApp")
     color: "white"
 
-    FontLoader { id: scoreFont; source: "fonts/whysoserious.ttf" }
+    FontLoader { id: scoreFont; source: "fonts/Freshman.ttf" }
     FontLoader { id: ubuntu; source: "fonts/Ubuntu-R.ttf" }
 
 
@@ -52,7 +52,7 @@ ApplicationWindow {
                mainArea.pop(null);
            }
         }
-        Connections {
+        /*Connections {
             target: Qt.application
             onActiveChanged: {
                 if(Qt.application.state !== Qt.ApplicationActive) {
@@ -62,7 +62,7 @@ ApplicationWindow {
                     }
                 }
             }
-        }
+        }*/
     }
 
     Component {
