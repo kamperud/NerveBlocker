@@ -16,5 +16,6 @@
         <file>TaskText.qml</file>
         <file>AnnotationPoint.qml</file>
         <file>AnnotationTask.qml</file>
+        <file>About.qml</file>
     </qresource>
 </RCC>

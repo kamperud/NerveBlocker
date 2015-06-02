@@ -27,9 +27,7 @@ ApplicationWindow {
     title: qsTr("UllApp")
     color: "white"
 
-    FontLoader { id: birdFont; source: "fonts/LittleBird.ttf" }
     FontLoader { id: scoreFont; source: "fonts/whysoserious.ttf" }
-    FontLoader { id: orangeFont; source: "fonts/orange.ttf" }
     FontLoader { id: ubuntu; source: "fonts/Ubuntu-R.ttf" }
 
 
@@ -79,7 +77,7 @@ ApplicationWindow {
                 mainArea.pop();
                 mainArea.pop();
                 if(gamehandler.game.mode===Mode.VIDEO){
-                    mainArea.push(component_video);
+                    mainArea.push({item:component_video, destroyOnPop: true});
                 }
                 else if(gamehandler.game.mode===Mode.DRAG){
                     mainArea.push(component_annotation);
@@ -113,7 +111,14 @@ ApplicationWindow {
                 mainArea.pop();
             }
         }
-
+    }
+    Component {
+        id: component_about
+        About{
+            onBackButtonClicked: {
+                mainArea.pop();
+            }
+        }
     }
     Component {
         id: component_video
@@ -160,7 +165,7 @@ ApplicationWindow {
             }
             onVideoClicked: {
                 gamehandler.newGame(Mode.VIDEO);
-                mainArea.push(component_video);
+                mainArea.push({item:component_video, destroyOnPop: true});
             }
             onInstructionalClicked: {
                 gamehandler.newGame(Mode.NONE);
@@ -169,6 +174,10 @@ ApplicationWindow {
             onAnnotationClicked: {
                 gamehandler.newGame(Mode.DRAG);
                 mainArea.push(component_annotation);
+            }
+            onInfoClicked: {
+                gamehandler.newGame(Mode.NONE);
+                mainArea.push(component_about);
             }
         }
     }

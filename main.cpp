@@ -1,6 +1,4 @@
 #include "gamehandler.h"
-#include "game.h"
-#include "task.h"
 
 #include <QApplication>
 #include <QQmlApplicationEngine>

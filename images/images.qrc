@@ -36,5 +36,6 @@
         <file>gameImages/14.png</file>
         <file>gameImages/15_map.png</file>
         <file>gameImages/15.png</file>
+        <file>icons/Info-50.png</file>
     </qresource>
 </RCC>

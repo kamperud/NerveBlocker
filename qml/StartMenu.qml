@@ -7,6 +7,7 @@ Rectangle {
     signal videoClicked()
     signal instructionalClicked()
     signal annotationClicked()
+    signal infoClicked()
 
     id: gameMenu
     color: backgroundGrey
@@ -200,6 +201,26 @@ Rectangle {
         onClicked: {
             annotationClicked();
         }
+    }
+    Item{
+        id: info
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: annotationButton.bottom
+        anchors.bottom: parent.bottom
+
+        Image{
+            width:parent.height/2
+            height: width
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            source:"icons/Info-50.png"
+        }
+        MouseArea{
+            anchors.fill: parent
+            onClicked: infoClicked()
+        }
+
     }
 
 }
