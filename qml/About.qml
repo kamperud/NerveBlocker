@@ -1,6 +1,7 @@
 import QtQuick 2.3
 
 Rectangle {
+    id: topRec
     signal backButtonClicked()
     color: backgroundGrey
 
@@ -17,21 +18,72 @@ Rectangle {
         anchors.topMargin: parent.height/20
     }
     Text{
+        id: introText
         text: "This app is the result of a master's\
-         project developed at the Norwegian University \
-         of Science and Technology(NTNU) in collaboration\
-         with SINTEF. It is provided free of charge for\
-         the purpose of education."
+         \nproject developed at the Norwegian University \
+         \nof Science and Technology (NTNU) in collaboration\
+         \nwith SINTEF. It is provided free of charge for\
+         \nthe purpose of education."
+        horizontalAlignment: Text.AlignHCenter
+        color: "white"
+        font.family: ubuntu.name
+        font.pixelSize: parent.width/25
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: qtLicense.top
+        anchors.bottomMargin: topRec.height/20
     }
     Text{
-        text: "This software was developed using Qt under the LGPLv3 license"
+        id: qtLicense
+        text: "This software was developed using Qt\n under the LGPLv3 license"
+        horizontalAlignment: Text.AlignHCenter
+        color: "white"
+        font.family: ubuntu.name
+        font.pixelSize: parent.width/25
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: icons.top
+        anchors.bottomMargin: topRec.height/20
     }
     Text{
-        text: "the icons used come from www.icons8.com"
+        id: icons
+        text: "The icons used come from www.icons8.com"
+        horizontalAlignment: Text.AlignHCenter
+        color: "white"
+        font.family: ubuntu.name
+        font.pixelSize: parent.width/25
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
     }
     Text{
+        id: github
         text: "The source code can be found at \
-        www.github.com/blackCheetah/RegAnesthAppMSc"
+        \nwww.github.com/blackCheetah/RegAnesthAppMSc"
+        horizontalAlignment: Text.AlignHCenter
+        color: "white"
+        font.family: ubuntu.name
+        font.pixelSize: parent.width/25
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: icons.bottom
+        anchors.topMargin: topRec.height/20
+    }
+
+    Text{
+        id: sincerely
+        text: "Sincerely,\
+        \nSolveig Hellan\
+        \nand\
+        \nHanna Holler Kamperud"
+        horizontalAlignment: Text.AlignHCenter
+        color: "white"
+        font.family: ubuntu.name
+        font.pixelSize: parent.width/35
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: github.bottom
+        anchors.topMargin: topRec.height/20
     }
 
     MenuButton {
