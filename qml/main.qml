@@ -14,12 +14,12 @@ ApplicationWindow {
     visible: true
 
     // 4:3
-    //width: 600
-    //height: 800
+    width: 600
+    height: 800
 
     // 16:9
-    width: 450
-    height: 800
+    //width: 450
+    //height: 800
     // 16:10
     //width: 500
     //height: 800

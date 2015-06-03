@@ -22,8 +22,8 @@ Rectangle {
         text: "This app is the result of a master's\
          \nproject developed at the Norwegian University \
          \nof Science and Technology (NTNU) in collaboration\
-         \nwith SINTEF. It is provided free of charge for\
-         \nthe purpose of education."
+         \nwith SINTEF and St. Olav's Hospital. It is provided \
+         \nfree of charge for the purpose of education."
         horizontalAlignment: Text.AlignHCenter
         color: "white"
         font.family: ubuntu.name
@@ -47,14 +47,19 @@ Rectangle {
     }
     Text{
         id: icons
-        text: "The icons used come from www.icons8.com"
+        text: "The instructional video is provided by \
+        \nThe New York School of Regional Anesthesia\
+        \nwww.nysora.com\
+        \n\nThe icons used come from www.icons8.com"
         horizontalAlignment: Text.AlignHCenter
         color: "white"
         font.family: ubuntu.name
-        font.pixelSize: parent.width/25
+        font.pixelSize: parent.width/30
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: parent.width/30
+
     }
     Text{
         id: github
@@ -63,7 +68,7 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         color: "white"
         font.family: ubuntu.name
-        font.pixelSize: parent.width/25
+        font.pixelSize: parent.width/30
 
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: icons.bottom

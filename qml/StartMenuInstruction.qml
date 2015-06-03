@@ -20,6 +20,17 @@ Rectangle {
         anchors.topMargin: parent.height/20
     }
 
+    Text {
+        text:"Video from http://www.nysora.com/"
+        horizontalAlignment: Text.AlignHCenter
+        color: "white"
+        font.family: ubuntu.name
+        font.pixelSize: parent.width/35
+
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: title.bottom
+        //anchors.topMargin: parent.height/35
+    }
 
     Video {
         id: taskVideo
