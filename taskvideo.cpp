@@ -40,7 +40,7 @@ TaskVideo::TaskVideo(QObject *parent) :
 
 QString TaskVideo::getVideoPath() const
 {
-    return QString("http://folk.ntnu.no/solvehel/video_0%1.mp4").arg(m_index);
+    return QString("http://folk.ntnu.no/frankl/USApps/USGFNB/video_0%1.mp4").arg(m_index);
 }
 int TaskVideo::getScore() const{
     return m_score;

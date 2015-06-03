@@ -37,7 +37,7 @@ Rectangle {
         autoPlay: true
 
         // short clip
-        source: "http://folk.ntnu.no/solvehel/instructional.mp4"
+        source: "http://folk.ntnu.no/frankl/USApps/USGFNB/instructional.mp4"
 
         // Don't fuck with the following values. iOS needs these
         width: parent.width*11/12
